@@ -13,8 +13,8 @@ class UserTableForeignKey extends Migration
      */
     public function up()
     {
-        Schema::table('user', function (Blueprint $table) {
-            $table->unsignedBigInteger('tag_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedBigInteger('tag_id')->default(1);
             $table->foreign('tag_id')->references('id')->on('tag');
         });
     }

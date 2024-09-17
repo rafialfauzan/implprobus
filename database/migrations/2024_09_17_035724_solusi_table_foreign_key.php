@@ -17,7 +17,7 @@ class SolusiTableForeignKey extends Migration
             $table->unsignedBigInteger('request_id');
             $table->foreign('request_id')->references('id')->on('request');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

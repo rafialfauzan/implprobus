@@ -17,7 +17,7 @@ class RequestTableForeignKey extends Migration
             $table->unsignedBigInteger('kategori_id');
             $table->foreign('kategori_id')->references('id')->on('kategori');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('status_id');
             $table->foreign('status_id')->references('id')->on('status');
             $table->unsignedBigInteger('outlet_id');
