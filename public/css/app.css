@@ -1384,11 +1384,6 @@ select {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.text-react {
-  --tw-text-opacity: 1;
-  color: rgb(97 219 251 / var(--tw-text-opacity));
-}
-
 .underline {
   text-decoration-line: underline;
 }
