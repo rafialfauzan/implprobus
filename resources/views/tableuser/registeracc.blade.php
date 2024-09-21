@@ -6,7 +6,7 @@
                     <div class="my-5">
                         <a href="{{ route('user') }}" class="bg-white font-bold text-black px-2 py-2 rounded-md border-black border-solid border-2 hover:bg-black hover:text-white transition delay-50 duration-300">« Kembali</a>
                     </div>
-                    <div class="flex-col px-80">
+                    <div class="flex-col">
                         <div>
                             <p class="text-center text-xl font-bold">Buat Akun Baru</p>
                         </div>

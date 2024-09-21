@@ -16,27 +16,42 @@
             <div class="flex">
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('Home') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Activity Log') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Tag') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Kategori') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Status') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('user')" :active="request()->routeIs('user')">
-                        {{ __('User') }}
-                    </x-nav-link>
+                </div>
+                <div class="hidden sm:flex sm:items-center sm:ml-6 mt-1">
+                    <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <button class="flex items-end text-sm font-bold text-gray-400 hover:text-black hover:border-gray-300 focus:outline-none focus:text-black focus:border-gray-300 transition duration-150 ease-in-out">
+                                <div>Advance Settings</div>
+    
+                                <div class="ml-1">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </x-slot>
+    
+                        <x-slot name="content">
+                            <x-dropdown-link :href="route('tag')">
+                                    {{ __('Tag') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('kategori')">
+                                    {{ __('Kategori') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('status')">
+                                    {{ __('Status') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('user')">
+                                    {{ __('User') }}
+                            </x-dropdown-link>
+                        </x-slot>
+                    </x-dropdown>
                 </div>
             </div>
             <!-- Settings Dropdown -->
@@ -55,8 +70,11 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <div class="block px-4 py-2 font-bold text-sm leading-5 text-gray-700">
-                            <p>Account Information : {{ Auth::user()->usertype }} | {{ Auth::user()->tag_id }}</p>
+                        <div class="block px-4 py-2">
+                            <p class="font-bold text-sm leading-5 text-gray-700">Account Information</p>
+                            <p class="text-sm leading-5 text-gray-500">Email: {{ Auth::user()->email }}</p>
+                            <p class="text-sm leading-5 text-gray-500">Type: {{ Auth::user()->usertype }}</p>
+                            <p class="text-sm leading-5 text-gray-500">Tag: {{ Auth::user()->tag_id }}</p>
                         </div>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -90,6 +108,21 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                {{ __('Activity Log') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('tag')" :active="request()->routeIs('tag')">
+                {{ __('Tag') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('kategori')" :active="request()->routeIs('kategori')">
+                {{ __('Kategori') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('status')" :active="request()->routeIs('status')">
+                {{ __('Status') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('user')" :active="request()->routeIs('user')">
+                {{ __('User') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -97,6 +130,8 @@
             <div class="px-4">
                 <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->usertype }}</div>
+                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->tag_id }}</div>
             </div>
 
             <div class="mt-3 space-y-1">
