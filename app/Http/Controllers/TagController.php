@@ -11,4 +11,8 @@ class TagController extends Controller
         $tag = Tag::all();
         return view('tabletag.tag', compact('tag'));
     }
+
+    public function createtag(){
+        return view('tabletag.createtag');
+    }
 }

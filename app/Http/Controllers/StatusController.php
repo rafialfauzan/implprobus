@@ -11,4 +11,8 @@ class StatusController extends Controller
         $status = Status::all();
         return view('tablestatus.status', compact('status'));
     }
+
+    public function createstatus(){
+        return view('tablestatus.createstatus');
+    }
 }

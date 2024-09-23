@@ -19,7 +19,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('activity')">
                         {{ __('Activity Log') }}
                     </x-nav-link>
                 </div>
@@ -27,7 +27,7 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="flex items-end text-sm font-bold text-gray-400 hover:text-black hover:border-gray-300 focus:outline-none focus:text-black focus:border-gray-300 transition duration-150 ease-in-out">
-                                <div>Advance Settings</div>
+                                <div>Advanced Settings</div>
     
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -108,9 +108,11 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('activity')">
                 {{ __('Activity Log') }}
             </x-responsive-nav-link>
+            <hr>
+            <p class="pl-4 text-sm font-bold">Advanced Settings</p>
             <x-responsive-nav-link :href="route('tag')" :active="request()->routeIs('tag')">
                 {{ __('Tag') }}
             </x-responsive-nav-link>
@@ -142,7 +144,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Log Out ⨠') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

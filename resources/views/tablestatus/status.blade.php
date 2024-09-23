@@ -13,7 +13,7 @@
                         <p>Welcome to user page {{ Auth::user()->name }}</p>
                     </div> --}}
                     <div class="mt-5">
-                        <a href="{{ route('registeracc') }}" class="bg-white font-bold text-black px-2 py-2 rounded-md border-black border-solid border-2 hover:bg-black hover:text-white transition delay-50 duration-300">+ Buat status baru</a>
+                        <a href="{{ route('createstatus') }}" class="bg-white font-bold text-black px-2 py-2 rounded-md border-black border-solid border-2 hover:bg-black hover:text-white transition delay-50 duration-300">+ Buat status baru</a>
                     </div>
                     <div class="mt-5">
                         <div class="my-10">
