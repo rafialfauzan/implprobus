@@ -20,13 +20,8 @@ use App\Http\Controllers\KategoriController;
 
 // Route::get('/',[HomeController::class,'index'])->middleware(['auth'])->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard',[HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::get('/user', [UserController::class, 'index'])->middleware(['auth'])->name('user');
 Route::get('/registeracc',[UserController::class, 'registeracc'])->middleware(['auth'])->name('registeracc');
