@@ -10,41 +10,136 @@
             <div class=" overflow-hidden sm:rounded-lg">
                 <div class="p-3">
                     <div class="flex md:flex-row flex-col">
-                        <div class="flex flex-col m-5">
+                        <div class="flex flex-col m-2">
                             <h1 class="font-bold text-abu">Urgent</h1>
-                            <div class="bg-white rounded-xl p-3 mt-3">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab nam iusto necessitatibus velit dignissimos possimus nihil corrupti doloribus voluptatum aliquam.</p>
+                            <div class="card bg-white rounded-xl mt-3">
+                                <div class="absolute right-0 m-3 badge badge-secondary rounded-[2px]">Urgent</div>
+                                <div class="card-body">
+                                    <h1 class="card-title">
+                                        Masalah gambar yang terlalu besar 
+                                    </h1>
+                                </div>
+                                <div class="card-actions justify-start pl-7">
+                                    <div class="badge badge-primary mb-3">Programmer</div>
+                                    <div class="badge badge-neutral mb-3">PHIS</div>
+                                </div>
+                                <div class="justify-start pl-7">
+                                    <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 19 December 2024</div>
+                                </div>
                             </div>
-                            <div class="bg-white rounded-xl p-3 mt-3">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab nam iusto necessitatibus velit dignissimos possimus nihil corrupti doloribus voluptatum aliquam.</p>
+                            <div class="card bg-white rounded-xl mt-3">
+                                <div class="absolute right-0 m-3 badge badge-secondary rounded-[2px]">Urgent</div>
+                                <div class="card-body">
+                                    <h1 class="card-title">
+                                        Masalah gambar yang terlalu besar 
+                                    </h1>
+                                </div>
+                                <div class="card-actions justify-start pl-7">
+                                    <div class="badge badge-primary mb-3">Programmer</div>
+                                    <div class="badge badge-neutral mb-3">PHIS</div>
+                                </div>
+                                <div class="justify-start pl-7">
+                                    <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 19 December 2024</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex flex-col m-5">
+                        <div class="flex flex-col m-2">
                             <h1 class="font-bold text-abu">Open</h1>
-                            <div class="bg-white rounded-xl p-3 mt-3">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab nam iusto necessitatibus velit dignissimos possimus nihil corrupti doloribus voluptatum aliquam.</p>
+                            <div class="card bg-white rounded-xl mt-3">
+                                <div class="absolute right-0 m-3 badge badge-accent rounded-[2px]">Open</div>
+                                <div class="card-body">
+                                    <h1 class="card-title">
+                                        Masalah gambar yang terlalu besar
+                                    </h1>
+                                </div>
+                                <div class="card-actions justify-start pl-7">
+                                    <div class="badge badge-primary mb-3">Programmer</div>
+                                    <div class="badge badge-neutral mb-3">PHIS</div>
+                                </div>
+                                <div class="justify-start pl-7">
+                                    <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 19 December 2024</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex flex-col m-5">
+                        <div class="flex flex-col m-2">
                             <h1 class="font-bold text-abu">Progress</h1>
-                            <div class="bg-white rounded-xl p-3 mt-3">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab nam iusto necessitatibus velit dignissimos possimus nihil corrupti doloribus voluptatum aliquam.</p>
+                            <div class="card bg-white rounded-xl mt-3">
+                                <div class="absolute right-0 m-3 badge badge-accent rounded-[2px]">Progress</div>
+                                <div class="card-body">
+                                    <h1 class="card-title">
+                                        Masalah gambar yang terlalu besar 
+                                    </h1>
+                                </div>
+                                <div class="card-actions justify-start pl-7">
+                                    <div class="badge badge-primary mb-3">Programmer</div>
+                                    <div class="badge badge-neutral mb-3">PHIS</div>
+                                </div>
+                                <div class="justify-start pl-7">
+                                    <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 19 December 2024</div>
+                                </div>
                             </div>
-                            <div class="bg-white rounded-xl p-3 mt-3">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab nam iusto necessitatibus velit dignissimos possimus nihil corrupti doloribus voluptatum aliquam.</p>
+                            <div class="card bg-white rounded-xl mt-3">
+                                <div class="absolute right-0 m-3 badge badge-accent rounded-[2px]">Progress</div>
+                                <div class="card-body">
+                                    <h1 class="card-title">
+                                        Masalah gambar yang terlalu besar 
+                                    </h1>
+                                </div>
+                                <div class="card-actions justify-start pl-7">
+                                    <div class="badge badge-primary mb-3">Programmer</div>
+                                    <div class="badge badge-neutral mb-3">PHIS</div>
+                                </div>
+                                <div class="justify-start pl-7">
+                                    <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 19 December 2024</div>
+                                </div>
                             </div>
-                            <div class="bg-white rounded-xl p-3 mt-3">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab nam iusto necessitatibus velit dignissimos possimus nihil corrupti doloribus voluptatum aliquam.</p>
+                            <div class="card bg-white rounded-xl mt-3">
+                                <div class="absolute right-0 m-3 badge badge-accent rounded-[2px]">Progress</div>
+                                <div class="card-body">
+                                    <h1 class="card-title">
+                                        Masalah gambar yang terlalu besar 
+                                    </h1>
+                                </div>
+                                <div class="card-actions justify-start pl-7">
+                                    <div class="badge badge-primary mb-3">Programmer</div>
+                                    <div class="badge badge-neutral mb-3">PHIS</div>
+                                </div>
+                                <div class="justify-start pl-7">
+                                    <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 19 December 2024</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex flex-col m-5">
+                        <div class="flex flex-col m-2">
                             <h1 class="font-bold text-abu">Closed</h1>
-                            <div class="bg-white rounded-xl p-3 mt-3">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab nam iusto necessitatibus velit dignissimos possimus nihil corrupti doloribus voluptatum aliquam.</p>
+                            <div class="card bg-white rounded-xl mt-3">
+                                <div class="absolute right-0 m-3 badge badge-accent rounded-[2px]">Closed</div>
+                                <div class="card-body">
+                                    <h1 class="card-title">
+                                        Masalah gambar yang terlalu besar 
+                                    </h1>
+                                </div>
+                                <div class="card-actions justify-start pl-7">
+                                    <div class="badge badge-primary mb-3">Programmer</div>
+                                    <div class="badge badge-neutral mb-3">PHIS</div>
+                                </div>
+                                <div class="justify-start pl-7">
+                                    <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 19 December 2024</div>
+                                </div>
                             </div>
-                            <div class="bg-white rounded-xl p-3 mt-3">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab nam iusto necessitatibus velit dignissimos possimus nihil corrupti doloribus voluptatum aliquam.</p>
-                            </div>
+                            <div class="card bg-white rounded-xl mt-3">
+                                <div class="absolute right-0 m-3 badge badge-accent rounded-[2px]">Closed</div>
+                                <div class="card-body">
+                                    <h1 class="card-title">
+                                        Masalah gambar yang terlalu besar 
+                                    </h1>
+                                </div>
+                                <div class="card-actions justify-start pl-7">
+                                    <div class="badge badge-primary mb-3">Programmer</div>
+                                    <div class="badge badge-neutral mb-3">PHIS</div>
+                                </div>
+                                <div class="justify-start pl-7">
+                                    <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 19 December 2024</div>
+                                </div>
                             </div>
                         </div>
                     </div>

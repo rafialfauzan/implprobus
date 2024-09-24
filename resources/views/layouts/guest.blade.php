@@ -13,6 +13,9 @@
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('img/logo.png') }}">
+        <link href="{{ asset('fontawesome/css/fontawesome.css') }}" rel="stylesheet" />
+        <link href="{{ asset('fontawesome/css/brands.css') }}" rel="stylesheet" />
+        <link href="{{ asset('fontawesome/css/solid.css') }}" rel="stylesheet" />
 
         <script src="{{ asset('js/app.js') }}"></script>
         <!-- Scripts -->
@@ -22,5 +25,18 @@
         <div class="font-sans text-black antialiased">
             {{ $slot }}
         </div>
+        <script>
+            let sp = document.getElementById("seepass");
+            let ps = document.getElementById("password");
+    
+            sp.onclick = function(){
+                if(ps.type == "password"){
+                    ps.type = "text";
+                }else{
+                    ps.type = "password";
+                }
+            }
+    
+        </script>
     </body>
 </html>

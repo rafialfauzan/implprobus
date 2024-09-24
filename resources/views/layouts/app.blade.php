@@ -12,7 +12,9 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <link rel="icon" type="image/x-icon" href="{{ asset('img/logo.png') }}">
-
+        <link href="{{ asset('fontawesome/css/fontawesome.css') }}" rel="stylesheet" />
+        <link href="{{ asset('fontawesome/css/brands.css') }}" rel="stylesheet" />
+        <link href="{{ asset('fontawesome/css/solid.css') }}" rel="stylesheet" />
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <script src="{{ asset('js/app.js') }}"></script>
