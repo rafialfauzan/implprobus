@@ -22,6 +22,7 @@ use App\Http\Controllers\KategoriController;
 
 Route::get('/dashboard',[HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::get('/', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/detailrequest',[HomeController::class, 'detailrequest'])->middleware(['auth'])->name('detailrequest');
 
 Route::get('/user', [UserController::class, 'index'])->middleware(['auth'])->name('user');
 Route::get('/registeracc',[UserController::class, 'registeracc'])->middleware(['auth'])->name('registeracc');

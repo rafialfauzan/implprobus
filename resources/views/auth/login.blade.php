@@ -34,7 +34,7 @@
                                 name="password"
                                 required autocomplete="current-password" 
                                 placeholder="Password"/>
-                <a href="#" class="ml-1 justify-end text-abu rounded-[2px] text-xs" id="seepass"><i class="fa-solid fa-eye"></i> Show Password</a>
+                <a class="ml-1 justify-end text-abu rounded-[2px] text-xs hover:font-bold" id="seepass"><i class="fa-solid fa-eye"></i> Show Password</a>
             </div>
 
             <!-- Remember Me -->

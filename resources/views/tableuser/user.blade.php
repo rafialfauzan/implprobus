@@ -13,7 +13,7 @@
                         <p>Welcome to user page {{ Auth::user()->name }}</p>
                     </div> --}}
                     <div class="mt-5">
-                        <a href="{{ route('registeracc') }}" class="bg-white font-bold text-black px-2 py-2 rounded-md border-black border-solid border-2 hover:bg-black hover:text-white transition delay-50 duration-300">+ Buat akun baru</a>
+                        <a href="{{ route('registeracc') }}" class="bg-white font-bold text-black px-2 py-2 rounded-md border-black border-solid border-2 hover:bg-black hover:text-white transition delay-50 duration-300"><i class="fa-solid fa-plus"></i> Buat akun baru</a>
                     </div>
                     <div class="mt-5 overflow-auto">
                         <div class="my-10">
@@ -36,7 +36,7 @@
                                         <td class="p-3 text-sm text-gray-700">{{ $item->email }}</td>
                                         <td class="p-3 text-sm text-gray-700">{{ $item->usertype }}</td>
                                         <td class="p-3 text-sm text-gray-700">{{ $item->tag_id }}</td>
-                                        <td class="p-3 text-sm text-gray-700"><a class="hover:text-black" href="#">Edit-Akun</a> <a class="hover:text-black" href="#">Edit-Password</a> <a class="hover:text-black" href="#">Hapus</a></td>
+                                        <td class="p-3 text-xl text-gray-700"><a class="m-2 hover:text-black" href="#"><i class="fa-solid fa-key"></i></a> <a class="m-2 hover:text-black" href="#"><i class="fa-solid fa-pen"></i></a> <a class="m-2 hover:text-black" href="#"><i class="fa-solid fa-trash"></i></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

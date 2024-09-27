@@ -9,4 +9,8 @@ class HomeController extends Controller
     public function index(){
         return view('dashboard');
     }
+
+    public function detailrequest(){
+        return view('detailrequest');
+    }
 }
