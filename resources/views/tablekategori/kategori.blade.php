@@ -13,11 +13,11 @@
                         <p>Welcome to user page {{ Auth::user()->name }}</p>
                     </div> --}}
                     <div class="mt-5">
-                        <a href="{{ route('createkategori') }}" class="bg-white font-bold text-black px-2 py-2 rounded-md border-black border-solid border-2 hover:bg-black hover:text-white transition delay-50 duration-300"><i class="fa-solid fa-plus"></i> Buat kategori baru</a>
+                        <a href="{{ route('createkategori') }}" class="bg-white font-bold text-black px-2 py-2 rounded-md border-black border-solid border-2 hover:bg-black hover:text-white transition delay-50 duration-300"><i class="fa-solid fa-plus"></i> Create new category</a>
                     </div>
                     <div class="mt-5">
                         <div class="my-10">
-                            <p class="text-center text-xl font-bold">List Kategori</p>
+                            <p class="text-center text-xl font-bold">Category List</p>
                         </div>
                         <table class="table-fixed w-full">
                             <thead class="bg-gray-50 border-b-2 border-black">

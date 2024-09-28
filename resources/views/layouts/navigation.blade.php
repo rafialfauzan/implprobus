@@ -42,7 +42,7 @@
                                     {{ __('Tag') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('kategori')">
-                                    {{ __('Kategori') }}
+                                    {{ __('Category') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('status')">
                                     {{ __('Status') }}
@@ -117,7 +117,7 @@
                 {{ __('Tag') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('kategori')" :active="request()->routeIs('kategori')">
-                {{ __('Kategori') }}
+                {{ __('Category') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('status')" :active="request()->routeIs('status')">
                 {{ __('Status') }}

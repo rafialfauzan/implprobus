@@ -5,7 +5,7 @@
                 <div class="p-6">
                     <div class="flex flex-col md:px-40">
                         <div class="justify-items-end text-6xl mb-5">
-                            <a href="/" class="text-black hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                            <a href="{{ url()->previous() }}" class="text-black hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
                         </div>
                         <div class="bg-white rounded-[28px] shadow-md card">
                                 <div class="dropdown dropdown-top absolute right-0 bottom-0 m-3 rounded-[16px]">
