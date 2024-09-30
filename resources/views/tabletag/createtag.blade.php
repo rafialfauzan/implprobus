@@ -10,7 +10,7 @@
                         <div>
                             <p class="text-center text-xl font-bold">Create new tag</p>
                         </div>
-                        <form method="POST" action="{{ route('createtag') }}">
+                        <form method="POST" action="">
                             @csrf
                 
                             <!-- Name -->

@@ -10,7 +10,7 @@
                         <div>
                             <p class="text-center text-xl font-bold">Create new category</p>
                         </div>
-                        <form method="POST" action="{{ route('storekategori') }}">
+                        <form method="POST" action="">
                             @csrf
                 
                             <!-- Name -->

@@ -4,7 +4,7 @@
             <div class="overflow-hidden sm:rounded-lg">
                 <div class="p-6">
                     <div class="flex flex-col md:px-40">
-                        <div class="justify-items-end text-6xl mb-5">
+                        <div class="text-end text-6xl mb-5">
                             <a href="{{ url()->previous() }}" class="text-black hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
                         </div>
                         <div class="bg-white rounded-[28px] shadow-md card">
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="my-5">
-                            <button class="btn btn-neutral bg-black text-white w-full rounded-[28px]" id="btnsolusi">COMMENT</button>
+                            <button class="btn btn-neutral bg-black text-white w-full rounded-[28px]" id="btncomment">COMMENT</button>
                         </div>
                     </div>
                 </div>

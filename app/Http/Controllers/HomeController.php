@@ -17,4 +17,12 @@ class HomeController extends Controller
     public function detailus(){
         return view('detailus');
     }
+
+    public function mrq(){
+        return view('mrq');
+    }
+
+    public function mus(){
+        return view('mus');
+    }
 }

@@ -1,9 +1,9 @@
 <x-app-layout>
-    <x-slot name="header">
+    {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
-    </x-slot>
+    </x-slot> --}}
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-4 lg:px-6">
@@ -11,9 +11,9 @@
                 <div class="p-3">
                     <a href="#" class="btn bg-black text-white font-bold hover:bg-gray-700"><i class="fa-solid fa-plus"></i> Create Update System</a>
                    <div class="flex flex-col">
-                    <h1 class="font-bold text-abu mt-2 ml-2"><a href="#" class="hover:border-abu hover:border-b-2">Update System <i class="fa-solid fa-up-right-from-square"></i></a></h1>
-                    <div class="flex md:flex-row flex-col">
-                        <a href="/detailus" class="md:w-1/4 mx-2">
+                    <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mus" class="hover:border-abu hover:border-b-2">Update System <i class="fa-solid fa-up-right-from-square"></i></a></h1>
+                    <div class="grid md:grid-cols-4 grid-rows-1">
+                        <a href="/detailus" class="mx-2">
                             <div class="card bg-white rounded-xl mt-3">
                                 <div class="card-body">
                                     <h1 class="card-title font-bold">
@@ -31,7 +31,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="/detailus" class="md:w-1/4 mx-2">
+                        <a href="/detailus" class="mx-2">
                             <div class="card bg-white rounded-xl mt-3">
                                 <div class="card-body">
                                     <h1 class="card-title font-bold">
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="/detailus" class="md:w-1/4 mx-2">
+                        <a href="/detailus" class="mx-2">
                             <div class="card bg-white rounded-xl mt-3">
                                 <div class="card-body">
                                     <h1 class="card-title font-bold">
@@ -67,7 +67,25 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="/detailus" class="md:w-1/4 mx-2">
+                        <a href="/detailus" class="mx-2">
+                            <div class="card bg-white rounded-xl mt-3">
+                                <div class="card-body">
+                                    <h1 class="card-title font-bold">
+                                        Masalah tombol yang terlalu skibidi 
+                                    </h1>
+                                </div>
+                                <div class="card-actions justify-start pl-7">
+                                    <div class="badge badge-secondary mb-3">Burger King</div>
+                                </div>
+                                <div class="card-actions justify-start pl-7">
+                                    <div class="badge badge-neutral mb-3 text-white">PHIS</div>
+                                </div>
+                                <div class="justify-start pl-7">
+                                    <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 19 December 2024</div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="/detailus" class="mx-2">
                             <div class="card bg-white rounded-xl mt-3">
                                 <div class="card-body">
                                     <h1 class="card-title font-bold">
@@ -88,9 +106,9 @@
                     </div>
                    </div>
                     <a href="#" class="btn bg-black text-white font-bold hover:bg-gray-700 mt-10"><i class="fa-solid fa-plus"></i> Create Request</a>
-                    <div class="flex md:flex-row flex-col">
-                        <div class="flex flex-col w-full md:w-1/4">
-                            <h1 class="font-bold text-abu mt-2 ml-2"><a href="#" class="hover:border-abu hover:border-b-2">Urgent <i class="fa-solid fa-up-right-from-square"></i></a></h1>
+                    <div class="grid md:grid-cols-4 grid-rows-1">
+                        <div class="flex flex-col w-full">
+                            <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mrq" class="hover:border-abu hover:border-b-2">Urgent <i class="fa-solid fa-up-right-from-square"></i></a></h1>
                             <a href="/detailrequest" class="mx-2">
                                 <div class="card bg-white rounded-xl mt-3">
                                     <div class="absolute right-0 m-3 badge badge-error rounded-[2px] text-white">Urgent</div>
@@ -112,8 +130,8 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="flex flex-col w-full md:w-1/4">
-                            <h1 class="font-bold text-abu mt-2 ml-2"><a href="#" class="hover:border-abu hover:border-b-2">Open <i class="fa-solid fa-up-right-from-square"></i></a></h1>
+                        <div class="flex flex-col w-full">
+                            <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mrq" class="hover:border-abu hover:border-b-2">Open <i class="fa-solid fa-up-right-from-square"></i></a></h1>
                             <a href="/detailrequest" class="mx-2">
                                 <div class="card bg-white rounded-xl mt-3">
                                     <div class="absolute right-0 m-3 badge badge-info rounded-[2px] text-white">Open</div>
@@ -135,8 +153,8 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="flex flex-col w-full md:w-1/4">
-                            <h1 class="font-bold text-abu mt-2 ml-2"><a href="#" class="hover:border-abu hover:border-b-2">Progress <i class="fa-solid fa-up-right-from-square"></i></a></h1>
+                        <div class="flex flex-col w-full">
+                            <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mrq" class="hover:border-abu hover:border-b-2">Progress <i class="fa-solid fa-up-right-from-square"></i></a></h1>
                             <a href="/detailrequest" class="mx-2">
                                 <div class="card bg-white rounded-xl mt-3">
                                     <div class="absolute right-0 m-3 badge badge-warning rounded-[2px] text-white">Progress</div>
@@ -158,8 +176,8 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="flex flex-col w-full md:w-1/4">
-                            <h1 class="font-bold text-abu mt-2 ml-2"><a href="#" class="hover:border-abu hover:border-b-2">Closed <i class="fa-solid fa-up-right-from-square"></i></a></h1>
+                        <div class="flex flex-col w-full">
+                            <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mrq" class="hover:border-abu hover:border-b-2">Closed <i class="fa-solid fa-up-right-from-square"></i></a></h1>
                             <a href="/detailrequest" class="mx-2">
                                 <div class="card bg-white rounded-xl mt-3">
                                     <div class="absolute right-0 m-3 badge badge-success rounded-[2px] text-white">Closed</div>

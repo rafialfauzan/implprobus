@@ -10,7 +10,7 @@
                         <div>
                             <p class="text-center text-xl font-bold">Edit tag</p>
                         </div>
-                        <form method="POST" action="/updatetag">
+                        <form method="POST" action="">
                             @csrf
                 
                             <!-- Name -->

@@ -10,7 +10,7 @@
                         <div>
                             <p class="text-center text-xl font-bold">Create new account</p>
                         </div>
-                        <form method="POST" action="{{ route('registeracc') }}">
+                        <form method="POST" action="">
                             @csrf
                 
                             <!-- Name -->

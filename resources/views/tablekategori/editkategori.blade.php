@@ -10,7 +10,7 @@
                         <div>
                             <p class="text-center text-xl font-bold">Edit category</p>
                         </div>
-                        <form method="POST" action="/updatekategori">
+                        <form method="POST" action="">
                             @csrf
                 
                             <!-- Name -->
