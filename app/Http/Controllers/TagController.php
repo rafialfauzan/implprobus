@@ -15,4 +15,8 @@ class TagController extends Controller
     public function createtag(){
         return view('tabletag.createtag');
     }
+
+    public function edittag(){
+        return view('tabletag.edittag');
+    }
 }

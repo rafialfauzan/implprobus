@@ -8,9 +8,9 @@
                     </div>
                     <div class="flex-col">
                         <div>
-                            <p class="text-center text-xl font-bold">Create new tag</p>
+                            <p class="text-center text-xl font-bold">Edit status</p>
                         </div>
-                        <form method="POST" action="{{ route('createtag') }}">
+                        <form method="POST" action="/updatestatus">
                             @csrf
                 
                             <!-- Name -->
@@ -22,7 +22,7 @@
                 
                             <div class="flex items-center justify-end mt-4">
                                 <x-button class="ml-4">
-                                    {{ __('Create') }}
+                                    {{ __('Edit') }}
                                 </x-button>
                             </div>
                         </form>

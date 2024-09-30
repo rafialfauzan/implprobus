@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,14 @@ class UserController extends Controller
     }
 
     public function registeracc(){
-        return view('tableuser.registeracc');
+        $tag = Tag::all();
+
+        return view('tableuser.registeracc', compact('tag'));
+    }
+
+    public function editacc(){
+        $tag = Tag::all();
+
+        return view('tableuser.editacc', compact('tag'));
     }
 }

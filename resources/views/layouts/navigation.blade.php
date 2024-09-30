@@ -8,7 +8,7 @@
                     <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-black" />
                     </a>
-                    <p class="ml-2 font-bold text-black">Probus Implementator</p>
+                    <a href="{{ route('dashboard') }}"><p class="ml-2 font-bold text-xl text-black">Probus Implementator</p></a>
                 </div>
 
                 

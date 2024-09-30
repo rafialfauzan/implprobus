@@ -19,6 +19,7 @@ module.exports = {
             colors: {
                 'abu': '#A5A5A5',
                 'react': '#61DBFB',
+                'abugelap': '#717171',
             },
         },
     },

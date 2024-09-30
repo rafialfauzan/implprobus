@@ -13,7 +13,7 @@
                    <div class="flex flex-col">
                     <h1 class="font-bold text-abu mt-2 ml-2"><a href="#" class="hover:border-abu hover:border-b-2">Update System <i class="fa-solid fa-up-right-from-square"></i></a></h1>
                     <div class="flex md:flex-row flex-col">
-                        <a href="/detailrequest" class="md:w-1/4 mx-2">
+                        <a href="/detailus" class="md:w-1/4 mx-2">
                             <div class="card bg-white rounded-xl mt-3">
                                 <div class="card-body">
                                     <h1 class="card-title font-bold">
@@ -31,7 +31,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="/detailrequest" class="md:w-1/4 mx-2">
+                        <a href="/detailus" class="md:w-1/4 mx-2">
                             <div class="card bg-white rounded-xl mt-3">
                                 <div class="card-body">
                                     <h1 class="card-title font-bold">
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="/detailrequest" class="md:w-1/4 mx-2">
+                        <a href="/detailus" class="md:w-1/4 mx-2">
                             <div class="card bg-white rounded-xl mt-3">
                                 <div class="card-body">
                                     <h1 class="card-title font-bold">
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="/detailrequest" class="md:w-1/4 mx-2">
+                        <a href="/detailus" class="md:w-1/4 mx-2">
                             <div class="card bg-white rounded-xl mt-3">
                                 <div class="card-body">
                                     <h1 class="card-title font-bold">

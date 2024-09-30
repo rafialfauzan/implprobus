@@ -12,25 +12,27 @@
                     {{-- <div>
                         <p>Welcome to user page {{ Auth::user()->name }}</p>
                     </div> --}}
-                    <div class="mt-5">
-                        <a href="{{ route('createtag') }}" class="bg-white font-bold text-black px-2 py-2 rounded-md border-black border-solid border-2 hover:bg-black hover:text-white transition delay-50 duration-300"><i class="fa-solid fa-plus"></i> Create new tag</a>
+                    <div class="justify-between flex flex-row">
+                        <p class="text-center text-3xl font-bold">Tag List</p>
+                        <a href="{{ url()->previous() }}" class="text-black hover:text-gray-700 text-3xl"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                    </div>
+                    <div class="mt-5 mb-20">
+                        <a href="{{ route('createtag') }}" class="bg-black font-bold text-white px-2 py-2 rounded-md border-black border-solid border-2 hover:bg-white hover:text-black transition delay-50 duration-300"><i class="fa-solid fa-plus"></i> Create new tag</a>
                     </div>
                     <div class="mt-5">
-                        <div class="my-10">
-                            <p class="text-center text-xl font-bold">Tag List</p>
-                        </div>
                         <table class="table-fixed w-full">
-                            <thead class="bg-gray-50 border-b-2 border-black">
+                            <thead class="bg-gray-300 text-black">
                                 <tr>
-                                    <th class="p-3 text-sm font-bold tracking-wide text-left">Name</th>
-                                    <th class="p-3 text-sm font-bold tracking-wide text-left">Action</th>
+                                    <th class="p-3 text-sm font-bold tracking-wide text-left rounded-tl-xl">Name</th>
+                                    <th class="p-3 text-sm font-bold tracking-wide text-left rounded-tr-xl">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($tag as $item)
                                     <tr>
-                                        <td class="p-3 text-sm text-gray-700">{{ $item->name }}</td>
-                                        <td class="p-3 text-xl text-gray-700"><a class="hover:text-black m-2" href="#"><i class="fa-solid fa-pen"></i></a><a class="hover:text-black m-2" href="#"><i class="fa-solid fa-trash"></i></a></td>
+                                        <td class="p-3 text-sm text-abugelap">{{ $item->name }}</td>
+                                        <td class="p-3 text-xl text-abugelap"><a class="hover:text-black m-2" href="/edittag"><i class="fa-solid fa-pen"></i></a>
+                                            <a class="hover:text-black m-2" href="#"><i class="fa-solid fa-trash"></i></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

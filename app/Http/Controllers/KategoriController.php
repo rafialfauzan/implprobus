@@ -15,4 +15,8 @@ class KategoriController extends Controller
     public function createkategori(){
         return view('tablekategori.createkategori');
     }
+
+    public function editkategori(){
+        return view('tablekategori.editkategori');
+    }
 }

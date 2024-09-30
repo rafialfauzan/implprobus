@@ -13,4 +13,8 @@ class HomeController extends Controller
     public function detailrequest(){
         return view('detailrequest');
     }
+
+    public function detailus(){
+        return view('detailus');
+    }
 }

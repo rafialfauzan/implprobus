@@ -15,4 +15,8 @@ class StatusController extends Controller
     public function createstatus(){
         return view('tablestatus.createstatus');
     }
+
+    public function editstatus(){
+        return view('tablestatus.editstatus');
+    }
 }
