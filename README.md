@@ -1,3 +1,6 @@
+<p align="center"><img src="/public/img/logo.png" width="200"></p>
+<h1 align="center" color="white">PROBUS IMPLEMENTATOR</h1>
+
 ## About Probus Implementator
 
 Probus Implementator is a system that manages several features used by the Probus System. In this project the system focuses on request management. This system can be developed again in the future to suit user needs.
