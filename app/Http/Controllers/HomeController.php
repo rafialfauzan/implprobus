@@ -25,4 +25,12 @@ class HomeController extends Controller
     public function mus(){
         return view('mus');
     }
+
+    public function createrq(){
+        return view('createrq');
+    }
+
+    public function createus(){
+        return view('createus');
+    }
 }

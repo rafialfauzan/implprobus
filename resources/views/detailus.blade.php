@@ -24,9 +24,6 @@
                                     <div class="badge badge-neutral badge-lg text-white">PHIS</div>
                                 </div>
                                 <div>
-                                    <p class="text-sm font-bold"><i class="fa-solid fa-hourglass-start"></i> 19 December 2024 - 2 February 2025</p>
-                                </div>
-                                <div>
                                     <p class="text-sm font-bold"><i class="fa-solid fa-calendar"></i> 19 December 2024</p>
                                 </div>
                                 <div>

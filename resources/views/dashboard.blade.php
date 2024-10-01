@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-4 lg:px-6">
             <div class=" overflow-hidden sm:rounded-lg">
                 <div class="p-3">
-                    <a href="#" class="btn bg-black text-white font-bold hover:bg-gray-700"><i class="fa-solid fa-plus"></i> Create Update System</a>
+                    <a href="{{ url('createus') }}" class="btn bg-black text-white font-bold hover:bg-gray-700"><i class="fa-solid fa-plus"></i> Create Update System</a>
                    <div class="flex flex-col">
                     <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mus" class="hover:border-abu hover:border-b-2">Update System <i class="fa-solid fa-up-right-from-square"></i></a></h1>
                     <div class="grid md:grid-cols-4 grid-rows-1">
@@ -105,7 +105,7 @@
                         </a>
                     </div>
                    </div>
-                    <a href="#" class="btn bg-black text-white font-bold hover:bg-gray-700 mt-10"><i class="fa-solid fa-plus"></i> Create Request</a>
+                    <a href="{{ url('createrq') }}" class="btn bg-black text-white font-bold hover:bg-gray-700 mt-10"><i class="fa-solid fa-plus"></i> Create Request</a>
                     <div class="grid md:grid-cols-4 grid-rows-1">
                         <div class="flex flex-col w-full">
                             <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mrq" class="hover:border-abu hover:border-b-2">Urgent <i class="fa-solid fa-up-right-from-square"></i></a></h1>

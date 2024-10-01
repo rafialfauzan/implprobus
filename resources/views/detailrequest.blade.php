@@ -42,8 +42,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="my-5">
-                            <button class="btn btn-neutral bg-black text-white w-full rounded-[28px]" id="btncomment">COMMENT</button>
+                        <div class="my-5 grid grid-rows-1">
+                            <form action="" method="POST">
+                                @csrf
+                                <textarea name="comment" id="comment" rows="3" class="textarea textarea-bordered w-full shadow-md rounded-3xl" placeholder="Type Comment Here"></textarea>
+                                <button type="submit" class="btn btn-neutral rounded-3xl bg-black shadow-md w-full">Send <i class="fa-solid fa-paper-plane"></i></button>
+                            </form>
+                        </div>
+                        <div>
+                            <div class="chat chat-start w-full">
+                                <div class="chat-header">
+                                  {{ Auth::user()->name }}
+                                  <time class="text-xs opacity-50">2 hours ago</time>
+                                </div>
+                                <div class="chat-bubble bg-white text-black shadow-lg border w-full">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, officia, possimus id eum hic veniam cum repellat amet, illo nihil consequuntur neque dolor laborum itaque nam a voluptas! Corrupti neque laborum, qui blanditiis architecto reprehenderit quam non magni et! Amet, eaque enim harum incidunt officia ullam sapiente dicta ad voluptatibus eum magni at voluptate iste ipsa illo provident officiis veritatis molestiae quia similique aspernatur ut, cupiditate eos. Assumenda, iste omnis quidem minima sunt recusandae animi ea expedita libero porro? Necessitatibus non fuga nesciunt deserunt nihil quidem aliquid! Autem, iusto, veniam vero fuga, tempore doloremque libero consequatur ipsa provident inventore perspiciatis! <a href="https://probussystem.com" class="hover:underline">https://probussystem.com</a></div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -26,6 +26,8 @@ Route::get('/detailrequest',[HomeController::class, 'detailrequest'])->middlewar
 Route::get('/detailus', [HomeController::class, 'detailus'])->middleware(['auth'])->name('detailus');
 Route::get('/mrq', [HomeController::class, 'mrq'])->middleware(['auth'])->name('mrq');
 Route::get('/mus', [HomeController::class, 'mus'])->middleware(['auth'])->name('mus');
+Route::get('/createrq', [HomeController::class, 'createrq'])->middleware(['auth'])->name('createrq');
+Route::get('/createus', [HomeController::class, 'createus'])->middleware(['auth'])->name('createus');
 
 Route::get('/user', [UserController::class, 'index'])->middleware(['auth'])->name('user');
 Route::get('/registeracc',[UserController::class, 'registeracc'])->middleware(['auth'])->name('registeracc');
