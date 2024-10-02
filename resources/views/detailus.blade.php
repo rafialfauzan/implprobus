@@ -15,7 +15,34 @@
                                     <i class="fa-solid fa-link"></i> <a class="underline hover:font-bold" href="#">https://probussystem.com</a>
                                 </div>
                                 <div class="mb-5">
-                                    <i class="fa-solid fa-file-image"></i> <a class="hover:font-bold underline"> 3 images</a>
+                                    <div class="mb-5 flex flex-wrap rounded-md image-container">
+                                        <div class="h-[150px] w-[250px] border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
+                                            <img src="{{ asset('img/tes1.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] hover:ease-in-out hover:duration-300">
+                                        </div>
+                                        <div class="h-[150px] w-[250px] border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
+                                            <img src="{{ asset('img/tes2.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] hover:ease-in-out hover:duration-300">
+                                        </div>
+                                        <div class="h-[150px] w-[250px] border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
+                                            <img src="{{ asset('img/tes3.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] hover:ease-in-out hover:duration-300">
+                                        </div>
+                                        <div class="h-[150px] w-[250px] border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
+                                            <img src="{{ asset('img/tes4.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] hover:ease-in-out hover:duration-300">
+                                        </div>
+                                        <div class="h-[150px] w-[250px] border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
+                                            <img src="{{ asset('img/tes5.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] hover:ease-in-out hover:duration-300">
+                                        </div>
+                                        <div class="h-[150px] w-[250px] border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
+                                            <img src="{{ asset('img/tes6.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] hover:ease-in-out hover:duration-300">
+                                        </div>
+                                    </div>
+                                    <dialog id="my_modal_3" class="modal">
+                                        <div class="modal-box w-11/12 max-w-5xl">
+                                            <form method="dialog">
+                                                <button class="btn btn-sm btn-circle btn-error absolute right-1 top-1 text-white">✕</button>
+                                            </form>
+                                            <img src="{{ asset('img/tes5.jpg') }}" alt="">
+                                        </div>
+                                    </dialog>
                                 </div>
                                 <div class="card-actions justify-start">
                                     <div class="badge badge-secondary badge-lg text-white">Burger King</div>
@@ -36,4 +63,11 @@
             </div>
         </div>
     </div>
+    <script>
+        document.querySelectorAll('.image-container img').forEach(image =>{
+            image.onclick = () =>{
+                document.querySelector('.modal-box img').src = image.getAttribute('src');
+            }
+        });
+    </script>
 </x-app-layout>

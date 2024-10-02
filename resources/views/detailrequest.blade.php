@@ -17,13 +17,38 @@
                                     <li><a>Closed</a></li>
                                     </ul>
                                 </div>
-                              <div class="absolute right-0 md:m-5 m-3 badge badge-error badge-lg rounded text-white">Urgent</div>
+                                <div class="absolute right-0 md:m-5 m-3 badge badge-error badge-lg rounded text-white">Urgent</div>
                             <div class="card-body">
                                 <h1 class="card-title text-2xl font-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, impedit?</h1>
                                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur velit obcaecati exercitationem eaque totam in praesentium dolorem. Recusandae deserunt, sint esse voluptates accusantium consectetur! Laudantium voluptates repudiandae perspiciatis atque tenetur?</p>
-                                <div class="mb-5">
-                                    <i class="fa-solid fa-file-image"></i> <a class="hover:font-bold underline"> 3 images</a>
+                                <div class="mb-5 flex flex-wrap rounded-md image-container">
+                                    <div class="h-[150px] w-[250px] border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
+                                        <img src="{{ asset('img/tes1.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] hover:ease-in-out hover:duration-300">
+                                    </div>
+                                    <div class="h-[150px] w-[250px] border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
+                                        <img src="{{ asset('img/tes2.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] hover:ease-in-out hover:duration-300">
+                                    </div>
+                                    <div class="h-[150px] w-[250px] border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
+                                        <img src="{{ asset('img/tes3.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] hover:ease-in-out hover:duration-300">
+                                    </div>
+                                    <div class="h-[150px] w-[250px] border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
+                                        <img src="{{ asset('img/tes4.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] hover:ease-in-out hover:duration-300">
+                                    </div>
+                                    <div class="h-[150px] w-[250px] border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
+                                        <img src="{{ asset('img/tes5.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] hover:ease-in-out hover:duration-300">
+                                    </div>
+                                    <div class="h-[150px] w-[250px] border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
+                                        <img src="{{ asset('img/tes6.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] hover:ease-in-out hover:duration-300">
+                                    </div>
                                 </div>
+                                <dialog id="my_modal_3" class="modal">
+                                    <div class="modal-box w-11/12 max-w-5xl">
+                                        <form method="dialog">
+                                            <button class="btn btn-sm btn-circle btn-error absolute right-2 top-2 text-white">✕</button>
+                                        </form>
+                                        <img src="{{ asset('img/tes5.jpg') }}" alt="">
+                                    </div>
+                                </dialog>
                                 <div class="card-actions justify-start">
                                     <div class="badge badge-secondary badge-lg text-white">Burger King</div>
                                 </div>
@@ -63,4 +88,16 @@
             </div>
         </div>
     </div>
+    <script>
+        document.querySelectorAll('.image-container img').forEach(image =>{
+            image.onclick = () =>{
+                // document.querySelector('.popup-image').style.display = 'block';
+                document.querySelector('.modal-box img').src = image.getAttribute('src');
+            }
+        });
+
+        // document.querySelector('.popup-image span').onclick = () =>{
+        //     document.querySelector('.popup-image').style.display = 'none'; 
+        // }
+    </script>
 </x-app-layout>
