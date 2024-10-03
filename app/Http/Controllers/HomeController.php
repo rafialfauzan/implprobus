@@ -33,4 +33,8 @@ class HomeController extends Controller
     public function createus(){
         return view('createus');
     }
+
+    public function activitylog(){
+        return view('activitylog');
+    }
 }

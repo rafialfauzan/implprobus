@@ -52,12 +52,15 @@
                                     <div class="mt-3">
                                         <p class="font-bold">Image</p>
                                         <input type="file" multiple class="file-input file-input-bordered w-full">
+                                        <div class="label">
+                                            <span class="label-text">MAX FILES: 6 Images</span>
+                                            <span class="label-text">MAX SIZE: 1MB</span>
+                                        </div>
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Description</p>
                                         <input type="hidden" id="body" name="body">
                                         <trix-editor trix-attachment-remove input="body"></trix-editor>
-                                        
                                     </div>
                                 </form>
                             </div>

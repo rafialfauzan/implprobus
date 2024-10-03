@@ -19,7 +19,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('activity')">
+                    <x-nav-link :href="route('activitylog')" :active="request()->routeIs('activitylog')">
                         {{ __('Activity Log') }}
                     </x-nav-link>
                 </div>
@@ -76,6 +76,10 @@
                             <p class="text-sm leading-5 text-gray-500"><i class="fa-solid fa-user-shield"></i> {{ Auth::user()->usertype }}</p>
                             <p class="text-sm leading-5 text-gray-500"><i class="fa-solid fa-user-tag"></i> {{ Auth::user()->tag_id }}</p>
                         </div>
+                            <x-dropdown-link :href="route('myreq')">
+                                {{-- {{ __('My Request') }} --}}
+                                <p><i class="fa-solid fa-folder"></i> My Request</p>
+                            </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -83,7 +87,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Logout') }}
+                                <p><i class="fa-solid fa-right-from-bracket"></i> Logout</p>
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -108,7 +112,7 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('activity')">
+            <x-responsive-nav-link :href="route('activitylog')" :active="request()->routeIs('activitylog')">
                 {{ __('Activity Log') }}
             </x-responsive-nav-link>
             <hr>
@@ -137,6 +141,10 @@
             </div>
 
             <div class="mt-3 space-y-1">
+                <x-responsive-nav-link :href="route('myreq')">
+                    {{-- {{ __('My Request') }} --}}
+                    <p><i class="fa-solid fa-folder"></i> My Requests</p>
+                </x-responsive-nav-link>
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -144,7 +152,8 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{-- {{ __('Log Out') }} --}}
+                        <p><i class="fa-solid fa-right-from-bracket"></i> Logout</p>
                     </x-responsive-nav-link>
                 </form>
             </div>

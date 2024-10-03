@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MyController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\KategoriController;
 
 /*
@@ -28,6 +29,11 @@ Route::get('/mrq', [HomeController::class, 'mrq'])->middleware(['auth'])->name('
 Route::get('/mus', [HomeController::class, 'mus'])->middleware(['auth'])->name('mus');
 Route::get('/createrq', [HomeController::class, 'createrq'])->middleware(['auth'])->name('createrq');
 Route::get('/createus', [HomeController::class, 'createus'])->middleware(['auth'])->name('createus');
+Route::get('/activitylog', [HomeController::class, 'activitylog'])->middleware(['auth'])->name('activitylog');
+
+Route::get('/myreq', [MyController::class, 'index'])->middleware(['auth'])->name('myreq');
+Route::get('/myproc', [MyController::class, 'myproc'])->middleware(['auth'])->name('myproc');
+Route::get('/myus',[MyController::class, 'myus'])->middleware(['auth'])->name('myus');
 
 Route::get('/user', [UserController::class, 'index'])->middleware(['auth'])->name('user');
 Route::get('/registeracc',[UserController::class, 'registeracc'])->middleware(['auth'])->name('registeracc');
