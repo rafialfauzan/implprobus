@@ -23,13 +23,17 @@ use App\Http\Controllers\KategoriController;
 
 Route::get('/dashboard',[HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::get('/', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
-Route::get('/detailrequest',[HomeController::class, 'detailrequest'])->middleware(['auth'])->name('detailrequest');
-Route::get('/detailus', [HomeController::class, 'detailus'])->middleware(['auth'])->name('detailus');
-Route::get('/mrq', [HomeController::class, 'mrq'])->middleware(['auth'])->name('mrq');
-Route::get('/mus', [HomeController::class, 'mus'])->middleware(['auth'])->name('mus');
-Route::get('/createrq', [HomeController::class, 'createrq'])->middleware(['auth'])->name('createrq');
-Route::get('/createus', [HomeController::class, 'createus'])->middleware(['auth'])->name('createus');
 Route::get('/activitylog', [HomeController::class, 'activitylog'])->middleware(['auth'])->name('activitylog');
+
+Route::get('/detailrequest',[HomeController::class, 'detailrequest'])->middleware(['auth'])->name('detailrequest');
+Route::get('/mrq', [HomeController::class, 'mrq'])->middleware(['auth'])->name('mrq');
+Route::get('/createrq', [HomeController::class, 'createrq'])->middleware(['auth'])->name('createrq');
+Route::get('/editrq', [HomeController::class, 'editrq'])->middleware(['auth'])->name('editrq');
+
+Route::get('/detailus', [HomeController::class, 'detailus'])->middleware(['auth'])->name('detailus');
+Route::get('/mus', [HomeController::class, 'mus'])->middleware(['auth'])->name('mus');
+Route::get('/createus', [HomeController::class, 'createus'])->middleware(['auth'])->name('createus');
+Route::get('/editus',[HomeController::class, 'editus'])->middleware(['auth'])->name('editus');
 
 Route::get('/myreq', [MyController::class, 'index'])->middleware(['auth'])->name('myreq');
 Route::get('/myproc', [MyController::class, 'myproc'])->middleware(['auth'])->name('myproc');

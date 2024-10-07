@@ -78,7 +78,7 @@
                         </div>
                             <x-dropdown-link :href="route('myreq')">
                                 {{-- {{ __('My Request') }} --}}
-                                <p><i class="fa-solid fa-folder"></i> My Request</p>
+                                <p><i class="fa-solid fa-folder"></i> My Request</p> 
                             </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -143,7 +143,7 @@
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('myreq')">
                     {{-- {{ __('My Request') }} --}}
-                    <p><i class="fa-solid fa-folder"></i> My Requests</p>
+                    <p><i class="fa-solid fa-folder"></i> My Requests</p> <div class="badge">5</div>
                 </x-responsive-nav-link>
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

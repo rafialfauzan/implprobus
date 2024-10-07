@@ -10,31 +10,41 @@ class HomeController extends Controller
         return view('dashboard');
     }
 
-    public function detailrequest(){
-        return view('detailrequest');
+    public function activitylog(){
+        return view('activitylog');
     }
 
-    public function detailus(){
-        return view('detailus');
+    
+    public function detailrequest(){
+        return view('tablerq.detailrequest');
     }
 
     public function mrq(){
-        return view('mrq');
-    }
-
-    public function mus(){
-        return view('mus');
+        return view('tablerq.mrq');
     }
 
     public function createrq(){
-        return view('createrq');
+        return view('tablerq.createrq');
+    }
+
+    public function editrq(){
+        return view('tablerq.editrq');
+    }
+
+
+    public function detailus(){
+        return view('tableus.detailus');
+    }
+
+    public function mus(){
+        return view('tableus.mus');
     }
 
     public function createus(){
-        return view('createus');
+        return view('tableus.createus');
     }
 
-    public function activitylog(){
-        return view('activitylog');
+    public function editus(){
+        return view('tableus.editus');
     }
 }

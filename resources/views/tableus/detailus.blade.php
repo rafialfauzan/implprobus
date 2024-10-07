@@ -4,8 +4,9 @@
             <div class="overflow-hidden sm:rounded-lg">
                 <div class="p-6">
                     <div class="flex flex-col md:px-40">
-                        <div class="text-end text-6xl mb-5">
-                            <a href="{{ url()->previous() }}" class="text-black hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                        <div class="mb-5 flex flex-row justify-between">
+                            <a href="/editus" class="btn btn-neutral mt-3 bg-black rounded-[28px]"><i class="fa-solid fa-pen"></i> Edit Update System</a>
+                            <a href="{{ url()->previous() }}" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
                         </div>
                         <div class="bg-white rounded-[28px] shadow-md card">
                             <div class="card-body">
