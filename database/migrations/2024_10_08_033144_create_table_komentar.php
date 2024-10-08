@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class SolusiTableForeignKey extends Migration
+class CreateTableKomentar extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class SolusiTableForeignKey extends Migration
      */
     public function up()
     {
-        Schema::table('solusi', function (Blueprint $table) {
-            $table->unsignedBigInteger('request_id');
+        Schema::create('komentar', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('request_id')->nullable();
             $table->foreign('request_id')->references('id')->on('request');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->text('body');
+            $table->timestamps();
         });
     }
 
@@ -28,8 +29,6 @@ class SolusiTableForeignKey extends Migration
      */
     public function down()
     {
-        Schema::table('solusi', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('komentar');
     }
 }

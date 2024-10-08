@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableSolusi extends Migration
+class CreateTableUpdatesystem extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTableSolusi extends Migration
      */
     public function up()
     {
-        Schema::create('solusi', function (Blueprint $table) {
+        Schema::create('updatesystem', function (Blueprint $table) {
             $table->id();
             $table->text('deskripsi');
-            $table->string('img', 255);
+            $table->string('link');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateTableSolusi extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('solusi');
+        Schema::dropIfExists('updatesystem');
     }
 }

@@ -8,4 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Request extends Model
 {
     use HasFactory;
+
+    protected $table = 'request';
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function tag(){
+        return $this->belongsTo(Tag::class);
+    }
+
+    public function status(){
+        return $this->belongsTo(Status::class);
+    }
+
+    public function outlet(){
+        return $this->belongsTo(Outlet::class);
+    }
 }

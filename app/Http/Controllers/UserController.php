@@ -25,4 +25,8 @@ class UserController extends Controller
 
         return view('tableuser.editacc', compact('tag'));
     }
+
+    public function editpass(){
+        return view('tableuser.editpass');
+    }
 }

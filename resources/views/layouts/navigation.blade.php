@@ -74,7 +74,7 @@
                             <p class="font-bold text-sm leading-5 text-gray-700">Account Information</p>
                             <p class="text-sm leading-5 text-gray-500"><i class="fa-solid fa-envelope"></i> {{ Auth::user()->email }}</p>
                             <p class="text-sm leading-5 text-gray-500"><i class="fa-solid fa-user-shield"></i> {{ Auth::user()->usertype }}</p>
-                            <p class="text-sm leading-5 text-gray-500"><i class="fa-solid fa-user-tag"></i> {{ Auth::user()->tag_id }}</p>
+                            <p class="text-sm leading-5 text-gray-500"><i class="fa-solid fa-user-tag"></i> {{ Auth::user()->tag->name }}</p>
                         </div>
                             <x-dropdown-link :href="route('myreq')">
                                 {{-- {{ __('My Request') }} --}}
@@ -137,13 +137,13 @@
                 <div class="font-medium text-base text-gray-800"><i class="fa-solid fa-user"></i> {{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500"><i class="fa-solid fa-envelope"></i> {{ Auth::user()->email }}</div>
                 <div class="font-medium text-sm text-gray-500"><i class="fa-solid fa-user-shield"></i> {{ Auth::user()->usertype }}</div>
-                <div class="font-medium text-sm text-gray-500"><i class="fa-solid fa-user-tag"></i> {{ Auth::user()->tag_id }}</div>
+                <div class="font-medium text-sm text-gray-500"><i class="fa-solid fa-user-tag"></i> {{ Auth::user()->tag->name }}</div>
             </div>
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('myreq')">
                     {{-- {{ __('My Request') }} --}}
-                    <p><i class="fa-solid fa-folder"></i> My Requests</p> <div class="badge">5</div>
+                    <p><i class="fa-solid fa-folder"></i> My Requests</p>
                 </x-responsive-nav-link>
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

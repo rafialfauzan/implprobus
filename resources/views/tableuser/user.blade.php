@@ -36,8 +36,8 @@
                                         <td class="p-3 text-sm text-abugelap">{{ $item->name }}</td>
                                         <td class="p-3 text-sm text-abugelap">{{ $item->email }}</td>
                                         <td class="p-3 text-sm text-abugelap">{{ $item->usertype }}</td>
-                                        <td class="p-3 text-sm text-abugelap">{{ $item->tag_id }}</td>
-                                        <td class="p-3 text-xl text-abugelap"><a class="m-2 hover:text-black" href="#"><i class="fa-solid fa-key"></i></a>
+                                        <td class="p-3 text-sm text-abugelap">{{ $item->tag->name }}</td>
+                                        <td class="p-3 text-xl text-abugelap"><a class="m-2 hover:text-black" href="/editpass"><i class="fa-solid fa-key"></i></a>
                                              <a class="m-2 hover:text-black" href="/editacc"><i class="fa-solid fa-pen"></i></a>
                                              <a class="m-2 hover:text-black" href="#"><i class="fa-solid fa-trash"></i></a></td>
                                     </tr>

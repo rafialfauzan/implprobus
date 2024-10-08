@@ -42,6 +42,7 @@ Route::get('/myus',[MyController::class, 'myus'])->middleware(['auth'])->name('m
 Route::get('/user', [UserController::class, 'index'])->middleware(['auth'])->name('user');
 Route::get('/registeracc',[UserController::class, 'registeracc'])->middleware(['auth'])->name('registeracc');
 Route::get('/editacc',[UserController::class, 'editacc'])->middleware(['auth'])->name('editacc');
+Route::get('/editpass', [UserController::class, 'editpass'])->middleware(['auth'])->name('editpass');
 
 Route::get('/tag', [TagController::class, 'index'])->middleware(['auth'])->name('tag');
 Route::get('/createtag', [TagController::class, 'createtag'])->middleware(['auth'])->name('createtag');

@@ -10,7 +10,7 @@
             <div class=" overflow-hidden sm:rounded-lg">
                 <div class="p-3">
                     <div class="flex flex-row justify-between">
-                        <h1 class="text-3xl font-extrabold text-abugelap">Update System</h1>
+                        <h1 class="text-2xl md:text-3xl mt-2 md:mt-0 font-extrabold text-abugelap">Update System</h1>
                         <a href="{{ url('createus') }}" class="btn bg-black text-white font-bold hover:bg-gray-700"><i class="fa-solid fa-plus"></i> Create Update System</a>
                     </div>
                    <div class="flex flex-col">
@@ -112,7 +112,7 @@
                     <p class="font-bold text-abu">⇋</p>
                    </div>
                     <div class="flex flex-row justify-between">
-                        <h1 class="text-3xl font-extrabold text-abugelap">Request</h1>
+                        <h1 class="text-2xl md:text-3xl mt-2 md:mt-0 font-extrabold text-abugelap">Request</h1>
                         <a href="{{ url('createrq') }}" class="btn bg-black text-white font-bold hover:bg-gray-700"><i class="fa-solid fa-plus"></i> Create Request</a>
                     </div>
                     <div class="grid md:grid-cols-4 grid-rows-1">

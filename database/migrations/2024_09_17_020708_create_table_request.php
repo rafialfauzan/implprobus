@@ -16,8 +16,8 @@ class CreateTableRequest extends Migration
     {
         Schema::create('request', function (Blueprint $table) {
             $table->id();
+            $table->string('judul');
             $table->text('deskripsi');
-            $table->string('img', 255);
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();
