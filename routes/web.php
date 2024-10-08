@@ -46,9 +46,10 @@ Route::get('/editpass', [UserController::class, 'editpass'])->middleware(['auth'
 
 Route::get('/tag', [TagController::class, 'index'])->middleware(['auth'])->name('tag');
 Route::get('/createtag', [TagController::class, 'createtag'])->middleware(['auth'])->name('createtag');
-Route::get('/edittag', [TagController::class, 'edittag'])->middleware(['auth'])->name('edittag');
+Route::get('/edittag/{id}', [TagController::class, 'edittag'])->middleware(['auth'])->name('edittag');
 Route::post('/createtag', [TagController::class, 'store'])->middleware(['auth'])->name('storetag');
 Route::post('/edittag/{id}', [TagController::class, 'updatetag'])->middleware(['auth'])->name('updatetag');
+Route::get('/delete/{id}', [TagController::class, 'delete'])->middleware(['auth'])->name('deletetag');
 
 Route::get('/kategori', [KategoriController::class, 'index'])->middleware(['auth'])->name('kategori');
 Route::get('/createkategori', [KategoriController::class, 'createkategori'])->middleware(['auth'])->name('createkategori');

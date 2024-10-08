@@ -31,8 +31,8 @@
                                 @foreach ($tag as $item)
                                     <tr>
                                         <td class="p-3 text-sm text-abugelap">{{ $item->name }}</td>
-                                        <td class="p-3 text-xl text-abugelap"><a class="hover:text-black m-2" href="/edittag"><i class="fa-solid fa-pen"></i></a>
-                                            <a class="hover:text-black m-2" href="#"><i class="fa-solid fa-trash"></i></a></td>
+                                        <td class="p-3 text-xl text-abugelap"><a class="hover:text-black m-2" href="/edittag/{{ $item->id }}"><i class="fa-solid fa-pen"></i></a>
+                                            <a onclick="return confirm('Anda yakin ingin Menghapus data ini?')" class="hover:text-black m-2" href="/delete/{{ $item->id }}"><i class="fa-solid fa-trash"></i></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
