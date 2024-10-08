@@ -10,14 +10,14 @@
                         <div>
                             <p class="text-center text-xl font-bold">Edit category</p>
                         </div>
-                        <form method="POST" action="">
+                        <form method="POST" action="/editkategori/{{ $data->id }}">
                             @csrf
                 
                             <!-- Name -->
                             <div class="mt-5">
                                 <x-label for="name" :value="__('Name')" />
                 
-                                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                                <x-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{ $data->name }}" required autofocus />
                             </div>
                 
                             <div class="flex items-center justify-end mt-4">

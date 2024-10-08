@@ -10,7 +10,7 @@
                         <div>
                             <p class="text-center text-xl font-bold">Create new status</p>
                         </div>
-                        <form method="POST" action="">
+                        <form method="POST" action="/createstatus">
                             @csrf
                 
                             <!-- Name -->

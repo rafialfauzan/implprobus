@@ -49,18 +49,20 @@ Route::get('/createtag', [TagController::class, 'createtag'])->middleware(['auth
 Route::get('/edittag/{id}', [TagController::class, 'edittag'])->middleware(['auth'])->name('edittag');
 Route::post('/createtag', [TagController::class, 'store'])->middleware(['auth'])->name('storetag');
 Route::post('/edittag/{id}', [TagController::class, 'updatetag'])->middleware(['auth'])->name('updatetag');
-Route::get('/delete/{id}', [TagController::class, 'delete'])->middleware(['auth'])->name('deletetag');
+Route::get('/deletetag/{id}', [TagController::class, 'delete'])->middleware(['auth'])->name('deletetag');
 
 Route::get('/kategori', [KategoriController::class, 'index'])->middleware(['auth'])->name('kategori');
 Route::get('/createkategori', [KategoriController::class, 'createkategori'])->middleware(['auth'])->name('createkategori');
-Route::get('/editkategori', [KategoriController::class, 'editkategori'])->middleware(['auth'])->name('editkategori');
+Route::get('/editkategori/{id}', [KategoriController::class, 'editkategori'])->middleware(['auth'])->name('editkategori');
 Route::post('/createkategori', [KategoriController::class, 'store'])->middleware(['auth'])->name('storekategori');
 Route::post('/editkategori/{id}', [KategoriController::class, 'updatekategori'])->middleware(['auth'])->name('updatekategori');
+Route::get('/deletekategori/{id}',[KategoriController::class, 'delete'])->middleware(['auth'])->name('deletekategori');
 
 Route::get('/status', [StatusController::class, 'index'])->middleware(['auth'])->name('status');
 Route::get('/createstatus', [StatusController::class, 'createstatus'])->middleware(['auth'])->name('createstatus');
-Route::get('/editstatus', [StatusController::class, 'editstatus'])->middleware(['auth'])->name('editstatus');
+Route::get('/editstatus/{id}', [StatusController::class, 'editstatus'])->middleware(['auth'])->name('editstatus');
 Route::post('/createstatus', [StatusController::class, 'store'])->middleware(['auth'])->name('storestatus');
-Route::post('/updatestatus/{id}', [StatusController::class, 'updatestatus'])->middleware(['auth'])->name('updatestatus');
+Route::post('/editstatus/{id}', [StatusController::class, 'updatestatus'])->middleware(['auth'])->name('updatestatus');
+Route::get('/deletestatus/{id}',[StatusController::class, 'delete'])->middleware(['auth'])->name('deletestatus');
 
 require __DIR__.'/auth.php';
