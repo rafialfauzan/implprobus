@@ -9,20 +9,24 @@ use RealRashid\SweetAlert\Facades\Alert;
 class TagController extends Controller
 {
     public function index(){
+        $this->authorize('aspv');
         $tag = Tag::all();
         return view('tabletag.tag', compact('tag'));
     }
 
     public function createtag(){
+        $this->authorize('aspv');
         return view('tabletag.createtag');
     }
 
     public function edittag($id){
+        $this->authorize('aspv');
         $data = Tag::find($id);
         return view('tabletag.edittag', compact('data'));
     }
 
     public function store(Request $request){
+        $this->authorize('aspv');
         $tag = new Tag;
         $request->validate([
             'name'=>'max:255'
@@ -34,6 +38,7 @@ class TagController extends Controller
     }
 
     public function updatetag(Request $request,$id){
+        $this->authorize('aspv');
         $data = Tag::find($id);
         $request->validate([
             'name'=>'max:255'
@@ -46,6 +51,7 @@ class TagController extends Controller
     }
 
     public function delete($id){
+        $this->authorize('aspv');
         $data = Tag::find($id);
         $data->delete();
         Alert::success('Data Berhasil di Hapus!');

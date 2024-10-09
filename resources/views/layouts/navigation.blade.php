@@ -23,6 +23,7 @@
                         {{ __('Activity Log') }}
                     </x-nav-link>
                 </div>
+                @can('aspv')
                 <div class="hidden sm:flex sm:items-center sm:ml-6 mt-1">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
@@ -47,12 +48,15 @@
                             <x-dropdown-link :href="route('status')">
                                     {{ __('Status') }}
                             </x-dropdown-link>
+                            @can('admin')
                             <x-dropdown-link :href="route('user')">
                                     {{ __('User') }}
                             </x-dropdown-link>
+                            @endcan
                         </x-slot>
                     </x-dropdown>
                 </div>
+                @endcan
             </div>
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -115,6 +119,7 @@
             <x-responsive-nav-link :href="route('activitylog')" :active="request()->routeIs('activitylog')">
                 {{ __('Activity Log') }}
             </x-responsive-nav-link>
+            @can('aspv')
             <hr>
             <p class="pl-4 text-sm font-bold">Advanced Settings <i class="fa-solid fa-gear"></i></p>
             <x-responsive-nav-link :href="route('tag')" :active="request()->routeIs('tag')">
@@ -126,9 +131,12 @@
             <x-responsive-nav-link :href="route('status')" :active="request()->routeIs('status')">
                 {{ __('Status') }}
             </x-responsive-nav-link>
+            @endcan
+            @can('admin')
             <x-responsive-nav-link :href="route('user')" :active="request()->routeIs('user')">
                 {{ __('User') }}
             </x-responsive-nav-link>
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->

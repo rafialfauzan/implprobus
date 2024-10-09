@@ -9,20 +9,24 @@ use RealRashid\SweetAlert\Facades\Alert;
 class StatusController extends Controller
 {
     public function index(){
+        $this->authorize('aspv');
         $status = Status::all();
         return view('tablestatus.status', compact('status'));
     }
 
     public function createstatus(){
+        $this->authorize('aspv');
         return view('tablestatus.createstatus');
     }
 
     public function editstatus($id){
+        $this->authorize('aspv');
         $data = Status::find($id);
         return view('tablestatus.editstatus', compact('data'));
     }
 
     public function store(Request $request){
+        $this->authorize('aspv');
         $status = new Status;
         $request->validate([
             'name'=>'max:255'
@@ -34,6 +38,7 @@ class StatusController extends Controller
     }
 
     public function updatestatus(Request $request,$id){
+        $this->authorize('aspv');
         $data = Status::find($id);
         $request->validate([
             'name'=>'max:255'
@@ -46,6 +51,7 @@ class StatusController extends Controller
     }
 
     public function delete($id){
+        $this->authorize('aspv');
         $data = Status::find($id);
         $data->delete();
         Alert::success('Data Berhasil di Hapus!');

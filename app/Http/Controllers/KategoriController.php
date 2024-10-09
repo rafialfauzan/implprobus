@@ -9,20 +9,24 @@ use RealRashid\SweetAlert\Facades\Alert;
 class KategoriController extends Controller
 {
     public function index(){
+        $this->authorize('aspv');
         $kategori = Kategori::all();
         return view('tablekategori.kategori', compact('kategori'));
     }
 
     public function createkategori(){
+        $this->authorize('aspv');
         return view('tablekategori.createkategori');
     }
 
     public function editkategori($id){
+        $this->authorize('aspv');
         $data = Kategori::find($id);
         return view('tablekategori.editkategori', compact('data'));
     }
 
     public function store(Request $request){
+        $this->authorize('aspv');
         $kategori = new Kategori;
         $request->validate([
             'name'=>'max:255'
@@ -34,6 +38,7 @@ class KategoriController extends Controller
     }
 
     public function updatekategori(Request $request,$id){
+        $this->authorize('aspv');
         $data = Kategori::find($id);
         $request->validate([
             'name'=>'max:255'
@@ -46,6 +51,7 @@ class KategoriController extends Controller
     }
 
     public function delete($id){
+        $this->authorize('aspv');
         $data = Kategori::find($id);
         $data->delete();
         Alert::success('Data Berhasil di Hapus!');
