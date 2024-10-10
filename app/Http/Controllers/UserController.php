@@ -5,6 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -20,14 +27,64 @@ class UserController extends Controller
         return view('tableuser.registeracc', compact('tag'));
     }
 
-    public function editacc(){
+    public function editacc($id){
         $this->authorize('admin');
+        $user = User::find($id);
         $tag = Tag::all();
-        return view('tableuser.editacc', compact('tag'));
+        return view('tableuser.editacc', compact('tag','user'));
     }
 
     public function editpass(){
         $this->authorize('admin');
         return view('tableuser.editpass');
+    }
+
+    public function store(Request $request){
+        $this->authorize('admin');
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'usertype' => ['required', 'string'],
+            'tag'=>['required'],
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'usertype' => $request->usertype,
+            'tag_id' => $request->tag,
+        ]);
+        Alert::success('User Berhasil di Daftarkan!');
+        return redirect('/user');
+    }
+
+    public function edit(Request $request,$id){
+        $this->authorize('admin');
+        $user = User::find($id);
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'usertype' => ['required', 'string'],
+            'tag'=>['required'],
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'usertype' => $request->usertype,
+            'tag_id' => $request->tag,
+        ]);
+
+        Alert::success('User Berhasil di Edit!');
+        return redirect('/user');
+    }
+
+    public function delete($id){
+        $user = User::find($id);
+        $user->delete();
+        Alert::success('User Berhasil di Hapus!');
+        return redirect('/user');
     }
 }

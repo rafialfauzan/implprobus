@@ -10,31 +10,33 @@
                         <div>
                             <p class="text-center text-xl font-bold">Edit account</p>
                         </div>
-                        <form method="POST" action="">
+                        <form method="POST" action="/editacc/{{ $user->id }}">
                             @csrf
                 
                             <!-- Name -->
                             <div class="mt-5">
                                 <x-label for="name" :value="__('Name')" />
                 
-                                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                                <x-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{ $user->name }}" required autofocus />
                             </div>
                 
                             <!-- Email Address -->
                             <div class="mt-4">
                                 <x-label for="email" :value="__('Email')" />
                 
-                                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                                <x-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{ $user->email }}" required />
                             </div>
                             
                             <!-- Tag -->
                             <div class="mt-5">
                                 <x-label for="tag" :value="__('Tag')" />
-                
-                                {{-- <x-input id="tag" class="block mt-1 w-full" type="text" name="tag" :value="old('tag')" required autofocus /> --}}
                                 <select name="tag" id="tag" class="rounded-lg w-full mt-1 shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                     @foreach ($tag as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option> 
+                                    @if (old('tag', $user->tag_id) == $item->id)
+                                    <option value="{{ $item->id }}" selected>{{ $item->name }}</option>    
+                                    @else
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endif 
                                     @endforeach
                                 </select>
                             </div>
@@ -42,20 +44,14 @@
                             <!-- User Type -->
                             <div class="mt-5">
                                 <x-label for="usertype" :value="__('User Type')" />
-                
-                                {{-- <x-input id="usertype" class="block mt-1 w-full" type="text" name="usertype" :value="old('usertype')" required autofocus /> --}}
-                                <select name="tag" id="tag" class="rounded-lg w-full mt-1 shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                    <option value="admin">admin</option>
-                                    <option value="supervisor">supervisor</option>
-                                    <option value="user">user</option>
+                                <select name="usertype" id="usertype" class="rounded-lg w-full mt-1 shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    <option value="admin" {{ $user->usertype == 'admin' ? 'selected' : '' }}>admin</option>
+                                    <option value="supervisor" {{ $user->usertype == 'supervisor' ? 'selected' : '' }}>supervisor</option>
+                                    <option value="user" {{ $user->usertype == 'user' ? 'selected' : '' }}>user</option>
                                 </select>
                             </div>
                 
                             <div class="flex items-center justify-end mt-4">
-                                {{-- <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                                    {{ __('Already registered?') }}
-                                </a> --}}
-                
                                 <x-button class="ml-4">
                                     {{ __('Edit') }}
                                 </x-button>

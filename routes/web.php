@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\RequestController;
+use App\Http\Controllers\UpdateSystemController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyController;
 use App\Http\Controllers\TagController;
@@ -25,15 +28,15 @@ Route::get('/dashboard',[HomeController::class, 'index'])->middleware(['auth'])-
 Route::get('/', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::get('/activitylog', [HomeController::class, 'activitylog'])->middleware(['auth'])->name('activitylog');
 
-Route::get('/detailrequest',[HomeController::class, 'detailrequest'])->middleware(['auth'])->name('detailrequest');
-Route::get('/mrq', [HomeController::class, 'mrq'])->middleware(['auth'])->name('mrq');
-Route::get('/createrq', [HomeController::class, 'createrq'])->middleware(['auth'])->name('createrq');
-Route::get('/editrq', [HomeController::class, 'editrq'])->middleware(['auth'])->name('editrq');
+Route::get('/detailrequest',[RequestController::class, 'detailrequest'])->middleware(['auth'])->name('detailrequest');
+Route::get('/mrq', [RequestController::class, 'mrq'])->middleware(['auth'])->name('mrq');
+Route::get('/createrq', [RequestController::class, 'createrq'])->middleware(['auth'])->name('createrq');
+Route::get('/editrq', [RequestController::class, 'editrq'])->middleware(['auth'])->name('editrq');
 
-Route::get('/detailus', [HomeController::class, 'detailus'])->middleware(['auth'])->name('detailus');
-Route::get('/mus', [HomeController::class, 'mus'])->middleware(['auth'])->name('mus');
-Route::get('/createus', [HomeController::class, 'createus'])->middleware(['auth'])->name('createus');
-Route::get('/editus',[HomeController::class, 'editus'])->middleware(['auth'])->name('editus');
+Route::get('/detailus', [UpdateSystemController::class, 'detailus'])->middleware(['auth'])->name('detailus');
+Route::get('/mus', [UpdateSystemController::class, 'mus'])->middleware(['auth'])->name('mus');
+Route::get('/createus', [UpdateSystemController::class, 'createus'])->middleware(['auth'])->name('createus');
+Route::get('/editus',[UpdateSystemController::class, 'editus'])->middleware(['auth'])->name('editus');
 
 Route::get('/myreq', [MyController::class, 'index'])->middleware(['auth'])->name('myreq');
 Route::get('/myproc', [MyController::class, 'myproc'])->middleware(['auth'])->name('myproc');
@@ -41,8 +44,11 @@ Route::get('/myus',[MyController::class, 'myus'])->middleware(['auth'])->name('m
 
 Route::get('/user', [UserController::class, 'index'])->middleware(['auth'])->name('user');
 Route::get('/registeracc',[UserController::class, 'registeracc'])->middleware(['auth'])->name('registeracc');
-Route::get('/editacc',[UserController::class, 'editacc'])->middleware(['auth'])->name('editacc');
-Route::get('/editpass', [UserController::class, 'editpass'])->middleware(['auth'])->name('editpass');
+Route::post('/registeracc',[UserController::class, 'store'])->middleware(['auth'])->name('storeacc');
+Route::get('/editacc/{id}',[UserController::class, 'editacc'])->middleware(['auth'])->name('editacc');
+Route::post('/editacc/{id}',[UserController::class, 'edit'])->middleware(['auth'])->name('updateacc');
+Route::get('/editpass/{id}', [UserController::class, 'editpass'])->middleware(['auth'])->name('editpass');
+Route::get('/deleteacc/{id}',[UserController::class, 'delete'])->middleware(['auth'])->name('deleteacc');
 
 Route::get('/tag', [TagController::class, 'index'])->middleware(['auth'])->name('tag');
 Route::get('/createtag', [TagController::class, 'createtag'])->middleware(['auth'])->name('createtag');

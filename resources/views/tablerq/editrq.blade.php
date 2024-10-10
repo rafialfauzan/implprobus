@@ -9,7 +9,7 @@
                         </div>
                         <div class="bg-white rounded-[28px] shadow-md card">
                             <div class="card-body">
-                                <h1 class="card-title text-3xl font-extrabold">Create Request</h1>
+                                <h1 class="card-title text-3xl font-extrabold">Edit Request</h1>
                                 <form action="">
                                     <div class="mt-3">
                                         <p class="font-bold">Title</p>
@@ -26,19 +26,27 @@
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Tag</p>
-                                        <select name="outlet" id="outlet" class="select select-bordered w-full">
-                                            <option value="">Programmer</option>
-                                            <option value="">Trainer</option>
-                                            <option value="">Ecommerce</option>
-                                            <option value="">IT</option>
+                                        <select name="tag" id="tag" class="select select-bordered w-full">
+                                            @foreach ($tag as $tagitem)
+                                            <option value="{{ $tagitem->id }}">{{ $tagitem->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Category</p>
-                                        <select name="outlet" id="outlet" class="select select-bordered w-full">
-                                            <option value="">PHIS</option>
-                                            <option value="">PRESTO</option>
-                                            <option value="">PPOS</option>
+                                        <select name="category" id="category" class="select select-bordered w-full">
+                                            @foreach ($kategori as $kategoriitem)
+                                            <option value="{{ $kategoriitem->id }}">{{ $kategoriitem->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="mt-3">
+                                        <p class="font-bold">Status</p>
+                                        <select name="status" id="status" class="select select-bordered w-full">
+                                            <option value="Urgent">Urgent</option>
+                                            <option value="Open">Open</option>
+                                            <option value="Progress">Progress</option>
+                                            <option value="Closed">Closed</option>
                                         </select>
                                     </div>
                                     <div class="mt-3">
@@ -53,7 +61,6 @@
                                         <p class="font-bold">Image</p>
                                         <input type="file" multiple class="file-input file-input-bordered w-full">
                                         <div class="label">
-                                            <span class="label-text">MAX FILES: 6 Images</span>
                                             <span class="label-text">MAX SIZE: 1MB</span>
                                         </div>
                                     </div>
@@ -61,6 +68,9 @@
                                         <p class="font-bold">Description</p>
                                         <input type="hidden" id="body" name="body">
                                         <trix-editor trix-attachment-remove input="body"></trix-editor>
+                                    </div>
+                                    <div class="mt-3">
+                                        <button type="submit" class="btn btn-neutral bg-black w-full">EDIT</button>
                                     </div>
                                 </form>
                             </div>

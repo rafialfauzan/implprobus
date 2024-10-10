@@ -10,7 +10,7 @@
                         <div>
                             <p class="text-center text-xl font-bold">Create new account</p>
                         </div>
-                        <form method="POST" action="">
+                        <form method="POST" action="/registeracc">
                             @csrf
                 
                             <!-- Name -->
@@ -30,8 +30,6 @@
                             <!-- Tag -->
                             <div class="mt-5">
                                 <x-label for="tag" :value="__('Tag')" />
-                
-                                {{-- <x-input id="tag" class="block mt-1 w-full" type="text" name="tag" :value="old('tag')" required autofocus /> --}}
                                 <select name="tag" id="tag" class="rounded-lg w-full mt-1 shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                     @foreach ($tag as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -42,9 +40,7 @@
                             <!-- User Type -->
                             <div class="mt-5">
                                 <x-label for="usertype" :value="__('User Type')" />
-                
-                                {{-- <x-input id="usertype" class="block mt-1 w-full" type="text" name="usertype" :value="old('usertype')" required autofocus /> --}}
-                                <select name="tag" id="tag" class="rounded-lg w-full mt-1 shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                <select name="usertype" id="usertype" class="rounded-lg w-full mt-1 shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                     <option value="admin">admin</option>
                                     <option value="supervisor">supervisor</option>
                                     <option value="user">user</option>

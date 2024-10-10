@@ -12,10 +12,10 @@
                                 <div class="dropdown dropdown-top absolute right-0 bottom-0 m-3 rounded-[16px]">
                                     <div tabindex="0" role="button" class="btn m-1">Change Status</div>
                                     <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-40 p-2 shadow">
-                                    <li><a>Urgent</a></li>
-                                    <li><a>Open</a></li>
-                                    <li><a>Progress</a></li>
-                                    <li><a>Closed</a></li>
+                                    <li><a class="btn btn-error text-white my-1">Urgent</a></li>
+                                    <li><a class="btn btn-info text-white my-1">Open</a></li>
+                                    <li><a class="btn btn-warning text-white my-1">Progress</a></li>
+                                    <li><a class="btn btn-success text-white my-1">Closed</a></li>
                                     </ul>
                                 </div>
                                 <div class="absolute right-0 md:m-5 m-3 badge badge-error badge-lg rounded text-white">Urgent</div>
