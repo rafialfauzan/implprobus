@@ -40,17 +40,17 @@
     
                         <x-slot name="content">
                             <x-dropdown-link :href="route('tag')">
-                                    {{ __('Tag') }}
+                                    {{ __('Tag List') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('kategori')">
-                                    {{ __('Category') }}
+                                    {{ __('Category List') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('status')">
-                                    {{ __('Status') }}
+                                    {{ __('Status List') }}
                             </x-dropdown-link>
                             @can('admin')
                             <x-dropdown-link :href="route('user')">
-                                    {{ __('User') }}
+                                    {{ __('User List') }}
                             </x-dropdown-link>
                             @endcan
                         </x-slot>
@@ -123,18 +123,18 @@
             <hr>
             <p class="pl-4 text-sm font-bold">Advanced Settings <i class="fa-solid fa-gear"></i></p>
             <x-responsive-nav-link :href="route('tag')" :active="request()->routeIs('tag')">
-                {{ __('Tag') }}
+                {{ __('Tag List') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('kategori')" :active="request()->routeIs('kategori')">
-                {{ __('Category') }}
+                {{ __('Category List') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('status')" :active="request()->routeIs('status')">
-                {{ __('Status') }}
+                {{ __('Status List') }}
             </x-responsive-nav-link>
             @endcan
             @can('admin')
             <x-responsive-nav-link :href="route('user')" :active="request()->routeIs('user')">
-                {{ __('User') }}
+                {{ __('User List') }}
             </x-responsive-nav-link>
             @endcan
         </div>

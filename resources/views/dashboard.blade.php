@@ -118,115 +118,103 @@
                     <div class="grid md:grid-cols-4 grid-rows-1">
                         <div class="flex flex-col w-full">
                             <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mrq" class="hover:border-abu hover:border-b-2">Urgent <i class="fa-solid fa-up-right-from-square"></i></a></h1>
-                            <a href="/detailrequest" class="mx-2">
+                            @foreach ($urgent as $urgents)
+                            <a href="/detailrequest/{{ $urgents->id }}" class="mx-2">
                                 <div class="card bg-white rounded-xl mt-3">
-                                    <div class="absolute right-0 m-3 badge badge-error rounded-[2px] text-white">Urgent</div>
+                                    <div class="absolute right-0 m-3 badge badge-error rounded-[2px] text-white">{{ $urgents->status->name }}</div>
                                     <div class="card-body">
                                         <h1 class="card-title font-bold">
-                                            Masalah tombol yang terlalu skibidi 
+                                            {{ $urgents->judul }} 
                                         </h1>
                                     </div>
                                     <div class="card-actions justify-start pl-7">
-                                        <div class="badge badge-secondary mb-3">Burger King</div>
+                                        <div class="badge badge-secondary mb-3">{{ $urgents->outlet->nm_out }}</div>
                                     </div>
                                     <div class="card-actions justify-start pl-7">
-                                        <div class="badge badge-primary mb-3 text-white">Programmer</div>
-                                        <div class="badge badge-neutral mb-3 text-white">PHIS</div>
+                                        <div class="badge badge-primary mb-3 text-white">{{ $urgents->tag->name }}</div>
+                                        <div class="badge badge-neutral mb-3 text-white">{{ $urgents->kategori->name }}</div>
                                     </div>
                                     <div class="justify-start pl-7">
-                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 19 December 2024</div>
+                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ $urgents->updated_at }}</div>
                                     </div>
                                 </div>
                             </a>
+                            @endforeach
                         </div>
                         <div class="flex flex-col w-full">
                             <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mrq" class="hover:border-abu hover:border-b-2">Open <i class="fa-solid fa-up-right-from-square"></i></a></h1>
+                            @foreach ($open as $opens)
                             <a href="/detailrequest" class="mx-2">
                                 <div class="card bg-white rounded-xl mt-3">
-                                    <div class="absolute right-0 m-3 badge badge-info rounded-[2px] text-white">Open</div>
+                                    <div class="absolute right-0 m-3 badge badge-info rounded-[2px] text-white">{{ $opens->status->name }}</div>
                                     <div class="card-body">
                                         <h1 class="card-title font-bold">
-                                            Bug yang membuat -50000 aura
+                                            {{ $opens->judul }}
                                         </h1>
                                     </div>
                                     <div class="card-actions justify-start pl-7">
-                                        <div class="badge badge-secondary mb-3">Bapak Bakery</div>
+                                        <div class="badge badge-secondary mb-3">{{ $opens->outlet->nm_out }}</div>
                                     </div>
                                     <div class="card-actions justify-start pl-7">
-                                        <div class="badge badge-primary mb-3 text-white">Trainer</div>
-                                        <div class="badge badge-neutral mb-3 text-white">PRESTO</div>
+                                        <div class="badge badge-primary mb-3 text-white">{{ $opens->tag->name }}</div>
+                                        <div class="badge badge-neutral mb-3 text-white">{{ $opens->kategori->name }}</div>
                                     </div>
                                     <div class="justify-start pl-7">
-                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 20 December 2024</div>
+                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ $opens->created_at }}</div>
                                     </div>
                                 </div>
                             </a>
+                            @endforeach
                         </div>
                         <div class="flex flex-col w-full">
                             <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mrq" class="hover:border-abu hover:border-b-2">Progress <i class="fa-solid fa-up-right-from-square"></i></a></h1>
+                            @foreach ($progress as $prog)
                             <a href="/detailrequest" class="mx-2">
                                 <div class="card bg-white rounded-xl mt-3">
-                                    <div class="absolute right-0 m-3 badge badge-warning rounded-[2px] text-white">Progress</div>
+                                    <div class="absolute right-0 m-3 badge badge-warning rounded-[2px] text-white">{{ $prog->status->name }}</div>
                                     <div class="card-body">
                                         <h1 class="card-title font-bold">
-                                            Masalah gambar yang terlalu gyatt 
+                                            {{ $prog->judul }} 
                                         </h1>
                                     </div>
                                     <div class="card-actions justify-start pl-7">
-                                        <div class="badge badge-secondary mb-3">Blackcanyon Batam</div>
+                                        <div class="badge badge-secondary mb-3">{{ $prog->outlet->nm_out }}</div>
                                     </div>
                                     <div class="card-actions justify-start pl-7">
-                                        <div class="badge badge-primary mb-3 text-white">Ecommerce</div>
-                                        <div class="badge badge-neutral mb-3 text-white">PRESTO</div>
+                                        <div class="badge badge-primary mb-3 text-white">{{ $prog->tag->name }}</div>
+                                        <div class="badge badge-neutral mb-3 text-white">{{ $prog->kategori->name }}</div>
                                     </div>
                                     <div class="justify-start pl-7">
-                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 21 December 2024</div>
+                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ $prog->updated_at }}</div>
                                     </div>
                                 </div>
                             </a>
+                            @endforeach
                         </div>
                         <div class="flex flex-col w-full">
                             <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mrq" class="hover:border-abu hover:border-b-2">Closed <i class="fa-solid fa-up-right-from-square"></i></a></h1>
+                            @foreach ($closed as $close)
                             <a href="/detailrequest" class="mx-2">
                                 <div class="card bg-white rounded-xl mt-3">
-                                    <div class="absolute right-0 m-3 badge badge-success rounded-[2px] text-white">Closed</div>
+                                    <div class="absolute right-0 m-3 badge badge-success rounded-[2px] text-white">{{ $close->status->name }}</div>
                                     <div class="card-body">
                                         <h1 class="card-title font-bold">
-                                            Deskripsi yang sigma & mewing 
+                                            {{ $close->judul }} 
                                         </h1>
                                     </div>
                                     <div class="card-actions justify-start pl-7">
-                                        <div class="badge badge-secondary mb-3">The Plumber Arms</div>
+                                        <div class="badge badge-secondary mb-3">{{ $close->outlet->nm_out }}</div>
                                     </div>
                                     <div class="card-actions justify-start pl-7">
-                                        <div class="badge badge-primary mb-3 text-white">IT</div>
-                                        <div class="badge badge-neutral mb-3 text-white">PPOS</div>
+                                        <div class="badge badge-primary mb-3 text-white">{{ $close->tag->name }}</div>
+                                        <div class="badge badge-neutral mb-3 text-white">{{ $close->kategori->name }}</div>
                                     </div>
                                     <div class="justify-start pl-7">
-                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 22 December 2024</div>
+                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ $close->updated_at }}</div>
                                     </div>
                                 </div>
                             </a>
-                            <a href="/detailrequest" class="mx-2">
-                                <div class="card bg-white rounded-xl mt-3">
-                                    <div class="absolute right-0 m-3 badge badge-success rounded-[2px] text-white">Closed</div>
-                                    <div class="card-body">
-                                        <h1 class="card-title font-bold">
-                                            Deskripsi yang sigma & mewing 
-                                        </h1>
-                                    </div>
-                                    <div class="card-actions justify-start pl-7">
-                                        <div class="badge badge-secondary mb-3">The Plumber Arms</div>
-                                    </div>
-                                    <div class="card-actions justify-start pl-7">
-                                        <div class="badge badge-primary mb-3 text-white">IT</div>
-                                        <div class="badge badge-neutral mb-3 text-white">PPOS</div>
-                                    </div>
-                                    <div class="justify-start pl-7">
-                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 22 December 2024</div>
-                                    </div>
-                                </div>
-                            </a>
+                            @endforeach
                         </div>
                     </div>
                 </div>

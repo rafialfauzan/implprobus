@@ -11,6 +11,8 @@ class Request extends Model
 
     protected $table = 'request';
 
+    protected $fillable = ['judul', 'deskripsi', 'start_date', 'end_date', 'kategori_id', 'tag_id', 'user_id', 'status_id', 'outlet_id'];
+
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -25,5 +27,9 @@ class Request extends Model
 
     public function outlet(){
         return $this->belongsTo(Outlet::class);
+    }
+
+    public function kategori(){
+        return $this->belongsTo(Kategori::class);
     }
 }

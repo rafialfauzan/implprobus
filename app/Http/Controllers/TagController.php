@@ -33,7 +33,7 @@ class TagController extends Controller
         ]);
         $tag->name = $request->input('name');
         $tag->save();
-        Alert::success('Data berhasil di Tambahkan!');
+        Alert::success('Successfully Added Data!');
         return redirect('/tag'); 
     }
 
@@ -46,7 +46,7 @@ class TagController extends Controller
         $data->update([
             'name'=>$request->input('name')
         ]);
-        Alert::success('Data berhasil di Edit!');
+        Alert::success('Successfully Edit Data!');
         return redirect('/tag');
     }
 
@@ -54,7 +54,7 @@ class TagController extends Controller
         $this->authorize('aspv');
         $data = Tag::find($id);
         $data->delete();
-        Alert::success('Data Berhasil di Hapus!');
+        Alert::success('Successfully Delete Data!');
         return redirect('/tag');
     }
 }

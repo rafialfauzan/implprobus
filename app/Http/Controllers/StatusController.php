@@ -33,7 +33,7 @@ class StatusController extends Controller
         ]);
         $status->name = $request->input('name');
         $status->save();
-        Alert::success('Data berhasil di Tambahkan!');
+        Alert::success('Successfully Added Data!');
         return redirect('/status');
     }
 
@@ -46,7 +46,7 @@ class StatusController extends Controller
         $data->update([
             'name'=>$request->input('name')
         ]);
-        Alert::success('Data berhasil di Edit!');
+        Alert::success('Successfully Edit Data!');
         return redirect('/status');
     }
 
@@ -54,7 +54,7 @@ class StatusController extends Controller
         $this->authorize('aspv');
         $data = Status::find($id);
         $data->delete();
-        Alert::success('Data Berhasil di Hapus!');
+        Alert::success('Successfully Delete Data!');
         return redirect('/status');
     }
 }

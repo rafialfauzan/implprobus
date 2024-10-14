@@ -7,21 +7,23 @@
                         <div class="text-end text-5xl mb-5">
                             <a href="{{ url()->previous() }}" class="text-black hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
                         </div>
+                        <x-auth-validation-errors class="mb-4" :errors="$errors" />
                         <div class="bg-white rounded-[28px] shadow-md card">
                             <div class="card-body">
                                 <h1 class="card-title text-3xl font-extrabold">Create Request</h1>
-                                <form action="">
+                                <form method="POST" action="/createrq" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="mt-3">
                                         <p class="font-bold">Title</p>
-                                        <input type="text" class="input rounded-xl input-bordered w-full">
+                                        <input type="text" class="input rounded-xl input-bordered w-full" name="title">
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Outlet</p>
                                         <select name="outlet" id="outlet" class="select select-bordered w-full">
-                                            <option value="">Bapak Bakery</option>
-                                            <option value="">Burger King</option>
-                                            <option value="">Blackcanyon Batam</option>
-                                            <option value="">The Plumber Arms</option>
+                                            <option value="1">Bapak Bakery</option>
+                                            <option value="2">Burger King</option>
+                                            <option value="3">Blackcanyon Batam</option>
+                                            <option value="4">The Plumber Arms</option>
                                         </select>
                                     </div>
                                     <div class="mt-3">
@@ -43,25 +45,25 @@
                                     <div class="mt-3">
                                         <p class="font-bold">Status</p>
                                         <select name="status" id="status" class="select select-bordered w-full">
-                                            <option value="Urgent">Urgent</option>
-                                            <option value="Open">Open</option>
-                                            <option value="Progress">Progress</option>
-                                            <option value="Closed">Closed</option>
+                                            @foreach ($status as $statusitem)
+                                            <option value="{{ $statusitem->id }}">{{ $statusitem->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Period</p>
                                         <div class="flex">
-                                            <input type="date" class="rounded-lg w-full border-gray-300">
+                                            <input type="date" class="rounded-lg w-full border-gray-300" name="startdate">
                                             <div class="divider divider-horizontal">TO</div>
-                                            <input type="date" class="rounded-lg w-full border-gray-300">
+                                            <input type="date" class="rounded-lg w-full border-gray-300" name="enddate">
                                         </div>
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Image</p>
-                                        <input type="file" multiple class="file-input file-input-bordered w-full">
+                                        <input type="file" multiple class="file-input file-input-bordered w-full" name="images[]">
                                         <div class="label">
-                                            <span class="label-text">MAX SIZE: 1MB</span>
+                                            <span class="label-text">MAX FILES: 6 IMAGES</span>
+                                            <span class="label-text">MAX SIZE: 200kb</span>
                                         </div>
                                     </div>
                                     <div class="mt-3">

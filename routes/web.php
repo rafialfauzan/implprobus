@@ -32,6 +32,7 @@ Route::get('/detailrequest',[RequestController::class, 'detailrequest'])->middle
 Route::get('/mrq', [RequestController::class, 'mrq'])->middleware(['auth'])->name('mrq');
 Route::get('/createrq', [RequestController::class, 'createrq'])->middleware(['auth'])->name('createrq');
 Route::get('/editrq', [RequestController::class, 'editrq'])->middleware(['auth'])->name('editrq');
+Route::post('/createrq',[RequestController::class, 'store'])->middleware(['auth'])->name('storerq');
 
 Route::get('/detailus', [UpdateSystemController::class, 'detailus'])->middleware(['auth'])->name('detailus');
 Route::get('/mus', [UpdateSystemController::class, 'mus'])->middleware(['auth'])->name('mus');

@@ -39,7 +39,12 @@
                                         <td class="p-3 text-sm text-abugelap">{{ $item->tag->name }}</td>
                                         <td class="p-3 text-xl text-abugelap"><a class="m-2 hover:text-black" href="/editpass/{{ $item->id }}"><i class="fa-solid fa-key"></i></a>
                                              <a class="m-2 hover:text-black" href="/editacc/{{ $item->id }}"><i class="fa-solid fa-pen"></i></a>
-                                             <a onclick="return confirm('Anda yakin ingin Menghapus data ini?')" class="m-2 hover:text-black" href="/deleteacc/{{ $item->id }}"><i class="fa-solid fa-trash"></i></a></td>
+                                             @if ($item->id != '1')
+                                             <a onclick="return confirm('Anda yakin ingin Menghapus data ini?')" class="m-2 hover:text-black" href="/deleteacc/{{ $item->id }}"><i class="fa-solid fa-trash"></i></a>
+                                             @else
+                                                 
+                                             @endif
+                                            </td>
                                     </tr>
                                 @endforeach
                             </tbody>

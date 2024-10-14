@@ -6,9 +6,6 @@ use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -56,7 +53,7 @@ class UserController extends Controller
             'usertype' => $request->usertype,
             'tag_id' => $request->tag,
         ]);
-        Alert::success('User Berhasil di Daftarkan!');
+        Alert::success('Account Successfully Registered!');
         return redirect('/user');
     }
 
@@ -77,14 +74,14 @@ class UserController extends Controller
             'tag_id' => $request->tag,
         ]);
 
-        Alert::success('User Berhasil di Edit!');
+        Alert::success('Account Successfully Edited!');
         return redirect('/user');
     }
 
     public function delete($id){
         $user = User::find($id);
         $user->delete();
-        Alert::success('User Berhasil di Hapus!');
+        Alert::success('Account Successfully Deleted!');
         return redirect('/user');
     }
 }

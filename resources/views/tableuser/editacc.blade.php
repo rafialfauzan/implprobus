@@ -6,6 +6,7 @@
                     <div class="my-5">
                         <a href="{{ url()->previous() }}" class="bg-white font-bold text-black px-2 py-2 rounded-md border-black border-solid border-2 hover:bg-black hover:text-white transition delay-50 duration-300">« Back</a>
                     </div>
+                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <div class="flex-col">
                         <div>
                             <p class="text-center text-xl font-bold">Edit account</p>
@@ -40,9 +41,8 @@
                                     @endforeach
                                 </select>
                             </div>
-
-                            <!-- User Type -->
-                            <div class="mt-5">
+                                <!-- User Type -->
+                            <div class="mt-5 {{ $user->id == 1 ? 'hidden' : '' }}">
                                 <x-label for="usertype" :value="__('User Type')" />
                                 <select name="usertype" id="usertype" class="rounded-lg w-full mt-1 shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                     <option value="admin" {{ $user->usertype == 'admin' ? 'selected' : '' }}>admin</option>

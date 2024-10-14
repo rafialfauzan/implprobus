@@ -33,7 +33,7 @@ class KategoriController extends Controller
         ]);
         $kategori->name = $request->input('name');
         $kategori->save();
-        Alert::success('Data berhasil di Tambahkan!');
+        Alert::success('Successfully Added Data!');
         return redirect('/kategori'); 
     }
 
@@ -46,7 +46,7 @@ class KategoriController extends Controller
         $data->update([
             'name'=>$request->input('name')
         ]);
-        Alert::success('Data berhasil di Edit!');
+        Alert::success('Successfully Edit Data!');
         return redirect('/kategori');
     }
 
@@ -54,7 +54,7 @@ class KategoriController extends Controller
         $this->authorize('aspv');
         $data = Kategori::find($id);
         $data->delete();
-        Alert::success('Data Berhasil di Hapus!');
+        Alert::success('Successfully Delete Data!');
         return redirect('/kategori');
     }
 }
