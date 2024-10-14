@@ -12,8 +12,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class RequestController extends Controller
 {
-    public function detailrequest(){
-        return view('tablerq.detailrequest');
+    public function detailrequest($id){
+        $datarq = \App\Models\Request::find($id);
+        $dataimg = DataImage::where('request_id', $id)->get();
+        // return dd($dataimg);
+        return view('tablerq.detailrequest', compact('datarq', 'dataimg'));
     }
 
     public function mrq(){
@@ -27,11 +30,13 @@ class RequestController extends Controller
         return view('tablerq.createrq', compact('tag', 'kategori','status'));
     }
 
-    public function editrq(){
+    public function editrq($id){
+        $req = \App\Models\Request::find($id);
+        $img = DataImage::where('request_id', $id)->get();
         $tag = Tag::all();
         $kategori = Kategori::all();
         $status = Status::all();
-        return view('tablerq.editrq', compact('tag','kategori', 'status'));
+        return view('tablerq.editrq', compact('tag','kategori', 'status', 'req', 'img'));
     }
 
     public function store(Request $request){

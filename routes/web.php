@@ -28,10 +28,10 @@ Route::get('/dashboard',[HomeController::class, 'index'])->middleware(['auth'])-
 Route::get('/', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::get('/activitylog', [HomeController::class, 'activitylog'])->middleware(['auth'])->name('activitylog');
 
-Route::get('/detailrequest',[RequestController::class, 'detailrequest'])->middleware(['auth'])->name('detailrequest');
+Route::get('/detailrequest/{id}',[RequestController::class, 'detailrequest'])->middleware(['auth'])->name('detailrequest');
 Route::get('/mrq', [RequestController::class, 'mrq'])->middleware(['auth'])->name('mrq');
 Route::get('/createrq', [RequestController::class, 'createrq'])->middleware(['auth'])->name('createrq');
-Route::get('/editrq', [RequestController::class, 'editrq'])->middleware(['auth'])->name('editrq');
+Route::get('/editrq/{id}', [RequestController::class, 'editrq'])->middleware(['auth'])->name('editrq');
 Route::post('/createrq',[RequestController::class, 'store'])->middleware(['auth'])->name('storerq');
 
 Route::get('/detailus', [UpdateSystemController::class, 'detailus'])->middleware(['auth'])->name('detailus');

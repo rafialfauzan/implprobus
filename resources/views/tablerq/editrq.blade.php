@@ -13,22 +13,26 @@
                                 <form action="">
                                     <div class="mt-3">
                                         <p class="font-bold">Title</p>
-                                        <input type="text" class="input rounded-xl input-bordered w-full">
+                                        <input type="text" class="input rounded-xl input-bordered w-full" value="{{ $req->judul }}">
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Outlet</p>
                                         <select name="outlet" id="outlet" class="select select-bordered w-full">
-                                            <option value="">Bapak Bakery</option>
-                                            <option value="">Burger King</option>
-                                            <option value="">Blackcanyon Batam</option>
-                                            <option value="">The Plumber Arms</option>
+                                            <option value="1" {{ $req->outlet_id == 1 ? 'selected' : '' }}>Bapak Bakery</option>
+                                            <option value="2" {{ $req->outlet_id == 2 ? 'selected' : '' }}>Burger King</option>
+                                            <option value="3" {{ $req->outlet_id == 3 ? 'selected' : '' }}>Blackcanyon Batam</option>
+                                            <option value="4" {{ $req->outlet_id == 4 ? 'selected' : '' }}>The Plumber Arms</option>
                                         </select>
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Tag</p>
                                         <select name="tag" id="tag" class="select select-bordered w-full">
                                             @foreach ($tag as $tagitem)
+                                            @if (old('tag', $req->tag_id) == $tagitem->tag_id)
+                                            <option value="{{ $tagitem->id }}" selected>{{ $tagitem->name }}</option>
+                                            @else
                                             <option value="{{ $tagitem->id }}">{{ $tagitem->name }}</option>
+                                            @endif
                                             @endforeach
                                         </select>
                                     </div>
@@ -36,25 +40,32 @@
                                         <p class="font-bold">Category</p>
                                         <select name="category" id="category" class="select select-bordered w-full">
                                             @foreach ($kategori as $kategoriitem)
+                                            @if (old('category', $req->kategori_id) == $kategoriitem->id)
+                                            <option value="{{ $kategoriitem->id }}" selected>{{ $kategoriitem->name }}</option>
+                                            @else
                                             <option value="{{ $kategoriitem->id }}">{{ $kategoriitem->name }}</option>
+                                            @endif
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Status</p>
                                         <select name="status" id="status" class="select select-bordered w-full">
-                                            <option value="Urgent">Urgent</option>
-                                            <option value="Open">Open</option>
-                                            <option value="Progress">Progress</option>
-                                            <option value="Closed">Closed</option>
+                                            @foreach ($status as $st)
+                                            @if (old('status', $req->status_id) == $st->id)
+                                            <option value="{{ $st->id }}" selected>{{ $st->name }}</option>
+                                            @else
+                                            <option value="{{ $st->id }}">{{ $st->name }}</option>
+                                            @endif
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Period</p>
                                         <div class="flex">
-                                            <input type="date" class="rounded-lg w-full border-gray-300">
+                                            <input type="date" class="rounded-lg w-full border-gray-300" value="{{ $req->start_date }}">
                                             <div class="divider divider-horizontal">TO</div>
-                                            <input type="date" class="rounded-lg w-full border-gray-300">
+                                            <input type="date" class="rounded-lg w-full border-gray-300" value="{{ $req->end_date }}">
                                         </div>
                                     </div>
                                     <div class="mt-3">
@@ -63,10 +74,18 @@
                                         <div class="label">
                                             <span class="label-text">MAX SIZE: 1MB</span>
                                         </div>
+                                        <div class="flex flex-row container">
+                                            @foreach ($img as $image)
+                                            <div class="h-[200px] w-1/2 md:w-1/3 border shadow-sm overflow-hidden rounded-xl image">
+                                                <a href="/deleteimg/{{ $req->id }}/{{ $image->id }}" class="btn btn-error btn-sm text-white rounded-xl absolute">✕</a>
+                                                <img src="/img/{{ $image->image }}" alt="" class="rounded-xl h-full w-full object-cover">   
+                                            </div>
+                                            @endforeach
+                                        </div>
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Description</p>
-                                        <input type="hidden" id="body" name="body">
+                                        <input type="hidden" id="body" name="body" value="{{ old('body', $req->deskripsi) }}">
                                         <trix-editor trix-attachment-remove input="body"></trix-editor>
                                     </div>
                                     <div class="mt-3">

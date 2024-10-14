@@ -1,3 +1,6 @@
+@php
+    use Carbon\Carbon;
+@endphp
 <x-app-layout>
     {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -135,7 +138,7 @@
                                         <div class="badge badge-neutral mb-3 text-white">{{ $urgents->kategori->name }}</div>
                                     </div>
                                     <div class="justify-start pl-7">
-                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ $urgents->updated_at }}</div>
+                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ Carbon::create($urgents->updated_at)->toFormattedDayDateString() }} (Updated {{ $urgents->updated_at->diffForHumans() }})</div>
                                     </div>
                                 </div>
                             </a>
@@ -144,7 +147,7 @@
                         <div class="flex flex-col w-full">
                             <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mrq" class="hover:border-abu hover:border-b-2">Open <i class="fa-solid fa-up-right-from-square"></i></a></h1>
                             @foreach ($open as $opens)
-                            <a href="/detailrequest" class="mx-2">
+                            <a href="/detailrequest/{{ $opens->id }}" class="mx-2">
                                 <div class="card bg-white rounded-xl mt-3">
                                     <div class="absolute right-0 m-3 badge badge-info rounded-[2px] text-white">{{ $opens->status->name }}</div>
                                     <div class="card-body">
@@ -160,7 +163,7 @@
                                         <div class="badge badge-neutral mb-3 text-white">{{ $opens->kategori->name }}</div>
                                     </div>
                                     <div class="justify-start pl-7">
-                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ $opens->created_at }}</div>
+                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ Carbon::create($opens->updated_at)->toFormattedDayDateString() }} (Updated {{ $opens->updated_at->diffForHumans() }})</div>
                                     </div>
                                 </div>
                             </a>
@@ -169,7 +172,7 @@
                         <div class="flex flex-col w-full">
                             <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mrq" class="hover:border-abu hover:border-b-2">Progress <i class="fa-solid fa-up-right-from-square"></i></a></h1>
                             @foreach ($progress as $prog)
-                            <a href="/detailrequest" class="mx-2">
+                            <a href="/detailrequest/{{ $prog->id }}" class="mx-2">
                                 <div class="card bg-white rounded-xl mt-3">
                                     <div class="absolute right-0 m-3 badge badge-warning rounded-[2px] text-white">{{ $prog->status->name }}</div>
                                     <div class="card-body">
@@ -185,7 +188,7 @@
                                         <div class="badge badge-neutral mb-3 text-white">{{ $prog->kategori->name }}</div>
                                     </div>
                                     <div class="justify-start pl-7">
-                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ $prog->updated_at }}</div>
+                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ Carbon::create($prog->updated_at)->toFormattedDayDateString() }} (Updated {{ $prog->updated_at->diffForHumans() }})</div>
                                     </div>
                                 </div>
                             </a>
@@ -194,7 +197,7 @@
                         <div class="flex flex-col w-full">
                             <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mrq" class="hover:border-abu hover:border-b-2">Closed <i class="fa-solid fa-up-right-from-square"></i></a></h1>
                             @foreach ($closed as $close)
-                            <a href="/detailrequest" class="mx-2">
+                            <a href="/detailrequest/{{ $close->id }}" class="mx-2">
                                 <div class="card bg-white rounded-xl mt-3">
                                     <div class="absolute right-0 m-3 badge badge-success rounded-[2px] text-white">{{ $close->status->name }}</div>
                                     <div class="card-body">
@@ -210,7 +213,7 @@
                                         <div class="badge badge-neutral mb-3 text-white">{{ $close->kategori->name }}</div>
                                     </div>
                                     <div class="justify-start pl-7">
-                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ $close->updated_at }}</div>
+                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ Carbon::create($close->updated_at)->toFormattedDayDateString() }} (Updated {{ $close->updated_at->diffForHumans() }})</div>
                                     </div>
                                 </div>
                             </a>

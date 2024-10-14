@@ -1,3 +1,9 @@
+@php
+    use Carbon\Carbon;
+    $rentang = Carbon::parse($datarq->start_date)->diffInDays(Carbon::parse($datarq->end_date));
+    $rqid = $datarq->user_id;
+    $aid = Auth::user()->id;
+@endphp
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -5,7 +11,9 @@
                 <div class="p-6">
                     <div class="flex flex-col md:px-40">
                         <div class="mb-5 flex flex-row justify-between">
-                            <a href="/editrq" class="btn btn-neutral mt-3 bg-black rounded-[28px]"><i class="fa-solid fa-pen"></i> Edit Request</a>
+                            @if ($rqid == $aid)
+                            <a href="/editrq/{{ $datarq->id }}" class="btn btn-neutral mt-3 bg-black rounded-[28px]"><i class="fa-solid fa-pen"></i> Edit Request</a> 
+                            @endif
                             <a href="{{ url()->previous() }}" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
                         </div>
                         <div class="bg-white rounded-[28px] shadow-md card">
@@ -20,27 +28,16 @@
                                 </div>
                                 <div class="absolute right-0 md:m-5 m-3 badge badge-error badge-lg rounded text-white">Urgent</div>
                             <div class="card-body">
-                                <h1 class="card-title text-2xl font-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, impedit?</h1>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur velit obcaecati exercitationem eaque totam in praesentium dolorem. Recusandae deserunt, sint esse voluptates accusantium consectetur! Laudantium voluptates repudiandae perspiciatis atque tenetur?</p>
+                                <h1 class="card-title text-2xl font-bold">{{ $datarq->judul }}</h1>
+                                <article>
+                                    {!! $datarq->deskripsi !!}
+                                </article>
                                 <div class="mb-5 flex flex-wrap rounded-md image-container">
+                                    @foreach ($dataimg as $img)
                                     <div class="h-[200px] w-1/2 md:w-1/3 border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
-                                        <img src="{{ asset('img/tes1.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] ease-in-out duration-300">
+                                        <img src="/img/{{ $img->image }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] ease-in-out duration-300">
                                     </div>
-                                    <div class="h-[200px] w-1/2 md:w-1/3 border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
-                                        <img src="{{ asset('img/tes2.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] ease-in-out duration-300">
-                                    </div>
-                                    <div class="h-[200px] w-1/2 md:w-1/3 border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
-                                        <img src="{{ asset('img/tes3.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] ease-in-out duration-300">
-                                    </div>
-                                    <div class="h-[200px] w-1/2 md:w-1/3 border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
-                                        <img src="{{ asset('img/tes4.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] ease-in-out duration-300">
-                                    </div>
-                                    <div class="h-[200px] w-1/2 md:w-1/3 border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
-                                        <img src="{{ asset('img/tes5.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] ease-in-out duration-300">
-                                    </div>
-                                    <div class="h-[200px] w-1/2 md:w-1/3 border shadow-sm overflow-hidden cursor-pointer rounded-xl image" onclick="my_modal_3.showModal()">
-                                        <img src="{{ asset('img/tes6.jpg') }}" alt="" class="rounded-xl h-full w-full object-cover hover:w-[120%] hover:h-[120%] ease-in-out duration-300">
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <dialog id="my_modal_3" class="modal">
                                     <div class="modal-box w-11/12 max-w-5xl">
@@ -51,20 +48,30 @@
                                     </div>
                                 </dialog>
                                 <div class="card-actions justify-start">
-                                    <div class="badge badge-secondary badge-lg text-white">Burger King</div>
+                                    <div class="badge badge-secondary badge-lg text-white">{{ $datarq->outlet->nm_out }}</div>
                                 </div>
                                 <div class="card-actions justify-start">
-                                    <div class="badge badge-primary badge-lg text-white">Programmer</div>
-                                    <div class="badge badge-neutral badge-lg text-white">PHIS</div>
+                                    <div class="badge badge-primary badge-lg text-white">{{ $datarq->tag->name }}</div>
+                                    <div class="badge badge-neutral badge-lg text-white">{{ $datarq->kategori->name }}</div>
                                 </div>
                                 <div>
-                                    <p class="text-sm font-bold"><i class="fa-solid fa-hourglass-start"></i> 19 December 2024 - 2 February 2025</p>
+                                    <p class="text-sm font-bold"><i class="fa-solid fa-hourglass-start"></i> Deadline: {{ Carbon::create($datarq->start_date)->toFormattedDayDateString() }} - {{ Carbon::create($datarq->end_date)->toFormattedDayDateString() }} 
+                                    @if ($rentang == 1)
+                                        ({{ $rentang }} day)
+                                    @else
+                                        ({{ $rentang }} days) 
+                                    @endif</p>
                                 </div>
                                 <div>
-                                    <p class="text-sm font-bold"><i class="fa-solid fa-calendar"></i> 19 December 2024 | Updated by {{ Auth::user()->name }}</p>
+                                    <p class="text-sm font-bold"><i class="fa-solid fa-calendar"></i> Create: {{ Carbon::create($datarq->created_at)->toFormattedDayDateString() }} ({{ $datarq->created_at->diffForHumans() }})</p>
                                 </div>
                                 <div>
-                                    <p class="text-sm font-bold"><i class="fa-solid fa-user-pen"></i> {{ Auth::user()->name }}</p>
+                                    <p class="text-sm font-bold">
+                                        <i class="fa-solid fa-file-pen"></i> Update: {{ $datarq->updated_at->toFormattedDayDateString() }} ({{ $datarq->updated_at->diffForHumans() }})
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold"><i class="fa-solid fa-user-pen"></i> Created by {{ $datarq->user->name }}</p>
                                 </div>
                             </div>
                         </div>
