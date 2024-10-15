@@ -3,6 +3,18 @@
     $rentang = Carbon::parse($datarq->start_date)->diffInDays(Carbon::parse($datarq->end_date));
     $rqid = $datarq->user_id;
     $aid = Auth::user()->id;
+    $stid = $datarq->status_id;
+
+    if ($stid == 1) {
+        $bg = "badge-error";
+    } elseif ($stid == 2) {
+        $bg = "badge-info";
+    } elseif ($stid == 3) {
+        $bg = "badge-warning";
+    } else {
+        $bg = "badge-success";
+    }
+    
 @endphp
 <x-app-layout>
     <div class="py-12">
@@ -14,7 +26,7 @@
                             @if ($rqid == $aid)
                             <a href="/editrq/{{ $datarq->id }}" class="btn btn-neutral mt-3 bg-black rounded-[28px]"><i class="fa-solid fa-pen"></i> Edit Request</a> 
                             @endif
-                            <a href="{{ url()->previous() }}" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                            <a href="/" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
                         </div>
                         <div class="bg-white rounded-[28px] shadow-md card">
                                 <div class="dropdown dropdown-top absolute right-0 bottom-0 m-3 rounded-[16px]">
@@ -26,7 +38,7 @@
                                     <li><a class="btn btn-success text-white my-1">Closed</a></li>
                                     </ul>
                                 </div>
-                                <div class="absolute right-0 md:m-5 m-3 badge badge-error badge-lg rounded text-white">Urgent</div>
+                                <div class="absolute right-0 md:m-5 m-3 badge {{ $bg }} badge-lg rounded text-white">{{ $datarq->status->name }}</div>
                             <div class="card-body">
                                 <h1 class="card-title text-2xl font-bold">{{ $datarq->judul }}</h1>
                                 <article>

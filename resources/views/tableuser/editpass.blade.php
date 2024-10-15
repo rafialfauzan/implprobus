@@ -11,15 +11,15 @@
                         <div>
                             <p class="text-center text-xl font-bold">Edit Password</p>
                         </div>
-                        <form method="POST" action="">
+                        <form method="POST" action="/editpass/{{ $data->id }}">
                             @csrf
                             <div class="mt-4">
-                                <p>Account: {{ Auth::user()->email }}</p>
+                                <p>Account: {{ $data->email }} | {{ $data->name }}</p>
                             </div>
 
                             <!-- Password -->
                             <div class="mt-4">
-                                <x-label for="password" :value="__('Password')" />
+                                <x-label for="password" :value="__('New Password')" />
                 
                                 <x-input id="password" class="block mt-1 w-full"
                                                 type="password"
@@ -29,7 +29,7 @@
                 
                             <!-- Confirm Password -->
                             <div class="mt-4">
-                                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                                <x-label for="password_confirmation" :value="__('Confirm New Password')" />
                 
                                 <x-input id="password_confirmation" class="block mt-1 w-full"
                                                 type="password"
@@ -42,7 +42,7 @@
                                 </a> --}}
                 
                                 <x-button class="ml-4">
-                                    {{ __('Register') }}
+                                    {{ __('Edit') }}
                                 </x-button>
                             </div>
                         </form>

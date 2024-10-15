@@ -33,6 +33,8 @@ Route::get('/mrq', [RequestController::class, 'mrq'])->middleware(['auth'])->nam
 Route::get('/createrq', [RequestController::class, 'createrq'])->middleware(['auth'])->name('createrq');
 Route::get('/editrq/{id}', [RequestController::class, 'editrq'])->middleware(['auth'])->name('editrq');
 Route::post('/createrq',[RequestController::class, 'store'])->middleware(['auth'])->name('storerq');
+Route::post('/editrq/{id}', [RequestController::class, 'updaterq'])->middleware(['auth'])->name('updaterq');
+Route::get('/deleteimg/{img}', [RequestController::class, 'deleteimg'])->middleware(['auth'])->name('deleteimg');
 
 Route::get('/detailus', [UpdateSystemController::class, 'detailus'])->middleware(['auth'])->name('detailus');
 Route::get('/mus', [UpdateSystemController::class, 'mus'])->middleware(['auth'])->name('mus');
@@ -50,6 +52,7 @@ Route::get('/editacc/{id}',[UserController::class, 'editacc'])->middleware(['aut
 Route::post('/editacc/{id}',[UserController::class, 'edit'])->middleware(['auth'])->name('updateacc');
 Route::get('/editpass/{id}', [UserController::class, 'editpass'])->middleware(['auth'])->name('editpass');
 Route::get('/deleteacc/{id}',[UserController::class, 'delete'])->middleware(['auth'])->name('deleteacc');
+Route::post('/editpass/{id}', [UserController::class, 'updatepass'])->middleware(['auth'])->name('updatepass');
 
 Route::get('/tag', [TagController::class, 'index'])->middleware(['auth'])->name('tag');
 Route::get('/createtag', [TagController::class, 'createtag'])->middleware(['auth'])->name('createtag');

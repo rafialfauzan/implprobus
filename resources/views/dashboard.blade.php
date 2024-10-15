@@ -138,7 +138,7 @@
                                         <div class="badge badge-neutral mb-3 text-white">{{ $urgents->kategori->name }}</div>
                                     </div>
                                     <div class="justify-start pl-7">
-                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ Carbon::create($urgents->updated_at)->toFormattedDayDateString() }} (Updated {{ $urgents->updated_at->diffForHumans() }})</div>
+                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> Updated: {{ Carbon::create($urgents->updated_at)->toFormattedDayDateString() }} ({{ $urgents->updated_at->diffForHumans() }})</div>
                                     </div>
                                 </div>
                             </a>
@@ -163,7 +163,7 @@
                                         <div class="badge badge-neutral mb-3 text-white">{{ $opens->kategori->name }}</div>
                                     </div>
                                     <div class="justify-start pl-7">
-                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ Carbon::create($opens->updated_at)->toFormattedDayDateString() }} (Updated {{ $opens->updated_at->diffForHumans() }})</div>
+                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> Updated: {{ Carbon::create($opens->updated_at)->toFormattedDayDateString() }} ({{ $opens->updated_at->diffForHumans() }})</div>
                                     </div>
                                 </div>
                             </a>
@@ -188,7 +188,7 @@
                                         <div class="badge badge-neutral mb-3 text-white">{{ $prog->kategori->name }}</div>
                                     </div>
                                     <div class="justify-start pl-7">
-                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ Carbon::create($prog->updated_at)->toFormattedDayDateString() }} (Updated {{ $prog->updated_at->diffForHumans() }})</div>
+                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> Updated: {{ Carbon::create($prog->updated_at)->toFormattedDayDateString() }} ({{ $prog->updated_at->diffForHumans() }})</div>
                                     </div>
                                 </div>
                             </a>
@@ -213,7 +213,7 @@
                                         <div class="badge badge-neutral mb-3 text-white">{{ $close->kategori->name }}</div>
                                     </div>
                                     <div class="justify-start pl-7">
-                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> {{ Carbon::create($close->updated_at)->toFormattedDayDateString() }} (Updated {{ $close->updated_at->diffForHumans() }})</div>
+                                        <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> Updated: {{ Carbon::create($close->updated_at)->toFormattedDayDateString() }} ({{ $close->updated_at->diffForHumans() }})</div>
                                     </div>
                                 </div>
                             </a>

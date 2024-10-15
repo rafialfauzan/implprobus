@@ -5,15 +5,17 @@
                 <div class="p-6">
                     <div class="flex flex-col md:px-40">
                         <div class="text-end text-5xl mb-5">
-                            <a href="{{ url()->previous() }}" class="text-black hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                            <a href="/detailrequest/{{ $req->id }}" class="text-black hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
                         </div>
+                        <x-auth-validation-errors class="mb-4" :errors="$errors" />
                         <div class="bg-white rounded-[28px] shadow-md card">
                             <div class="card-body">
                                 <h1 class="card-title text-3xl font-extrabold">Edit Request</h1>
-                                <form action="">
+                                <form action="/editrq/{{ $req->id }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="mt-3">
                                         <p class="font-bold">Title</p>
-                                        <input type="text" class="input rounded-xl input-bordered w-full" value="{{ $req->judul }}">
+                                        <input type="text" class="input rounded-xl input-bordered w-full" value="{{ $req->judul }}" name="title">
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Outlet</p>
@@ -28,7 +30,7 @@
                                         <p class="font-bold">Tag</p>
                                         <select name="tag" id="tag" class="select select-bordered w-full">
                                             @foreach ($tag as $tagitem)
-                                            @if (old('tag', $req->tag_id) == $tagitem->tag_id)
+                                            @if (old('tag', $req->tag_id) == $tagitem->id)
                                             <option value="{{ $tagitem->id }}" selected>{{ $tagitem->name }}</option>
                                             @else
                                             <option value="{{ $tagitem->id }}">{{ $tagitem->name }}</option>
@@ -63,21 +65,22 @@
                                     <div class="mt-3">
                                         <p class="font-bold">Period</p>
                                         <div class="flex">
-                                            <input type="date" class="rounded-lg w-full border-gray-300" value="{{ $req->start_date }}">
+                                            <input type="date" class="rounded-lg w-full border-gray-300" value="{{ $req->start_date }}" name="startdate">
                                             <div class="divider divider-horizontal">TO</div>
-                                            <input type="date" class="rounded-lg w-full border-gray-300" value="{{ $req->end_date }}">
+                                            <input type="date" class="rounded-lg w-full border-gray-300" value="{{ $req->end_date }}" name="enddate">
                                         </div>
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Image</p>
-                                        <input type="file" multiple class="file-input file-input-bordered w-full">
+                                        <input name="images[]" type="file" multiple class="file-input file-input-bordered w-full">
                                         <div class="label">
+                                            <span class="label-text">MAX FILES: 6 IMAGES</span>
                                             <span class="label-text">MAX SIZE: 1MB</span>
                                         </div>
                                         <div class="flex flex-row container">
                                             @foreach ($img as $image)
                                             <div class="h-[200px] w-1/2 md:w-1/3 border shadow-sm overflow-hidden rounded-xl image">
-                                                <a href="/deleteimg/{{ $req->id }}/{{ $image->id }}" class="btn btn-error btn-sm text-white rounded-xl absolute">✕</a>
+                                                <a onclick="return confirm('Anda yakin ingin Menghapus data ini?')" href="/deleteimg/{{ $image->id }}" class="btn btn-error btn-sm text-white rounded-xl absolute">✕</a>
                                                 <img src="/img/{{ $image->image }}" alt="" class="rounded-xl h-full w-full object-cover">   
                                             </div>
                                             @endforeach

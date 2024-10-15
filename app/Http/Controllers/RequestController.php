@@ -49,7 +49,7 @@ class RequestController extends Controller
             'category' => 'required',
             'outlet' => 'required',
             'status' => 'required',
-            'images' => 'required|array|max:6',
+            'images' => 'array|max:6',
             'images.*' => 'image|mimes:jpg,jpeg,png|max:200'
         ]);
 
@@ -79,14 +79,55 @@ class RequestController extends Controller
         }
         DataImage::insert($imagedata);
         Alert::success('Create Request Success!');
-        return redirect('/');
+        return redirect()->route('detailrequest', ['id' => $data->id]);
     }
 
-    public function update(){
+    public function updaterq(Request $request,$id){
+        $rq = \App\Models\Request::find($id);
+        $request->validate([
+            'title' => 'required|max:255',
+            'body' => 'required',
+            'startdate' => 'required|date|before:enddate',
+            'enddate' => 'required|date|after:startdate',
+            'tag' => 'required',
+            'category' => 'required',
+            'outlet' => 'required',
+            'status' => 'required',
+            'images' => 'array|max:6',
+            'images.*' => 'image|mimes:jpg,jpeg,png|max:200'
+        ]);
 
+        $rq->update([
+            'judul' => $request->title,
+            'deskripsi' => $request->body,
+            'start_date' => $request->startdate,
+            'end_date' => $request->enddate,
+            'kategori_id' => $request->category,
+            'tag_id' => $request->tag,
+            'status_id' => $request->status,
+            'outlet_id' => $request->outlet,
+        ]);
+        $imagedata = [];
+        if($request->hasfile('images')){
+            foreach ($request->file('images') as $image) {
+                $extension = $image->getClientOriginalName();
+                $filename = $extension;
+                $image->move('img/',$filename);
+                $imagedata[]=[
+                    'request_id' => $id,
+                    'image' => $filename
+                ];
+            }
+        }
+        DataImage::insert($imagedata);
+        Alert::success('Request Successfully Edited!');
+        return redirect()->route('detailrequest', ['id' => $id]);
     }
 
-    public function delete(){
-
+    public function deleteimg($img){
+        $image = DataImage::find($img);
+        $image->delete();
+        Alert::success('Image Deleted!');
+        return redirect()->back();
     }
 }

@@ -31,9 +31,10 @@ class UserController extends Controller
         return view('tableuser.editacc', compact('tag','user'));
     }
 
-    public function editpass(){
+    public function editpass($id){
         $this->authorize('admin');
-        return view('tableuser.editpass');
+        $data = User::find($id);
+        return view('tableuser.editpass', compact('data'));
     }
 
     public function store(Request $request){
@@ -79,9 +80,23 @@ class UserController extends Controller
     }
 
     public function delete($id){
+        $this->authorize('admin');
         $user = User::find($id);
         $user->delete();
         Alert::success('Account Successfully Deleted!');
+        return redirect('/user');
+    }
+
+    public function updatepass(Request $request,$id){
+        $this->authorize('admin');
+        $user = User::find($id);
+        $request->validate([
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+        $user->update([
+            'password' => Hash::make($request->password),
+        ]);
+        Alert::success('Password Successfully Edited!');
         return redirect('/user');
     }
 }
