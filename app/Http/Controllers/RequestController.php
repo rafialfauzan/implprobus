@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Komentar;
 use App\Models\Tag;
 use App\Models\Status;
 use App\Models\Kategori;
@@ -15,8 +16,8 @@ class RequestController extends Controller
     public function detailrequest($id){
         $datarq = \App\Models\Request::find($id);
         $dataimg = DataImage::where('request_id', $id)->get();
-        // return dd($dataimg);
-        return view('tablerq.detailrequest', compact('datarq', 'dataimg'));
+        $komentar = Komentar::where('request_id', $id)->get();
+        return view('tablerq.detailrequest', compact('datarq', 'dataimg','komentar'));
     }
 
     public function mrq(){
@@ -128,6 +129,34 @@ class RequestController extends Controller
         $image = DataImage::find($img);
         $image->delete();
         Alert::success('Image Deleted!');
+        return redirect()->back();
+    }
+
+    public function updatestatus($id,$stid){
+        $data = \App\Models\Request::find($id);
+        $data->update([
+            'status_id' => $stid
+        ]);
+        Alert::success('Status Changed!');
+        return redirect()->back();
+    }
+
+    public function komentar(Request $request,$id){
+        $request->validate([
+            'comment' => 'required'
+        ]);
+        Komentar::create([
+            'request_id' => $id,
+            'body' => $request->comment,
+            'user_id' => Auth::user()->id,
+        ]);
+        return redirect()->back();
+    }
+
+    public function deletekomen($id){
+        $komen = Komentar::find($id);
+        $komen->delete();
+        Alert::success('Comment Deleted!');
         return redirect()->back();
     }
 }

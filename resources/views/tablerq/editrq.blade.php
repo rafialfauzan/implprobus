@@ -80,7 +80,7 @@
                                         <div class="flex flex-row container">
                                             @foreach ($img as $image)
                                             <div class="h-[200px] w-1/2 md:w-1/3 border shadow-sm overflow-hidden rounded-xl image">
-                                                <a onclick="return confirm('Anda yakin ingin Menghapus data ini?')" href="/deleteimg/{{ $image->id }}" class="btn btn-error btn-sm text-white rounded-xl absolute">✕</a>
+                                                <a onclick="return confirm('Are you sure you want to delete this data?')" href="/deleteimg/{{ $image->id }}" class="btn btn-error btn-sm text-white rounded-xl absolute">✕</a>
                                                 <img src="/img/{{ $image->image }}" alt="" class="rounded-xl h-full w-full object-cover">   
                                             </div>
                                             @endforeach

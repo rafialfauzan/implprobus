@@ -32,7 +32,7 @@
                                     <tr>
                                         <td class="p-3 text-sm text-abugelap">{{ $item->name }}</td>
                                         <td class="p-3 text-xl text-abugelap"><a class="hover:text-black m-2" href="/editkategori/{{ $item->id }}"><i class="fa-solid fa-pen"></i></a>
-                                            <a onclick="return confirm('Anda yakin ingin Menghapus data ini?')" class="hover:text-black m-2" href="/deletekategori/{{ $item->id }}"><i class="fa-solid fa-trash"></i></a></td>
+                                            <a onclick="return confirm('Are you sure you want to delete this data?')" class="hover:text-black m-2" href="/deletekategori/{{ $item->id }}"><i class="fa-solid fa-trash"></i></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

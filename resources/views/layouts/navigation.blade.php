@@ -1,3 +1,6 @@
+@php
+    $usertag = Auth::user()->tag_id;
+@endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,7 +83,7 @@
                             <p class="text-sm leading-5 text-gray-500"><i class="fa-solid fa-user-shield"></i> {{ Auth::user()->usertype }}</p>
                             <p class="text-sm leading-5 text-gray-500"><i class="fa-solid fa-user-tag"></i> {{ Auth::user()->tag->name }}</p>
                         </div>
-                            <x-dropdown-link :href="route('myreq')">
+                            <x-dropdown-link href="{{ route('myreq') }}">
                                 {{-- {{ __('My Request') }} --}}
                                 <p><i class="fa-solid fa-folder"></i> My Request</p> 
                             </x-dropdown-link>

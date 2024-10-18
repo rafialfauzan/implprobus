@@ -24,4 +24,10 @@ class HomeController extends Controller
     public function activitylog(){
         return view('activitylog');
     }
+
+    public function morerq($id){
+        $data = \App\Models\Request::where('status_id', $id)->get();
+        $dataid = $id;
+        return view('tablerq.mrq',compact('data','dataid'));
+    }
 }

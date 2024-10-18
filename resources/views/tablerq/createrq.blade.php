@@ -45,9 +45,8 @@
                                     <div class="mt-3">
                                         <p class="font-bold">Status</p>
                                         <select name="status" id="status" class="select select-bordered w-full">
-                                            @foreach ($status as $statusitem)
-                                            <option value="{{ $statusitem->id }}">{{ $statusitem->name }}</option>
-                                            @endforeach
+                                            <option value="1">Urgent</option>
+                                            <option value="2">Open</option>
                                         </select>
                                     </div>
                                     <div class="mt-3">

@@ -40,7 +40,7 @@
                                         <td class="p-3 text-xl text-abugelap"><a class="m-2 hover:text-black" href="/editpass/{{ $item->id }}"><i class="fa-solid fa-key"></i></a>
                                              <a class="m-2 hover:text-black" href="/editacc/{{ $item->id }}"><i class="fa-solid fa-pen"></i></a>
                                              @if ($item->id != '1')
-                                             <a onclick="return confirm('Anda yakin ingin Menghapus data ini?')" class="m-2 hover:text-black" href="/deleteacc/{{ $item->id }}"><i class="fa-solid fa-trash"></i></a>
+                                             <a onclick="return confirm('Are you sure you want to delete this data?')" class="m-2 hover:text-black" href="/deleteacc/{{ $item->id }}"><i class="fa-solid fa-trash"></i></a>
                                              @else
                                                  
                                              @endif

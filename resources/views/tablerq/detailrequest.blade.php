@@ -26,19 +26,21 @@
                             @if ($rqid == $aid)
                             <a href="/editrq/{{ $datarq->id }}" class="btn btn-neutral mt-3 bg-black rounded-[28px]"><i class="fa-solid fa-pen"></i> Edit Request</a> 
                             @endif
-                            <a href="/" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                            <a href="{{ url()->previous() }}" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
                         </div>
                         <div class="bg-white rounded-[28px] shadow-md card">
-                                <div class="dropdown dropdown-top absolute right-0 bottom-0 m-3 rounded-[16px]">
-                                    <div tabindex="0" role="button" class="btn m-1">Change Status</div>
-                                    <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-40 p-2 shadow">
-                                    <li><a class="btn btn-error text-white my-1">Urgent</a></li>
-                                    <li><a class="btn btn-info text-white my-1">Open</a></li>
-                                    <li><a class="btn btn-warning text-white my-1">Progress</a></li>
-                                    <li><a class="btn btn-success text-white my-1">Closed</a></li>
-                                    </ul>
-                                </div>
-                                <div class="absolute right-0 md:m-5 m-3 badge {{ $bg }} badge-lg rounded text-white">{{ $datarq->status->name }}</div>
+                            @if ($datarq->status_id != 4)
+                            <div class="dropdown dropdown-top absolute right-0 bottom-0 m-3 rounded-[16px]">
+                                <div tabindex="0" role="button" class="btn m-1">Change Status</div>
+                                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-40 p-2 shadow">
+                                    <li><a href="/updatestatus/{{ $datarq->id }}/1" class="btn btn-error text-white my-1 {{ $datarq->status_id == 1 ? 'hidden' : '' }}">Urgent</a></li>
+                                    <li><a href="/updatestatus/{{ $datarq->id }}/2" class="btn btn-info text-white my-1 {{ $datarq->status_id == 2 ? 'hidden' : '' }}">Open</a></li>
+                                    <li><a href="/updatestatus/{{ $datarq->id }}/3" class="btn btn-warning text-white my-1 {{ $datarq->status_id == 3 ? 'hidden' : '' }}">Progress</a></li> 
+                                    <li><a href="/updatestatus/{{ $datarq->id }}/4" class="btn btn-success text-white my-1 {{ $datarq->status_id == 4 ? 'hidden' : '' }}">Done</a></li>
+                                </ul>
+                            </div>
+                            @endif
+                            <div class="absolute right-0 md:m-5 m-3 badge {{ $bg }} badge-lg rounded text-white">{{ $datarq->status->name }}</div>
                             <div class="card-body">
                                 <h1 class="card-title text-2xl font-bold">{{ $datarq->judul }}</h1>
                                 <article>
@@ -75,15 +77,15 @@
                                     @endif</p>
                                 </div>
                                 <div>
-                                    <p class="text-sm font-bold"><i class="fa-solid fa-calendar"></i> Create: {{ Carbon::create($datarq->created_at)->toFormattedDayDateString() }} ({{ $datarq->created_at->diffForHumans() }})</p>
+                                    <p class="text-sm font-bold"><i class="fa-solid fa-calendar"></i> Posted: {{ Carbon::create($datarq->created_at)->toFormattedDayDateString() }} ({{ $datarq->created_at->diffForHumans() }})</p>
                                 </div>
                                 <div>
                                     <p class="text-sm font-bold">
-                                        <i class="fa-solid fa-file-pen"></i> Update: {{ $datarq->updated_at->toFormattedDayDateString() }} ({{ $datarq->updated_at->diffForHumans() }})
+                                        <i class="fa-solid fa-file-pen"></i> Updated: {{ $datarq->updated_at->toFormattedDayDateString() }} ({{ $datarq->updated_at->diffForHumans() }})
                                     </p>
                                 </div>
                                 <div>
-                                    <p class="text-sm font-bold"><i class="fa-solid fa-user-pen"></i> Created by {{ $datarq->user->name }}</p>
+                                    <p class="text-sm font-bold"><i class="fa-solid fa-user-pen"></i> {{ $datarq->user->name }}</p>
                                 </div>
                             </div>
                         </div>
@@ -91,20 +93,29 @@
                             COMMENT
                         </div>
                         <div>
-                            <div class="chat chat-start w-full">
+                            @if (count($komentar) >= 1)
+                            @foreach ($komentar as $komen)
+                            <div class="chat {{ $komen->user_id == $aid ? 'chat-end' : 'chat-start' }}">
                                 <div class="chat-header">
-                                  {{ Auth::user()->name }}
-                                  <time class="text-xs opacity-50">2 hours ago</time>
+                                  {{ $komen->user->name }}
+                                  <time class="text-xs opacity-50">{{ $komen->created_at->diffForHumans() }}</time>
                                 </div>
-                                <div class="chat-bubble bg-white text-black shadow-lg border w-full">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, officia, possimus id eum hic veniam cum repellat amet, illo nihil consequuntur neque dolor laborum itaque nam a voluptas! Corrupti neque laborum, qui blanditiis architecto reprehenderit quam non magni et! Amet, eaque enim harum incidunt officia ullam sapiente dicta ad voluptatibus eum magni at voluptate iste ipsa illo provident officiis veritatis molestiae quia similique aspernatur ut, cupiditate eos. Assumenda, iste omnis quidem minima sunt recusandae animi ea expedita libero porro? Necessitatibus non fuga nesciunt deserunt nihil quidem aliquid! Autem, iusto, veniam vero fuga, tempore doloremque libero consequatur ipsa provident inventore perspiciatis! <a href="https://probussystem.com" class="hover:underline">https://probussystem.com</a></div>
+                                <div class="chat-bubble bg-white text-black shadow-lg border">
+                                    {!! $komen->body !!}
+                                </div>
+                                @if ($komen->user_id == $aid)
+                                <div class="chat-footer opacity-50"><a onclick="return confirm('Are you sure you want to delete this comment?')" href="/deletekomen/{{ $komen->id }}" class="hover:underline">Delete Comment</a></div>
+                                @endif
                             </div>
+                            @endforeach
+                            @endif
                         </div>
-                        <div class="my-5 grid grid-cols-1">
-                            <form action="" method="POST">
+                        <div class="my-5">
+                            <form action="/komentar/{{ $datarq->id }}" method="POST">
                                 @csrf
-                                {{-- <textarea name="comment" id="comment" rows="2" class="textarea textarea-bordered shadow-md rounded-3xl" placeholder="Type Comment Here"></textarea> --}}
-                                <input type="text" class="input input-bordered w-4/5" placeholder="Comment Here">
-                                <button type="submit" class="btn btn-neutral bg-black shadow-md w-1/6">Send <i class="fa-solid fa-paper-plane"></i></button>
+                                <input type="hidden" id="comment" name="comment" value="{{ old('comment') }}">
+                                <trix-editor trix-attachment-remove input="comment"></trix-editor>
+                                <button type="submit" class="btn btn-neutral bg-black mt-3 w-full text-white">Comment <i class="fa-solid fa-paper-plane"></i></button>
                             </form>
                         </div>
                     </div>
@@ -115,13 +126,8 @@
     <script>
         document.querySelectorAll('.image-container img').forEach(image =>{
             image.onclick = () =>{
-                // document.querySelector('.popup-image').style.display = 'block';
                 document.querySelector('.modal-box img').src = image.getAttribute('src');
             }
         });
-
-        // document.querySelector('.popup-image span').onclick = () =>{
-        //     document.querySelector('.popup-image').style.display = 'none'; 
-        // }
     </script>
 </x-app-layout>
