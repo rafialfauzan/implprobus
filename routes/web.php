@@ -43,10 +43,11 @@ Route::post('/komentar/{id}', [RequestController::class, 'komentar'])->middlewar
 Route::get('/deletekomen/{id}',[RequestController::class, 'deletekomen'])->middleware(['auth'])->name('deletekomen');
 
 //Route Update System
-Route::get('/detailus', [UpdateSystemController::class, 'detailus'])->middleware(['auth'])->name('detailus');
+Route::get('/detailus/{id}', [UpdateSystemController::class, 'detailus'])->middleware(['auth'])->name('detailus');
 Route::get('/mus', [UpdateSystemController::class, 'mus'])->middleware(['auth'])->name('mus');
 Route::get('/createus', [UpdateSystemController::class, 'createus'])->middleware(['auth'])->name('createus');
 Route::get('/editus',[UpdateSystemController::class, 'editus'])->middleware(['auth'])->name('editus');
+Route::post('/createus', [UpdateSystemController::class, 'store'])->middleware(['auth'])->name('storeus');
 
 //Route My Request
 Route::get('/myreq', [MyController::class, 'index'])->middleware(['auth'])->name('myreq');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UpdateSystem;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -17,8 +18,9 @@ class HomeController extends Controller
         ->take(5)->get();
         $closed = \App\Models\Request::where('status_id', 4)->latest()
         ->take(5)->get();
+        $us = UpdateSystem::latest()->take(5)->get();
 
-        return view('dashboard', compact('urgent', 'open', 'progress', 'closed'));
+        return view('dashboard', compact('urgent', 'open', 'progress', 'closed', 'us'));
     }
 
     public function activitylog(){

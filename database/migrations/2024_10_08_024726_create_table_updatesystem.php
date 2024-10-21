@@ -15,6 +15,7 @@ class CreateTableUpdatesystem extends Migration
     {
         Schema::create('updatesystem', function (Blueprint $table) {
             $table->id();
+            $table->string('judul');
             $table->text('deskripsi');
             $table->string('link');
             $table->timestamps();

@@ -1,5 +1,6 @@
 @php
     $usertag = Auth::user()->tag_id;
+    $rq1 = \App\Models\Request::where('tag_id', $usertag)->get();
 @endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
@@ -85,7 +86,10 @@
                         </div>
                             <x-dropdown-link href="{{ route('myreq') }}">
                                 {{-- {{ __('My Request') }} --}}
-                                <p><i class="fa-solid fa-folder"></i> My Request</p> 
+                                <p><i class="fa-solid fa-folder"></i> My Request @if (count($rq1) >= 1)
+                                    <span class="border border-red-500 rounded-full px-1 bg-red-500 text-white">{{ count($rq1) }}</span>
+                                @endif
+                                </p> 
                             </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">

@@ -10,41 +10,43 @@
                         <div class="bg-white rounded-[28px] shadow-md card">
                             <div class="card-body">
                                 <h1 class="card-title text-3xl font-extrabold">Create Update System</h1>
-                                <form action="">
+                                <form action="/createus" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="mt-3">
                                         <p class="font-bold">Title</p>
-                                        <input type="text" class="input rounded-xl input-bordered w-full">
+                                        <input type="text" class="input rounded-xl input-bordered w-full" name="title" value="{{ old('title') }}" required>
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Link .exe</p>
-                                        <input type="text" class="input rounded-xl input-bordered w-full">
+                                        <input type="text" class="input rounded-xl input-bordered w-full" name="linkexe" value="{{ old('linkexe') }}">
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Outlet</p>
                                         <select name="outlet" id="outlet" class="select select-bordered w-full">
-                                            <option value="">Bapak Bakery</option>
-                                            <option value="">Burger King</option>
-                                            <option value="">Blackcanyon Batam</option>
-                                            <option value="">The Plumber Arms</option>
+                                            @foreach ($outlet as $out)
+                                            <option value="{{ $out->id }}">{{ $out->nm_out }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Category</p>
-                                        <select name="outlet" id="outlet" class="select select-bordered w-full">
-                                            <option value="">PHIS</option>
-                                            <option value="">PRESTO</option>
-                                            <option value="">PPOS</option>
+                                        <select name="category" id="category" class="select select-bordered w-full">
+                                            @foreach ($kategori as $kt)
+                                            <option value="{{ $kt->id }}">{{ $kt->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Image</p>
-                                        <input type="file" multiple class="file-input file-input-bordered w-full">
+                                        <input type="file" multiple class="file-input file-input-bordered w-full" name="images[]">
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Description</p>
-                                        <input type="hidden" id="body" name="body">
+                                        <input type="hidden" id="body" name="body" value="{{ old('body') }}" required>
                                         <trix-editor trix-attachment-remove input="body"></trix-editor>
-                                        
+                                    </div>
+                                    <div class="mt-3">
+                                        <button type="submit" class="btn btn-neutral bg-black w-full">SAVE</button>
                                     </div>
                                 </form>
                             </div>

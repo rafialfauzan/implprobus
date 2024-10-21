@@ -36,7 +36,7 @@
                                     <li><a href="/updatestatus/{{ $datarq->id }}/1" class="btn btn-error text-white my-1 {{ $datarq->status_id == 1 ? 'hidden' : '' }}">Urgent</a></li>
                                     <li><a href="/updatestatus/{{ $datarq->id }}/2" class="btn btn-info text-white my-1 {{ $datarq->status_id == 2 ? 'hidden' : '' }}">Open</a></li>
                                     <li><a href="/updatestatus/{{ $datarq->id }}/3" class="btn btn-warning text-white my-1 {{ $datarq->status_id == 3 ? 'hidden' : '' }}">Progress</a></li> 
-                                    <li><a href="/updatestatus/{{ $datarq->id }}/4" class="btn btn-success text-white my-1 {{ $datarq->status_id == 4 ? 'hidden' : '' }}">Done</a></li>
+                                    <li><a href="/updatestatus/{{ $datarq->id }}/4" class="btn btn-success text-white my-1 {{ $datarq->status_id == 4 ? 'hidden' : '' }}">Closed</a></li>
                                 </ul>
                             </div>
                             @endif
@@ -58,7 +58,7 @@
                                         <form method="dialog">
                                             <button class="btn btn-sm btn-circle btn-error absolute right-2 top-2 text-white">✕</button>
                                         </form>
-                                        <img src="{{ asset('img/tes5.jpg') }}" alt="">
+                                        <img src="{{ asset('img/tes5.jpg') }}" alt="" class="w-full">
                                     </div>
                                 </dialog>
                                 <div class="card-actions justify-start">

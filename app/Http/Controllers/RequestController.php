@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Komentar;
+use App\Models\Outlet;
 use App\Models\Tag;
 use App\Models\Status;
 use App\Models\Kategori;
@@ -28,7 +29,8 @@ class RequestController extends Controller
         $tag = Tag::all();
         $kategori = Kategori::all();
         $status = Status::all();
-        return view('tablerq.createrq', compact('tag', 'kategori','status'));
+        $outlet = Outlet::all();
+        return view('tablerq.createrq', compact('tag', 'kategori','status','outlet'));
     }
 
     public function editrq($id){
@@ -37,7 +39,8 @@ class RequestController extends Controller
         $tag = Tag::all();
         $kategori = Kategori::all();
         $status = Status::all();
-        return view('tablerq.editrq', compact('tag','kategori', 'status', 'req', 'img'));
+        $outlet = Outlet::all();
+        return view('tablerq.editrq', compact('tag','kategori', 'status', 'req', 'img','outlet'));
     }
 
     public function store(Request $request){

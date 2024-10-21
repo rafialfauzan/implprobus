@@ -128,96 +128,26 @@
                <div class="flex flex-col">
                 <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mus" class="hover:border-abu hover:border-b-2">More Update System <i class="fa-solid fa-up-right-from-square"></i></a></h1>
                 <div class="grid md:grid-cols-4 grid-rows-1">
-                    <a href="/detailus" class="mx-2">
+                    @foreach ($us as $ius)
+                    <a href="/detailus/{{ $ius->id }}" class="mx-2">
                         <div class="card bg-white rounded-xl mt-3">
                             <div class="card-body">
                                 <h1 class="card-title font-bold">
-                                    Masalah tombol yang terlalu skibidi 
+                                    {{ $ius->judul }} 
                                 </h1>
                             </div>
                             <div class="card-actions justify-start pl-7">
-                                <div class="badge badge-secondary mb-3">Burger King</div>
+                                <div class="badge badge-secondary mb-3">{{ $ius->outlet->nm_out }}</div>
                             </div>
                             <div class="card-actions justify-start pl-7">
-                                <div class="badge badge-neutral mb-3 text-white">PHIS</div>
+                                <div class="badge badge-neutral mb-3 text-white">{{ $ius->kategori->name }}</div>
                             </div>
                             <div class="justify-start pl-7">
-                                <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 19 December 2024</div>
+                                <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> Posted: {{ $ius->created_at->toFormattedDayDateString() }} ({{ $ius->created_at->diffForHumans() }})</div>
                             </div>
                         </div>
                     </a>
-                    <a href="/detailus" class="mx-2">
-                        <div class="card bg-white rounded-xl mt-3">
-                            <div class="card-body">
-                                <h1 class="card-title font-bold">
-                                    Masalah tombol yang terlalu skibidi 
-                                </h1>
-                            </div>
-                            <div class="card-actions justify-start pl-7">
-                                <div class="badge badge-secondary mb-3">Burger King</div>
-                            </div>
-                            <div class="card-actions justify-start pl-7">
-                                <div class="badge badge-neutral mb-3 text-white">PHIS</div>
-                            </div>
-                            <div class="justify-start pl-7">
-                                <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 19 December 2024</div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/detailus" class="mx-2">
-                        <div class="card bg-white rounded-xl mt-3">
-                            <div class="card-body">
-                                <h1 class="card-title font-bold">
-                                    Masalah tombol yang terlalu skibidi 
-                                </h1>
-                            </div>
-                            <div class="card-actions justify-start pl-7">
-                                <div class="badge badge-secondary mb-3">Burger King</div>
-                            </div>
-                            <div class="card-actions justify-start pl-7">
-                                <div class="badge badge-neutral mb-3 text-white">PHIS</div>
-                            </div>
-                            <div class="justify-start pl-7">
-                                <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 19 December 2024</div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/detailus" class="mx-2">
-                        <div class="card bg-white rounded-xl mt-3">
-                            <div class="card-body">
-                                <h1 class="card-title font-bold">
-                                    Masalah tombol yang terlalu skibidi 
-                                </h1>
-                            </div>
-                            <div class="card-actions justify-start pl-7">
-                                <div class="badge badge-secondary mb-3">Burger King</div>
-                            </div>
-                            <div class="card-actions justify-start pl-7">
-                                <div class="badge badge-neutral mb-3 text-white">PHIS</div>
-                            </div>
-                            <div class="justify-start pl-7">
-                                <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 19 December 2024</div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/detailus" class="mx-2">
-                        <div class="card bg-white rounded-xl mt-3">
-                            <div class="card-body">
-                                <h1 class="card-title font-bold">
-                                    Masalah tombol yang terlalu skibidi 
-                                </h1>
-                            </div>
-                            <div class="card-actions justify-start pl-7">
-                                <div class="badge badge-secondary mb-3">Burger King</div>
-                            </div>
-                            <div class="card-actions justify-start pl-7">
-                                <div class="badge badge-neutral mb-3 text-white">PHIS</div>
-                            </div>
-                            <div class="justify-start pl-7">
-                                <div class="mb-3 text-xs"><i class="fa-solid fa-calendar"></i> 19 December 2024</div>
-                            </div>
-                        </div>
-                    </a>
+                    @endforeach
                 </div>
                </div>
                 </div>

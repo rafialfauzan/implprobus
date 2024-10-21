@@ -20,10 +20,13 @@
                                     <div class="mt-3">
                                         <p class="font-bold">Outlet</p>
                                         <select name="outlet" id="outlet" class="select select-bordered w-full">
-                                            <option value="1" {{ $req->outlet_id == 1 ? 'selected' : '' }}>Bapak Bakery</option>
-                                            <option value="2" {{ $req->outlet_id == 2 ? 'selected' : '' }}>Burger King</option>
-                                            <option value="3" {{ $req->outlet_id == 3 ? 'selected' : '' }}>Blackcanyon Batam</option>
-                                            <option value="4" {{ $req->outlet_id == 4 ? 'selected' : '' }}>The Plumber Arms</option>
+                                            @foreach ($outlet as $out)
+                                            @if (old('tag', $req->outlet_id) == $out->id)
+                                            <option value="{{ $out->id }}" selected>{{ $out->nm_out }}</option>
+                                            @else
+                                            <option value="{{ $out->id }}">{{ $out->nm_out }}</option>
+                                            @endif
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="mt-3">

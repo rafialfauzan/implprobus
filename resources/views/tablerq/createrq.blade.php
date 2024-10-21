@@ -15,15 +15,14 @@
                                     @csrf
                                     <div class="mt-3">
                                         <p class="font-bold">Title</p>
-                                        <input type="text" class="input rounded-xl input-bordered w-full" name="title">
+                                        <input type="text" class="input rounded-xl input-bordered w-full" name="title" value="{{ old('title') }}">
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Outlet</p>
                                         <select name="outlet" id="outlet" class="select select-bordered w-full">
-                                            <option value="1">Bapak Bakery</option>
-                                            <option value="2">Burger King</option>
-                                            <option value="3">Blackcanyon Batam</option>
-                                            <option value="4">The Plumber Arms</option>
+                                            @foreach ($outlet as $out)
+                                            <option value="{{ $out->id }}">{{ $out->nm_out }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="mt-3">
@@ -52,9 +51,9 @@
                                     <div class="mt-3">
                                         <p class="font-bold">Period</p>
                                         <div class="flex">
-                                            <input type="date" class="rounded-lg w-full border-gray-300" name="startdate">
+                                            <input type="date" class="rounded-lg w-full border-gray-300" name="startdate" value="{{ old('startdate') }}" required>
                                             <div class="divider divider-horizontal">TO</div>
-                                            <input type="date" class="rounded-lg w-full border-gray-300" name="enddate">
+                                            <input type="date" class="rounded-lg w-full border-gray-300" name="enddate" value="{{ old('enddate') }}" required>
                                         </div>
                                     </div>
                                     <div class="mt-3">
@@ -67,7 +66,7 @@
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Description</p>
-                                        <input type="hidden" id="body" name="body">
+                                        <input type="hidden" id="body" name="body" value="{{ old('body') }}">
                                         <trix-editor trix-attachment-remove input="body"></trix-editor>
                                     </div>
                                     <div class="mt-3">
