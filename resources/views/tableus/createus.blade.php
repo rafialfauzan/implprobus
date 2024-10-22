@@ -39,6 +39,10 @@
                                     <div class="mt-3">
                                         <p class="font-bold">Image</p>
                                         <input type="file" multiple class="file-input file-input-bordered w-full" name="images[]">
+                                        <div class="label">
+                                            <span class="label-text">MAX FILES: 6 IMAGES</span>
+                                            <span class="label-text">MAX SIZE: 200KB</span>
+                                        </div>
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Description</p>

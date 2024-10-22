@@ -1,5 +1,6 @@
 @php
     $aid = Auth::user()->id;
+    $ust = Auth::user()->usertype;
 @endphp
 <x-app-layout>
     <div class="py-12">
@@ -8,10 +9,10 @@
                 <div class="p-6">
                     <div class="flex flex-col md:px-40">
                         <div class="mb-5 flex flex-row justify-between">
-                            @if ($data->user_id == $aid)
-                            <a href="/editus" class="btn btn-neutral mt-3 bg-black rounded-[28px]"><i class="fa-solid fa-pen"></i> Edit Update System</a>
+                            @if ($data->user_id == $aid || $ust == 'admin')
+                            <a href="/editus/{{ $data->id }}" class="btn btn-neutral mt-3 bg-black rounded-[28px]"><i class="fa-solid fa-pen"></i> Edit Update System</a>
                             @endif
-                            <a href="{{ url()->previous() }}" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                            <a href="/" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
                         </div>
                         <div class="bg-white rounded-[28px] shadow-md card">
                             <div class="card-body">
@@ -33,7 +34,7 @@
                                             <form method="dialog">
                                                 <button class="btn btn-sm btn-circle btn-error absolute right-1 top-1 text-white">✕</button>
                                             </form>
-                                            <img src="{{ asset('img/tes5.jpg') }}" alt="">
+                                            <img src="{{ asset('img/tes5.jpg') }}" alt="" class="w-full">
                                         </div>
                                     </dialog>
                                 </div>
@@ -44,7 +45,12 @@
                                     <div class="badge badge-neutral badge-lg text-white">{{ $data->kategori->name }}</div>
                                 </div>
                                 <div>
-                                    <p class="text-sm font-bold"><i class="fa-solid fa-calendar"></i> Posted: {{ $data->created_at->toFormattedDayDateString() }}</p>
+                                    <p class="text-sm font-bold"><i class="fa-solid fa-calendar"></i> Posted: {{ $data->created_at->toFormattedDayDateString() }} ({{ $data->created_at->diffForHumans() }})</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold">
+                                        <i class="fa-solid fa-file-pen"></i> Updated: {{ $data->updated_at->toFormattedDayDateString() }} ({{ $data->updated_at->diffForHumans() }})
+                                    </p>
                                 </div>
                                 <div>
                                     <p class="text-sm font-bold"><i class="fa-solid fa-user-pen"></i> Created by {{ $data->user->name }}</p>

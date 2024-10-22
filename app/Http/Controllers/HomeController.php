@@ -18,7 +18,7 @@ class HomeController extends Controller
         ->take(5)->get();
         $closed = \App\Models\Request::where('status_id', 4)->latest()
         ->take(5)->get();
-        $us = UpdateSystem::latest()->take(5)->get();
+        $us = UpdateSystem::latest()->take(4)->get();
 
         return view('dashboard', compact('urgent', 'open', 'progress', 'closed', 'us'));
     }

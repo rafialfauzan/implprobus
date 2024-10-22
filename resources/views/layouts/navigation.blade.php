@@ -158,7 +158,9 @@
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('myreq')">
                     {{-- {{ __('My Request') }} --}}
-                    <p><i class="fa-solid fa-folder"></i> My Requests</p>
+                    <p><i class="fa-solid fa-folder"></i> My Requests @if (count($rq1) >= 1)
+                        <span class="border border-red-500 rounded-full px-1 bg-red-500 text-white">{{ count($rq1) }}</span>
+                    @endif</p>
                 </x-responsive-nav-link>
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

@@ -19,7 +19,8 @@ class UpdateSystemController extends Controller
     }
 
     public function mus(){
-        return view('tableus.mus');
+        $data = UpdateSystem::all();
+        return view('tableus.mus', compact('data'));
     }
 
     public function createus(){
@@ -28,8 +29,12 @@ class UpdateSystemController extends Controller
         return view('tableus.createus', compact('kategori','outlet'));
     }
 
-    public function editus(){
-        return view('tableus.editus');
+    public function editus($id){
+        $data = UpdateSystem::find($id);
+        $kategori = Kategori::all();
+        $outlet = Outlet::all();
+        $image = DataImage::where('updatesystem_id',$id)->get();
+        return view('tableus.editus', compact('data', 'kategori','outlet','image'));
     }
 
     public function store(Request $request){
@@ -67,5 +72,42 @@ class UpdateSystemController extends Controller
         DataImage::insert($imagedata);
         Alert::success('Create Update System Success!');
         return redirect()->route('detailus',['id' => $data->id]);
+    }
+
+    Public function update(Request $request,$id){
+        $us = UpdateSystem::find($id);
+        $request->validate([
+            'title' => 'required|max:255',
+            'body' => 'required',
+            'linkexe' => 'required|max:255',
+            'category' => 'required',
+            'outlet' => 'required',
+            'images' => 'array|max:6',
+            'images.*' => 'image|mimes:jpg,jpeg,png|max:200'
+        ]);
+
+        $us->update([
+            'judul' => $request->title,
+            'deskripsi' => $request->body,
+            'link' => $request->linkexe,
+            'kategori_id' => $request->category,
+            'outlet_id' => $request->outlet,
+        ]);
+
+        $imagedata = [];
+        if($request->hasfile('images')){
+            foreach ($request->file('images') as $image) {
+                $extension = $image->getClientOriginalName();
+                $filename = $extension;
+                $image->move('img/',$filename);
+                $imagedata[]=[
+                    'updatesystem_id' => $id,
+                    'image' => $filename
+                ];
+            }
+        }
+        DataImage::insert($imagedata);
+        Alert::success('Update System Successfully Edited!');
+        return redirect()->route('detailus', ['id' => $id]);
     }
 }

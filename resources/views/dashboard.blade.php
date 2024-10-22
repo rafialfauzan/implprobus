@@ -18,7 +18,7 @@
                     </div>
                     <div class="grid md:grid-cols-4 grid-rows-1">
                         <div class="flex flex-col w-full">
-                            <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mrq" class="hover:border-abu hover:border-b-2">Urgent <i class="fa-solid fa-up-right-from-square"></i></a></h1>
+                            <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mrq/1" class="hover:border-abu hover:border-b-2">Urgent <i class="fa-solid fa-up-right-from-square"></i></a></h1>
                             @foreach ($urgent as $urgents)
                             <a href="/detailrequest/{{ $urgents->id }}" class="mx-2">
                                 <div class="card bg-white rounded-xl mt-3">

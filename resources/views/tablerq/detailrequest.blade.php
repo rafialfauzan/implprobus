@@ -4,6 +4,7 @@
     $rqid = $datarq->user_id;
     $aid = Auth::user()->id;
     $stid = $datarq->status_id;
+    $ust = Auth::user()->usertype;
 
     if ($stid == 1) {
         $bg = "badge-error";
@@ -23,10 +24,10 @@
                 <div class="p-6">
                     <div class="flex flex-col md:px-40">
                         <div class="mb-5 flex flex-row justify-between">
-                            @if ($rqid == $aid)
+                            @if ($rqid == $aid || $ust == 'admin')
                             <a href="/editrq/{{ $datarq->id }}" class="btn btn-neutral mt-3 bg-black rounded-[28px]"><i class="fa-solid fa-pen"></i> Edit Request</a> 
                             @endif
-                            <a href="{{ url()->previous() }}" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                            <a href="/" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
                         </div>
                         <div class="bg-white rounded-[28px] shadow-md card">
                             @if ($datarq->status_id != 4)

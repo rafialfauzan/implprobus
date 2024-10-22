@@ -44,7 +44,7 @@
                                 <select name="usertype" id="usertype" class="rounded-lg w-full mt-1 shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                     <option value="admin">admin</option>
                                     <option value="supervisor">supervisor</option>
-                                    <option value="user">user</option>
+                                    <option value="user" selected>user</option>
                                 </select>
                             </div>
 

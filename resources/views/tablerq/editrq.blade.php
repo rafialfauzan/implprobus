@@ -78,7 +78,7 @@
                                         <input name="images[]" type="file" multiple class="file-input file-input-bordered w-full">
                                         <div class="label">
                                             <span class="label-text">MAX FILES: 6 IMAGES</span>
-                                            <span class="label-text">MAX SIZE: 1MB</span>
+                                            <span class="label-text">MAX SIZE: 200KB</span>
                                         </div>
                                         <div class="flex flex-row container">
                                             @foreach ($img as $image)
