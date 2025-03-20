@@ -110,4 +110,11 @@ class UpdateSystemController extends Controller
         Alert::success('Update System Successfully Edited!');
         return redirect()->route('detailus', ['id' => $id]);
     }
+
+    public function delete($id){
+        $us = UpdateSystem::find($id);
+        $us->delete();
+        Alert::success('Update System Successfully Deleted!');
+        return redirect()->back();
+    }
 }

@@ -27,7 +27,7 @@
                             @if ($rqid == $aid || $ust == 'admin')
                             <a href="/editrq/{{ $datarq->id }}" class="btn btn-neutral mt-3 bg-black rounded-[28px]"><i class="fa-solid fa-pen"></i> Edit Request</a> 
                             @endif
-                            <a href="/" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                            <a href="{{ url()->previous() }}" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
                         </div>
                         <div class="bg-white rounded-[28px] shadow-md card">
                             @if ($datarq->status_id != 4)
@@ -90,6 +90,24 @@
                                 </div>
                             </div>
                         </div>
+                        <details class="collapse bg-white mt-5 shadow-lg">
+                            <summary class="collapse-title text-xl font-medium">Status Log</summary>
+                            <div class="collapse-content">
+                              <p>content</p>
+                              <p>content</p>
+                              <p>content</p>
+                              <p>content</p>
+                              <p>content</p>
+                              <p>content</p>
+                              <p>content</p>
+                            </div>
+                          </details>
+                        <details class="collapse bg-white mt-5 shadow-lg">
+                            <summary class="collapse-title text-xl font-medium">Update System</summary>
+                            <div class="collapse-content">
+                              <p>content</p>
+                            </div>
+                          </details>
                         <div class="divider font-bold text-abu">
                             COMMENT
                         </div>

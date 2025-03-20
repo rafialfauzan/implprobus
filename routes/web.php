@@ -1,15 +1,19 @@
 <?php
 
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\RequestController;
-use App\Http\Controllers\UpdateSystemController;
+use App\Http\Controllers\accprofile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\MyrequsController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RequestController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\UpdateSystemController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +45,7 @@ Route::get('/deleteimg/{img}', [RequestController::class, 'deleteimg'])->middlew
 Route::get('/updatestatus/{id}/{stid}',[RequestController::class, 'updatestatus'])->middleware(['auth'])->name('updatestatus');
 Route::post('/komentar/{id}', [RequestController::class, 'komentar'])->middleware(['auth'])->name('komentar');
 Route::get('/deletekomen/{id}',[RequestController::class, 'deletekomen'])->middleware(['auth'])->name('deletekomen');
+Route::get('/deletereq/{id}',[RequestController::class, 'delete'])->middleware(['auth'])->name('deletereq');
 
 //Route Update System
 Route::get('/detailus/{id}', [UpdateSystemController::class, 'detailus'])->middleware(['auth'])->name('detailus');
@@ -49,6 +54,7 @@ Route::get('/createus', [UpdateSystemController::class, 'createus'])->middleware
 Route::get('/editus/{id}',[UpdateSystemController::class, 'editus'])->middleware(['auth'])->name('editus');
 Route::post('/createus', [UpdateSystemController::class, 'store'])->middleware(['auth'])->name('storeus');
 Route::post('/editus/{id}', [UpdateSystemController::class, 'update'])->middleware(['auth'])->name('updateus');
+Route::get('/deleteus/{id}', [UpdateSystemController::class, 'delete'])->middleware(['auth'])->name('deleteus');
 
 //Route My Request
 Route::get('/myreq', [MyController::class, 'index'])->middleware(['auth'])->name('myreq');
@@ -88,5 +94,25 @@ Route::get('/editstatus/{id}', [StatusController::class, 'editstatus'])->middlew
 Route::post('/createstatus', [StatusController::class, 'store'])->middleware(['auth'])->name('storestatus');
 Route::post('/editstatus/{id}', [StatusController::class, 'updatestatus'])->middleware(['auth'])->name('updatestatus');
 Route::get('/deletestatus/{id}',[StatusController::class, 'delete'])->middleware(['auth'])->name('deletestatus');
+
+//Route Client
+Route::get('/client', [ClientController::class, 'index'])->middleware(['auth'])->name('client');
+Route::get('/createclient', [ClientController::class, 'createclient'])->middleware(['auth'])->name('createclient');
+Route::get('/editclient/{id}', [ClientController::class, 'editclient'])->middleware(['auth'])->name('editclient');
+Route::post('/createclient', [ClientController::class, 'store'])->middleware(['auth'])->name('storeclient');
+Route::post('/editclient/{id}', [ClientController::class, 'updateclient'])->middleware(['auth'])->name('updateclient');
+Route::get('/deleteclient/{id}',[ClientController::class, 'delete'])->middleware(['auth'])->name('deleteclient');
+
+//Route Account Profile
+Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth'])->name('profile');
+Route::get('/editprofile/{id}', [ProfileController::class, 'edit'])->middleware(['auth'])->name('editprofile');
+Route::post('/editprofile/{id}', [ProfileController::class, 'updateprofile'])->middleware(['auth'])->name('updateprofile');
+Route::get('/editpassacc', [ProfileController::class, 'editpass'])->middleware(['auth'])->name('editpassacc');
+Route::post('/editpassacc', [ProfileController::class, 'updatepass'])->middleware(['auth'])->name('updatepassacc');
+
+//Route My Request & Update System
+Route::get('/myrequs', [MyrequsController::class, 'index'])->middleware(['auth'])->name('myrequs');
+Route::get('/myrequest', [MyrequsController::class, 'myrequest'])->middleware(['auth'])->name('myrequest');
+Route::get('/myupdatesystem', [MyrequsController::class, 'myupdatesystem'])->middleware(['auth'])->name('myupdatesystem');
 
 require __DIR__.'/auth.php';

@@ -1,6 +1,6 @@
 @php
     $usertag = Auth::user()->tag_id;
-    $rq1 = \App\Models\Request::where('tag_id', $usertag)->get();
+    $rq1 = \App\Models\Request::where('tag_id', $usertag)->where('status_id', '!=', 4)->get();
 @endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
@@ -49,8 +49,8 @@
                             <x-dropdown-link :href="route('kategori')">
                                     {{ __('Category List') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('status')">
-                                    {{ __('Status List') }}
+                            <x-dropdown-link :href="route('client')">
+                                    {{ __('Client List') }}
                             </x-dropdown-link>
                             @can('admin')
                             <x-dropdown-link :href="route('user')">
@@ -66,28 +66,41 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
+                        
                         <button class="flex items-end text-sm font-bold text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                            <div><i class="fa-solid fa-user"></i> {{ Auth::user()->name }}</div>
+                            
+                            <div><i class="fa-solid fa-user"></i> {{ Auth::user()->name }} </div>
+
+                            @if (count($rq1) >= 1)
+                            <span class="indicator-item badge badge-accent text-white ml-2">!</span>
+                            @endif
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                 </svg>
                             </div>
+                            
                         </button>
                     </x-slot>
 
                     <x-slot name="content">
-                        <div class="block px-4 py-2">
+                        {{-- <div class="block px-4 py-2">
                             <p class="font-bold text-sm leading-5 text-gray-700">Account Information</p>
                             <p class="text-sm leading-5 text-gray-500"><i class="fa-solid fa-envelope"></i> {{ Auth::user()->email }}</p>
                             <p class="text-sm leading-5 text-gray-500"><i class="fa-solid fa-user-shield"></i> {{ Auth::user()->usertype }}</p>
                             <p class="text-sm leading-5 text-gray-500"><i class="fa-solid fa-user-tag"></i> {{ Auth::user()->tag->name }}</p>
-                        </div>
+                        </div> --}}
+                        <x-dropdown-link href="/profile">
+                            <p><i class="fa-solid fa-user"></i> Profile</p>
+                        </x-dropdown-link>
+                        {{-- <x-dropdown-link href="/myrequs">
+                            <p><i class="fa-solid fa-folder"></i> My Request & Update System</p>
+                        </x-dropdown-link> --}}
                             <x-dropdown-link href="{{ route('myreq') }}">
                                 {{-- {{ __('My Request') }} --}}
-                                <p><i class="fa-solid fa-folder"></i> My Request @if (count($rq1) >= 1)
-                                    <span class="border border-red-500 rounded-full px-1 bg-red-500 text-white">{{ count($rq1) }}</span>
+                                <p><i class="fa-solid fa-list-check"></i> Request @if (count($rq1) >= 1)
+                                    <span class="border border-accent rounded-full px-1 bg-accent text-white">{{ count($rq1) }}</span>
                                 @endif
                                 </p> 
                             </x-dropdown-link>
@@ -98,7 +111,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                <p><i class="fa-solid fa-right-from-bracket"></i> Logout</p>
+                                <p class="text-red-500"><i class="fa-solid fa-right-from-bracket"></i> Logout</p>
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -113,6 +126,9 @@
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
+                @if (count($rq1) >= 1)
+                    <span class="indicator-item badge badge-accent text-white ml-2">!</span>
+                @endif
             </div>
         </div>
     </div>
@@ -148,18 +164,25 @@
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
+            {{-- <div class="px-4">
                 <div class="font-medium text-base text-gray-800"><i class="fa-solid fa-user"></i> {{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500"><i class="fa-solid fa-envelope"></i> {{ Auth::user()->email }}</div>
                 <div class="font-medium text-sm text-gray-500"><i class="fa-solid fa-user-shield"></i> {{ Auth::user()->usertype }}</div>
                 <div class="font-medium text-sm text-gray-500"><i class="fa-solid fa-user-tag"></i> {{ Auth::user()->tag->name }}</div>
-            </div>
+            </div> --}}
 
             <div class="mt-3 space-y-1">
+                <x-responsive-nav-link :href="route('profile')">
+                    {{-- {{ __('Profile') }} --}}
+                    <p><i class="fa-solid fa-user"></i> Profile</p>
+                </x-responsive-nav-link>
+                {{-- <x-responsive-nav-link :href="route('myrequs')">
+                    <p><i class="fa-solid fa-folder"></i> My Request & Update System</p>
+                </x-responsive-nav-link> --}}
                 <x-responsive-nav-link :href="route('myreq')">
                     {{-- {{ __('My Request') }} --}}
-                    <p><i class="fa-solid fa-folder"></i> My Requests @if (count($rq1) >= 1)
-                        <span class="border border-red-500 rounded-full px-1 bg-red-500 text-white">{{ count($rq1) }}</span>
+                    <p><i class="fa-solid fa-list-check"></i> Request @if (count($rq1) >= 1)
+                        <span class="border border-accent rounded-full px-1 bg-accent text-white">{{ count($rq1) }}</span>
                     @endif</p>
                 </x-responsive-nav-link>
                 <!-- Authentication -->
@@ -170,7 +193,7 @@
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{-- {{ __('Log Out') }} --}}
-                        <p><i class="fa-solid fa-right-from-bracket"></i> Logout</p>
+                        <p class="text-red-500"><i class="fa-solid fa-right-from-bracket"></i> Logout</p>
                     </x-responsive-nav-link>
                 </form>
             </div>

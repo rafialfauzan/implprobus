@@ -17,22 +17,24 @@
                         <a href="{{ url()->previous() }}" class="text-black hover:text-gray-700 text-3xl"><i class="fa-solid fa-circle-arrow-left"></i></a>
                     </div>
                     <div class="mt-5 mb-20">
-                        <a href="{{ route('createstatus') }}" class="bg-black font-bold text-white px-2 py-2 rounded-md border-black border-solid border-2 hover:bg-white hover:text-black transition delay-50 duration-300"><i class="fa-solid fa-plus"></i> Create new client</a>
+                        <a href="{{ route('createclient') }}" class="bg-black font-bold text-white px-2 py-2 rounded-md border-black border-solid border-2 hover:bg-white hover:text-black transition delay-50 duration-300"><i class="fa-solid fa-plus"></i> Create new client</a>
                     </div>
                     <div class="mt-5">
                         <table class="table-fixed w-full">
                             <thead class="bg-gray-300 text-black">
                                 <tr>
                                     <th class="p-3 text-sm font-bold tracking-wide text-left rounded-tl-xl">Name</th>
+                                    <th class="p-3 text-sm font-bold tracking-wide text-left">Lokasi</th>
                                     <th class="p-3 text-sm font-bold tracking-wide text-left rounded-tr-xl">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($status as $item)
+                                @foreach ($client as $cl)
                                     <tr>
-                                        <td class="p-3 text-sm text-abugelap">{{ $item->name }}</td>
-                                        <td class="p-3 text-xl text-abugelap"><a class="hover:text-black m-2" href="/editstatus/{{ $item->id }}"><i class="fa-solid fa-pen"></i></a>
-                                            {{-- <a onclick="return confirm('Are you sure you want to delete this data?')" class="hover:text-black m-2" href="/deletestatus/{{ $item->id }}"><i class="fa-solid fa-trash"></i></a>--}}</td> 
+                                        <td class="p-3 text-sm text-abugelap">{{ $cl->nm_out }}</td>
+                                        <td class="p-3 text-sm text-abugelap">{{ $cl->lokasi }}</td>
+                                        <td class="p-3 text-xl text-abugelap"><a class="hover:text-black m-2" href="/editclient/{{ $cl->id }}"><i class="fa-solid fa-pen"></i></a>
+                                            <a onclick="return confirm('Are you sure you want to delete this data?')" class="hover:text-black m-2" href="/deleteclient/{{ $cl->id }}"><i class="fa-solid fa-trash"></i></a></td> 
                                     </tr>
                                 @endforeach
                             </tbody>

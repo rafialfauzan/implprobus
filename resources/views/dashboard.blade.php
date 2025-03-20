@@ -25,7 +25,7 @@
                                     <div class="absolute right-0 m-3 badge badge-error rounded-[2px] text-white">{{ $urgents->status->name }}</div>
                                     <div class="card-body">
                                         <h1 class="card-title font-bold">
-                                            {{ $urgents->judul }} 
+                                            {{ Str::limit($urgents->judul, 40, '...') }} 
                                         </h1>
                                     </div>
                                     <div class="card-actions justify-start pl-7">
@@ -50,7 +50,7 @@
                                     <div class="absolute right-0 m-3 badge badge-info rounded-[2px] text-white">{{ $opens->status->name }}</div>
                                     <div class="card-body">
                                         <h1 class="card-title font-bold">
-                                            {{ $opens->judul }}
+                                            {{ Str::limit($opens->judul, 40, '...') }}
                                         </h1>
                                     </div>
                                     <div class="card-actions justify-start pl-7">
@@ -75,7 +75,7 @@
                                     <div class="absolute right-0 m-3 badge badge-warning rounded-[2px] text-white">{{ $prog->status->name }}</div>
                                     <div class="card-body">
                                         <h1 class="card-title font-bold">
-                                            {{ $prog->judul }} 
+                                            {{ Str::limit($prog->judul, 40, '...') }} 
                                         </h1>
                                     </div>
                                     <div class="card-actions justify-start pl-7">
@@ -100,7 +100,7 @@
                                     <div class="absolute right-0 m-3 badge badge-success rounded-[2px] text-white">{{ $close->status->name }}</div>
                                     <div class="card-body">
                                         <h1 class="card-title font-bold">
-                                            {{ $close->judul }} 
+                                            {{ Str::limit($close->judul, 40, '...') }} 
                                         </h1>
                                     </div>
                                     <div class="card-actions justify-start pl-7">
@@ -123,7 +123,7 @@
                    </div>
                    <div class="flex flex-row justify-between">
                     <h1 class="text-2xl md:text-3xl mt-2 md:mt-0 font-extrabold text-abugelap">Update System</h1>
-                    <a href="{{ url('createus') }}" class="btn bg-black text-white font-bold hover:bg-gray-700"><i class="fa-solid fa-plus"></i> Create Update System</a>
+                    {{-- <a href="{{ url('createus') }}" class="btn bg-black text-white font-bold hover:bg-gray-700"><i class="fa-solid fa-plus"></i> Create Update System</a> --}}
                 </div>
                <div class="flex flex-col">
                 <h1 class="font-bold text-abu mt-2 ml-2"><a href="/mus" class="hover:border-abu hover:border-b-2">More Update System <i class="fa-solid fa-up-right-from-square"></i></a></h1>
@@ -133,7 +133,7 @@
                         <div class="card bg-white rounded-xl mt-3">
                             <div class="card-body">
                                 <h1 class="card-title font-bold">
-                                    {{ $ius->judul }} 
+                                    {{ Str::limit($ius->judul, 40, '...') }} 
                                 </h1>
                             </div>
                             <div class="card-actions justify-start pl-7">

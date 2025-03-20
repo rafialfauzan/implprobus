@@ -5,7 +5,7 @@
                 <div class="p-6">
                     <div class="flex flex-col md:px-40">
                         <div class="text-end text-5xl mb-5">
-                            <a href="/detailrequest/{{ $req->id }}" class="text-black hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                            <a href="{{ url()->previous() }}" class="text-black hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
                         </div>
                         <x-auth-validation-errors class="mb-4" :errors="$errors" />
                         <div class="bg-white rounded-[28px] shadow-md card">

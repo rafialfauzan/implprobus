@@ -162,4 +162,11 @@ class RequestController extends Controller
         Alert::success('Comment Deleted!');
         return redirect()->back();
     }
+
+    public function delete($id){
+        $data = \App\Models\Request::find($id);
+        $data->delete();
+        Alert::success('Request Deleted!');
+        return redirect()->back();
+    }
 }
