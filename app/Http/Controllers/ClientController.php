@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Outlet;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ClientController extends Controller
 {
@@ -16,5 +17,47 @@ class ClientController extends Controller
     public function createclient(){
         $this->authorize('aspv');
         return view('tableclient.createclient');
+    }
+
+    public function editclient($id){
+        $this->authorize('aspv');
+        $client = Outlet::find($id);
+        return view('tableclient.editclient', compact('client'));
+    }
+
+    public function store(Request $request){
+        $this->authorize('aspv');
+        $client = new Outlet;
+        $request->validate([
+            'name'=>'max:255',
+            'lokasi'=>'max:255'
+        ]);
+        $client = Outlet::create([
+            'nm_out'=>$request->input('name'),
+            'lokasi'=>$request->input('lokasi')
+        ]);
+        Alert::success('Successfully Added Data!');
+        return redirect('/client');
+    }
+
+    public function update(Request $request, $id){
+        $client = Outlet::find($id);
+        $request->validate([
+            'name'=>'max:255',
+            'lokasi'=>'max:255'
+        ]);
+        $client->update([
+            'nm_out'=>$request->input('name'),
+            'lokasi'=>$request->input('lokasi')
+        ]);
+        Alert::success('Successfully Edit Data!');
+        return redirect('/client');
+    }
+
+    public function delete($id){
+        $client = Outlet::find($id);
+        $client->delete();
+        Alert::success('Successfully Delete Data!');
+        return redirect('/client');
     }
 }

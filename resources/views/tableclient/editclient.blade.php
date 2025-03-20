@@ -9,16 +9,21 @@
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <div class="flex-col">
                         <div>
-                            <p class="text-center text-xl font-bold">Edit status</p>
+                            <p class="text-center text-xl font-bold">Edit client</p>
                         </div>
-                        <form method="POST" action="/editstatus/{{ $data->id }}">
+                        <form method="POST" action="/editclient/{{ $client->id }}">
                             @csrf
                 
                             <!-- Name -->
                             <div class="mt-5">
                                 <x-label for="name" :value="__('Name')" />
                 
-                                <x-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{ $data->name }}" required autofocus />
+                                <x-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{ $client->nm_out }}" required autofocus />
+                            </div>
+                            <div class="mt-5">
+                                <x-label for="name" :value="__('Lokasi')" />
+                
+                                <x-input id="lokasi" class="block mt-1 w-full" type="text" name="lokasi" value="{{ $client->lokasi }}" required autofocus />
                             </div>
                 
                             <div class="flex items-center justify-end mt-4">

@@ -24,7 +24,7 @@
                             <div class="mt-5">
                                 <x-label for="name" :value="__('Lokasi')" />
                 
-                                <x-input id="lokasi" class="block mt-1 w-full" type="text" name="lokasi" :value="old('name')" required autofocus />
+                                <x-input id="lokasi" class="block mt-1 w-full" type="text" name="lokasi" :value="old('lokasi')" required autofocus />
                             </div>
                 
                             <div class="flex items-center justify-end mt-4">

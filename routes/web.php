@@ -100,7 +100,7 @@ Route::get('/client', [ClientController::class, 'index'])->middleware(['auth'])-
 Route::get('/createclient', [ClientController::class, 'createclient'])->middleware(['auth'])->name('createclient');
 Route::get('/editclient/{id}', [ClientController::class, 'editclient'])->middleware(['auth'])->name('editclient');
 Route::post('/createclient', [ClientController::class, 'store'])->middleware(['auth'])->name('storeclient');
-Route::post('/editclient/{id}', [ClientController::class, 'updateclient'])->middleware(['auth'])->name('updateclient');
+Route::post('/editclient/{id}', [ClientController::class, 'update'])->middleware(['auth'])->name('updateclient');
 Route::get('/deleteclient/{id}',[ClientController::class, 'delete'])->middleware(['auth'])->name('deleteclient');
 
 //Route Account Profile

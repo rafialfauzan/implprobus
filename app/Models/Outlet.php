@@ -10,4 +10,6 @@ class Outlet extends Model
     use HasFactory;
 
     protected $table = 'outlet';
+
+    protected $fillable = ['nm_out', 'lokasi'];
 }

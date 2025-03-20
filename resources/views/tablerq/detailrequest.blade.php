@@ -129,7 +129,7 @@
                             @endforeach
                             @endif
                         </div>
-                        <div class="my-5">
+                        <div class="my-5 bg-white shadow-lg rounded-xl p-2">
                             <form action="/komentar/{{ $datarq->id }}" method="POST">
                                 @csrf
                                 <input type="hidden" id="comment" name="comment" value="{{ old('comment') }}">
