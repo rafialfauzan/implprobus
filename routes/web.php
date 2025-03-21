@@ -45,7 +45,7 @@ Route::get('/deleteimg/{img}', [RequestController::class, 'deleteimg'])->middlew
 Route::get('/updatestatus/{id}/{stid}',[RequestController::class, 'updatestatus'])->middleware(['auth'])->name('updatestatus');
 Route::post('/komentar/{id}', [RequestController::class, 'komentar'])->middleware(['auth'])->name('komentar');
 Route::get('/deletekomen/{id}',[RequestController::class, 'deletekomen'])->middleware(['auth'])->name('deletekomen');
-Route::get('/deletereq/{id}',[RequestController::class, 'delete'])->middleware(['auth'])->name('deletereq');
+Route::delete('/deletereq/{id}',[RequestController::class, 'delete'])->middleware(['auth'])->name('deletereq');
 
 //Route Update System
 Route::get('/detailus/{id}', [UpdateSystemController::class, 'detailus'])->middleware(['auth'])->name('detailus');
@@ -54,7 +54,7 @@ Route::get('/createus', [UpdateSystemController::class, 'createus'])->middleware
 Route::get('/editus/{id}',[UpdateSystemController::class, 'editus'])->middleware(['auth'])->name('editus');
 Route::post('/createus', [UpdateSystemController::class, 'store'])->middleware(['auth'])->name('storeus');
 Route::post('/editus/{id}', [UpdateSystemController::class, 'update'])->middleware(['auth'])->name('updateus');
-Route::get('/deleteus/{id}', [UpdateSystemController::class, 'delete'])->middleware(['auth'])->name('deleteus');
+Route::delete('/deleteus/{id}', [UpdateSystemController::class, 'delete'])->middleware(['auth'])->name('deleteus');
 
 //Route My Request
 Route::get('/myreq', [MyController::class, 'index'])->middleware(['auth'])->name('myreq');
@@ -68,7 +68,7 @@ Route::post('/registeracc',[UserController::class, 'store'])->middleware(['auth'
 Route::get('/editacc/{id}',[UserController::class, 'editacc'])->middleware(['auth'])->name('editacc');
 Route::post('/editacc/{id}',[UserController::class, 'edit'])->middleware(['auth'])->name('updateacc');
 Route::get('/editpass/{id}', [UserController::class, 'editpass'])->middleware(['auth'])->name('editpass');
-Route::get('/deleteacc/{id}',[UserController::class, 'delete'])->middleware(['auth'])->name('deleteacc');
+Route::delete('/deleteacc/{id}',[UserController::class, 'delete'])->middleware(['auth'])->name('deleteacc');
 Route::post('/editpass/{id}', [UserController::class, 'updatepass'])->middleware(['auth'])->name('updatepass');
 
 //Route Tag
@@ -77,7 +77,7 @@ Route::get('/createtag', [TagController::class, 'createtag'])->middleware(['auth
 Route::get('/edittag/{id}', [TagController::class, 'edittag'])->middleware(['auth'])->name('edittag');
 Route::post('/createtag', [TagController::class, 'store'])->middleware(['auth'])->name('storetag');
 Route::post('/edittag/{id}', [TagController::class, 'updatetag'])->middleware(['auth'])->name('updatetag');
-Route::get('/deletetag/{id}', [TagController::class, 'delete'])->middleware(['auth'])->name('deletetag');
+Route::delete('/deletetag/{id}', [TagController::class, 'delete'])->middleware(['auth'])->name('deletetag');
 
 //Route Kategori
 Route::get('/kategori', [KategoriController::class, 'index'])->middleware(['auth'])->name('kategori');
@@ -85,7 +85,7 @@ Route::get('/createkategori', [KategoriController::class, 'createkategori'])->mi
 Route::get('/editkategori/{id}', [KategoriController::class, 'editkategori'])->middleware(['auth'])->name('editkategori');
 Route::post('/createkategori', [KategoriController::class, 'store'])->middleware(['auth'])->name('storekategori');
 Route::post('/editkategori/{id}', [KategoriController::class, 'updatekategori'])->middleware(['auth'])->name('updatekategori');
-Route::get('/deletekategori/{id}',[KategoriController::class, 'delete'])->middleware(['auth'])->name('deletekategori');
+Route::delete('/deletekategori/{id}',[KategoriController::class, 'delete'])->middleware(['auth'])->name('deletekategori');
 
 //Route Status
 Route::get('/status', [StatusController::class, 'index'])->middleware(['auth'])->name('status');
@@ -101,7 +101,7 @@ Route::get('/createclient', [ClientController::class, 'createclient'])->middlewa
 Route::get('/editclient/{id}', [ClientController::class, 'editclient'])->middleware(['auth'])->name('editclient');
 Route::post('/createclient', [ClientController::class, 'store'])->middleware(['auth'])->name('storeclient');
 Route::post('/editclient/{id}', [ClientController::class, 'update'])->middleware(['auth'])->name('updateclient');
-Route::get('/deleteclient/{id}',[ClientController::class, 'delete'])->middleware(['auth'])->name('deleteclient');
+Route::delete('/deleteclient/{id}',[ClientController::class, 'delete'])->middleware(['auth'])->name('deleteclient');
 
 //Route Account Profile
 Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth'])->name('profile');

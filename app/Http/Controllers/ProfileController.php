@@ -14,6 +14,9 @@ class ProfileController extends Controller
 {
     public function index()
     {
+        $title = 'Delete Data!';
+        $text = 'Are you sure you want to delete this data?';
+        confirmDelete($title, $text);
         $uid = Auth::user()->id;
         $req = \App\Models\Request::where('user_id',$uid)->latest()
         ->take(5)->get();

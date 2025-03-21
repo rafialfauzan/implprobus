@@ -35,7 +35,7 @@
                                                 <td class="p-3 text-lg text-abugelap"><a href="/detailrequest/{{ $rq->id }}" class="hover:underline">{{ Str::limit($rq->judul, 40, '...') }}</a></td>
                                                 <td class="p-3 text-sm text-abugelap"><div class="badge {{ $bg }} badge-lg rounded text-white">{{ $rq->status->name }}</div></td>
                                                 <td class="p-3 text-xl text-abugelap"><a class="hover:text-black m-2" href="/edittag/"><i class="fa-solid fa-pen"></i></a>
-                                                    <a onclick="return confirm('Are you sure you want to delete this data?')" class="hover:text-black m-2" href="/deletetag/"><i class="fa-solid fa-trash"></i></a></td>
+                                                    <a data-confirm-delete="true" class="hover:text-black m-2" href="/deletetag/"><i class="fa-solid fa-trash"></i></a></td>
                                             </tr>
                             @endforeach
                         </tbody>

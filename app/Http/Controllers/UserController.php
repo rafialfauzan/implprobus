@@ -14,6 +14,9 @@ class UserController extends Controller
 {
     public function index(){
         $this->authorize('admin');
+        $title = 'Delete User!';
+        $text = 'Are you sure you want to delete this user?';
+        confirmDelete($title, $text);
         $user = User::all();
         return view('tableuser.user', compact('user'));
     }

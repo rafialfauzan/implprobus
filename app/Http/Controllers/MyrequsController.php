@@ -14,12 +14,18 @@ class MyrequsController extends Controller
     }
 
     public function myrequest(){
+        $title = 'Delete Request!';
+        $text = 'Are you sure you want to delete this data?';
+        confirmDelete($title, $text);
         $id = Auth::user()->id;
         $req = \App\Models\Request::where('user_id',$id)->latest()->get();
         return view('tablemyrequs.myrequest', compact('req'));
     }
 
     public function myupdatesystem(){
+        $title = 'Delete Update System!';
+        $text = 'Are you sure you want to delete this data?';
+        confirmDelete($title, $text);
         $id = Auth::user()->id;
         $updt = UpdateSystem::where('user_id',$id)->latest()->get();
         return view('tablemyrequs.myupdatesystem', compact('updt'));

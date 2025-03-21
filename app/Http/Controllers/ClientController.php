@@ -10,6 +10,9 @@ class ClientController extends Controller
 {
     public function index(){
         $this->authorize('aspv');
+        $title = 'Delete Client!';
+        $text = 'Are you sure you want to delete this data?';
+        confirmDelete($title, $text); 
         $client = Outlet::all();
         return view('tableclient.client', compact('client'));
     }

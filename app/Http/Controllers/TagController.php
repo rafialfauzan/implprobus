@@ -10,6 +10,9 @@ class TagController extends Controller
 {
     public function index(){
         $this->authorize('aspv');
+        $title = 'Delete Tag!';
+        $text = 'Are you sure you want to delete this data?';
+        confirmDelete($title, $text);
         $tag = Tag::all();
         return view('tabletag.tag', compact('tag'));
     }

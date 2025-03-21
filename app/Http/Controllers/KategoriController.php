@@ -10,6 +10,9 @@ class KategoriController extends Controller
 {
     public function index(){
         $this->authorize('aspv');
+        $title = 'Delete Category!';
+        $text = 'Are you sure you want to delete this data?';
+        confirmDelete($title, $text);
         $kategori = Kategori::all();
         return view('tablekategori.kategori', compact('kategori'));
     }
