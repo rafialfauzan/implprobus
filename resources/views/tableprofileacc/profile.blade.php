@@ -93,9 +93,9 @@
                                             @foreach ($updt as $up)
                                                 <tr>
                                                     <td class="p-3 text-lg text-abugelap"><a href="/detailus/{{ $up->id }}" class="hover:underline">{{ Str::limit($up->judul, 25, '...') }}</a></td>
-                                                    <td class="p-3 text-lg text-abugelap"><a href="#" class="hover:underline">Lorem ipsum dolor sit amet...</a></td>
+                                                    <td class="p-3 text-lg text-abugelap"><a href="/detailrequest/{{ $up->request_id }}" class="hover:underline">{{ $up->request->judul }}</a></td>
                                                     <td class="p-3 text-xl text-abugelap"><a class="hover:text-black m-2" href="/editus/{{ $up->id }}"><i class="fa-solid fa-pen"></i></a>
-                                                        <a data-confirm-delete="true" class="hover:text-black m-2" href="#"><i class="fa-solid fa-trash"></i></a></td>
+                                                        <a data-confirm-delete="true" class="hover:text-black m-2" href="/deleteus/{{ $up->id }}"><i class="fa-solid fa-trash"></i></a></td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

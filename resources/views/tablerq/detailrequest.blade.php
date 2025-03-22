@@ -3,6 +3,7 @@
     $rentang = Carbon::parse($datarq->start_date)->diffInDays(Carbon::parse($datarq->end_date));
     $rqid = $datarq->user_id;
     $aid = Auth::user()->id;
+    $ait = Auth::user()->tag_id;
     $stid = $datarq->status_id;
     $ust = Auth::user()->usertype;
 
@@ -30,16 +31,26 @@
                             <a href="{{ url()->previous() }}" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
                         </div>
                         <div class="bg-white rounded-[28px] shadow-md card">
-                            @if ($datarq->status_id != 4)
+                            @if ($stid != 4)
+                            @if ($ait == $datarq->tag_id || $aid == $datarq->user_id)
+                            
                             <div class="dropdown dropdown-top absolute right-0 bottom-0 m-3 rounded-[16px]">
                                 <div tabindex="0" role="button" class="btn m-1">Change Status</div>
                                 <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-40 p-2 shadow">
-                                    <li><a href="/updatestatus/{{ $datarq->id }}/1" class="btn btn-error text-white my-1 {{ $datarq->status_id == 1 ? 'hidden' : '' }}">Urgent</a></li>
-                                    <li><a href="/updatestatus/{{ $datarq->id }}/2" class="btn btn-info text-white my-1 {{ $datarq->status_id == 2 ? 'hidden' : '' }}">Open</a></li>
+                                    @if ($datarq->status_id == 1 || $datarq->status_id == 2)
+                                    
                                     <li><a href="/updatestatus/{{ $datarq->id }}/3" class="btn btn-warning text-white my-1 {{ $datarq->status_id == 3 ? 'hidden' : '' }}">Progress</a></li> 
+                                    
+                                    @else
+                                    
                                     <li><a href="/updatestatus/{{ $datarq->id }}/4" class="btn btn-success text-white my-1 {{ $datarq->status_id == 4 ? 'hidden' : '' }}">Closed</a></li>
+                                    
+                                    @endif
+                                    {{-- <li><a href="/updatestatus/{{ $datarq->id }}/1" class="btn btn-error text-white my-1 {{ $datarq->status_id == 1 ? 'hidden' : '' }}">Urgent</a></li>
+                                    <li><a href="/updatestatus/{{ $datarq->id }}/2" class="btn btn-info text-white my-1 {{ $datarq->status_id == 2 ? 'hidden' : '' }}">Open</a></li> --}}
                                 </ul>
                             </div>
+                            @endif
                             @endif
                             <div class="absolute right-0 md:m-5 m-3 badge {{ $bg }} badge-lg rounded text-white">{{ $datarq->status->name }}</div>
                             <div class="card-body">
@@ -90,7 +101,15 @@
                                 </div>
                             </div>
                         </div>
-                        <details class="collapse bg-white mt-5 shadow-lg">
+                        @if ($stid != 1 && $stid != 2)
+                            
+                        @if ($datarq->user_id != $aid && $ait == $datarq->tag_id)
+                        <div>
+                            <a href="/createus/{{ $datarq->id }}"><button type="button" class="btn btn-neutral bg-black mt-3 w-full text-white rounded-3xl"><i class="fa-solid fa-plus"></i> Create Update System</button></a>
+                        </div> 
+                        @endif
+                        @endif
+                        {{-- <details class="collapse bg-white mt-5 shadow-lg">
                             <summary class="collapse-title text-xl font-medium">Status Log</summary>
                             <div class="collapse-content">
                               <p>content</p>
@@ -101,13 +120,31 @@
                               <p>content</p>
                               <p>content</p>
                             </div>
-                          </details>
+                        </details> --}}
+                        @if (count($dataus) >= 1)
                         <details class="collapse bg-white mt-5 shadow-lg">
-                            <summary class="collapse-title text-xl font-medium">Update System</summary>
+                            <summary class="collapse-title text-xl font-bold">Update System</summary>
                             <div class="collapse-content">
-                              <p>content</p>
+                                <div class="overflow-x-auto">
+                                    <table class="table">
+                                      
+                                      <tbody>
+                                        <!-- row 1 -->
+                                        @foreach ($dataus as $us)
+                                        <tr>
+                                          <th><div class="badge badge-accent badge-outline mx-1">{{ $us->user->name }}</div></th>
+                                          <td><a href="/detailus/{{ $us->id }}" class="hover:underline font-bold text-base">{{ $us->judul }} <i class="fa-solid fa-up-right-from-square"></i></a></td>
+                                          <td>{{ $us->created_at->diffForHumans() }}</td>
+                                        </tr>
+                                        @endforeach
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                
+                                  {{-- <p class="my-1"> </p> --}}
                             </div>
-                          </details>
+                        </details>
+                        @endif
                         <div class="divider font-bold text-abu">
                             COMMENT
                         </div>
@@ -123,7 +160,7 @@
                                     {!! $komen->body !!}
                                 </div>
                                 @if ($komen->user_id == $aid)
-                                <div class="chat-footer opacity-50"><a onclick="return confirm('Are you sure you want to delete this comment?')" href="/deletekomen/{{ $komen->id }}" class="hover:underline">Delete Comment</a></div>
+                                <div class="chat-footer opacity-50"><a data-confirm-delete="true" href="/deletekomen/{{ $komen->id }}" class="hover:underline">Delete Comment</a></div>
                                 @endif
                             </div>
                             @endforeach

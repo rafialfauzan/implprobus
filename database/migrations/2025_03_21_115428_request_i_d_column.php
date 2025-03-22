@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableUpdatesystem extends Migration
+class RequestIDColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateTableUpdatesystem extends Migration
      */
     public function up()
     {
-        Schema::create('updatesystem', function (Blueprint $table) {
-            $table->id();
-            $table->string('judul');
-            $table->text('deskripsi');
-            $table->string('link')->nullable();
-            $table->timestamps();
+        Schema::table('updatesystem', function (Blueprint $table) {
+            $table->unsignedBigInteger('request_id');
+            $table->foreign('request_id')->references('id')->on('request');
         });
     }
 
@@ -29,6 +26,8 @@ class CreateTableUpdatesystem extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('updatesystem');
+        Schema::table('updatesystem', function (Blueprint $table) {
+            //
+        });
     }
 }

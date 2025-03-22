@@ -23,10 +23,11 @@ class UpdateSystemController extends Controller
         return view('tableus.mus', compact('data'));
     }
 
-    public function createus(){
+    public function createus($id){
+        $req = \App\Models\Request::find($id);
         $kategori = Kategori::all();
         $outlet = Outlet::all();
-        return view('tableus.createus', compact('kategori','outlet'));
+        return view('tableus.createus', compact('kategori','outlet','req'));
     }
 
     public function editus($id){
@@ -41,9 +42,10 @@ class UpdateSystemController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'body' => 'required',
-            'linkexe' => 'required|max:255',
+            'linkexe' => 'max:255',
             'category' => 'required',
             'outlet' => 'required',
+            'req' => 'required',
             'images' => 'array|max:6',
             'images.*' => 'image|mimes:jpg,jpeg,png|max:200'
         ]);
@@ -55,6 +57,7 @@ class UpdateSystemController extends Controller
             'kategori_id' => $request->category,
             'user_id' => Auth::user()->id,
             'outlet_id' => $request->outlet,
+            'request_id' => $request->req,
         ]);
 
         $imagedata = [];
@@ -79,9 +82,10 @@ class UpdateSystemController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'body' => 'required',
-            'linkexe' => 'required|max:255',
+            'linkexe' => 'max:255',
             'category' => 'required',
             'outlet' => 'required',
+            'req' => 'required',
             'images' => 'array|max:6',
             'images.*' => 'image|mimes:jpg,jpeg,png|max:200'
         ]);

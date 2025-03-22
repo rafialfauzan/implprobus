@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Komentar;
-use App\Models\Outlet;
 use App\Models\Tag;
+use App\Models\Outlet;
 use App\Models\Status;
 use App\Models\Kategori;
+use App\Models\Komentar;
 use App\Models\DataImage;
+use App\Models\UpdateSystem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -15,10 +16,14 @@ use RealRashid\SweetAlert\Facades\Alert;
 class RequestController extends Controller
 {
     public function detailrequest($id){
+        $title = 'Delete Comment!';
+        $text = 'Are you sure you want to delete this comment?';
+        confirmDelete($title, $text);
         $datarq = \App\Models\Request::find($id);
         $dataimg = DataImage::where('request_id', $id)->get();
         $komentar = Komentar::where('request_id', $id)->get();
-        return view('tablerq.detailrequest', compact('datarq', 'dataimg','komentar'));
+        $dataus = UpdateSystem::where('request_id', $id)->get();
+        return view('tablerq.detailrequest', compact('datarq', 'dataimg','komentar','dataus'));
     }
 
     public function mrq(){

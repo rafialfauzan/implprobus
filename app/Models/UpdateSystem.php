@@ -11,7 +11,7 @@ class UpdateSystem extends Model
 
     protected $table = 'updatesystem';
 
-    protected $fillable = ['judul', 'deskripsi', 'link', 'user_id', 'kategori_id', 'outlet_id'];
+    protected $fillable = ['judul', 'deskripsi', 'link', 'user_id', 'kategori_id', 'outlet_id', 'request_id'];
 
     public function user(){
         return $this->belongsTo(User::class);
@@ -31,5 +31,9 @@ class UpdateSystem extends Model
 
     public function kategori(){
         return $this->belongsTo(Kategori::class);
+    }
+
+    public function request(){
+        return $this->belongsTo(Request::class);
     }
 }

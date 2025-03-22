@@ -44,13 +44,13 @@ Route::post('/editrq/{id}', [RequestController::class, 'updaterq'])->middleware(
 Route::get('/deleteimg/{img}', [RequestController::class, 'deleteimg'])->middleware(['auth'])->name('deleteimg');
 Route::get('/updatestatus/{id}/{stid}',[RequestController::class, 'updatestatus'])->middleware(['auth'])->name('updatestatus');
 Route::post('/komentar/{id}', [RequestController::class, 'komentar'])->middleware(['auth'])->name('komentar');
-Route::get('/deletekomen/{id}',[RequestController::class, 'deletekomen'])->middleware(['auth'])->name('deletekomen');
+Route::delete('/deletekomen/{id}',[RequestController::class, 'deletekomen'])->middleware(['auth'])->name('deletekomen');
 Route::delete('/deletereq/{id}',[RequestController::class, 'delete'])->middleware(['auth'])->name('deletereq');
 
 //Route Update System
 Route::get('/detailus/{id}', [UpdateSystemController::class, 'detailus'])->middleware(['auth'])->name('detailus');
 Route::get('/mus', [UpdateSystemController::class, 'mus'])->middleware(['auth'])->name('mus');
-Route::get('/createus', [UpdateSystemController::class, 'createus'])->middleware(['auth'])->name('createus');
+Route::get('/createus/{id}', [UpdateSystemController::class, 'createus'])->middleware(['auth'])->name('createus');
 Route::get('/editus/{id}',[UpdateSystemController::class, 'editus'])->middleware(['auth'])->name('editus');
 Route::post('/createus', [UpdateSystemController::class, 'store'])->middleware(['auth'])->name('storeus');
 Route::post('/editus/{id}', [UpdateSystemController::class, 'update'])->middleware(['auth'])->name('updateus');
