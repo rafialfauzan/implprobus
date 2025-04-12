@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RequestLog;
 use App\Models\UpdateSystem;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -24,7 +25,8 @@ class HomeController extends Controller
     }
 
     public function activitylog(){
-        return view('activitylog');
+        $reqlog = RequestLog::latest()->take(10)->get();
+        return view('activitylog', compact('reqlog'));
     }
 
     public function morerq($id){
