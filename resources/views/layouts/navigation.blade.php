@@ -1,6 +1,7 @@
 @php
     $usertag = Auth::user()->tag_id;
     $rq1 = \App\Models\Request::where('tag_id', $usertag)->where('status_id', '!=', 4)->get();
+    $notifications = Auth::user()->unreadNotifications;
 @endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
@@ -64,6 +65,35 @@
             </div>
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <div class="dropdown dropdown-end mt-1 mr-5">
+                    <div tabindex="0" role="button" class="btn btn-circle btn-ghost btn-xs text-black text-2xl">
+                        <i class="fa-solid fa-bell"></i>
+                        @if ($notifications->count() > 0)
+                            <span class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1">
+                                {{ $notifications->count() }}
+                            </span>
+                        @endif
+                    </div>
+                    <div tabindex="0" class="card compact dropdown-content bg-white rounded-box z-[1] shadow">
+                        <div class="card-body w-96">
+                            <h2 class="card-title">Notifications <i class="fa-solid fa-bell"></i></h2>
+                            @forelse ($notifications as $notification)
+                                <div class="p-2 border-b">
+                                    <p class="text-sm">{{ $notification->data['message'] }}</p>
+                                    <small class="text-gray-500">{{ $notification->created_at->diffForHumans() }}</small>
+                                </div>
+                            @empty
+                                <p class="p-2 text-sm text-gray-500">No notifications</p>
+                            @endforelse
+                            @if ($notifications->count() > 0)
+                                <div class="card-actions justify-end">
+                                    <a href="{{ route('notifications.markAsRead') }}" class="text-sm text-blue-500">Mark all as read <i class="fa-solid fa-check-double"></i></a>
+                                </div>
+                                
+                            @endif
+                        </div>
+                    </div>
+                </div>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         
@@ -129,6 +159,14 @@
                 @if (count($rq1) >= 1)
                     <span class="indicator-item badge badge-accent text-white ml-2">!</span>
                 @endif
+                @if ($notifications->count() > 0)
+                <div tabindex="0" role="button" class="btn btn-circle btn-ghost btn-xs text-black text-2xl">
+                    <i class="fa-solid fa-bell"></i>
+                        <span class="absolute top-1 right-1 bg-red-500 text-white text-xs rounded-full px-1">
+                            {{ $notifications->count() }}
+                        </span>
+                    </div>
+                    @endif
             </div>
         </div>
     </div>
@@ -142,6 +180,27 @@
             <x-responsive-nav-link :href="route('activitylog')" :active="request()->routeIs('activitylog')">
                 {{ __('Activity Log') }}
             </x-responsive-nav-link>
+            <hr>
+            <div tabindex="0" class="bg-white z-[1]">
+                <div class="w-96">
+                    <h2 class="card-title pl-2">Notifications <i class="fa-solid fa-bell"></i></h2>
+                    @forelse ($notifications as $notification)
+                        <div class="p-2 border-b">
+                            <p class="text-sm">{{ $notification->data['message'] }}</p>
+                            <small class="text-gray-500">{{ $notification->created_at->diffForHumans() }}</small>
+                        </div>
+                    @empty
+                        <p class="p-2 text-sm text-gray-500">No notifications</p>
+                    @endforelse
+                    @if ($notifications->count() > 0)
+                        <div class="card-actions justify-end">
+                            <a href="{{ route('notifications.markAsRead') }}" class="text-sm text-blue-500">Mark all as read <i class="fa-solid fa-check-double"></i></a>
+                        </div>
+                        
+                    @endif
+                </div>
+            </div>
+            
             @can('aspv')
             <hr>
             <p class="pl-4 text-sm font-bold">Advanced Settings <i class="fa-solid fa-gear"></i></p>

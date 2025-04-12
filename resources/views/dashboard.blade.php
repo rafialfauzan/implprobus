@@ -1,5 +1,6 @@
 @php
     use Carbon\Carbon;
+    $notifications = Auth::user()->unreadNotifications;
 @endphp
 <x-app-layout>
     {{-- <x-slot name="header">

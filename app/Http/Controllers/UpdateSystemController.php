@@ -90,6 +90,17 @@ class UpdateSystemController extends Controller
             'images.*' => 'image|mimes:jpg,jpeg,png|max:200'
         ]);
 
+        $existingFile = DataImage::where('updatesystem_id', $id)->count();
+        $maxImages = 6;
+        $images = $request->file('images');
+        if ($images != null){
+
+            if ($existingFile + count($images) > $maxImages) {
+                Alert::error('Image Limit Exceeded!', 'You can only upload a maximum of 6 images.');
+                return redirect()->back();
+            }
+        }
+
         $us->update([
             'judul' => $request->title,
             'deskripsi' => $request->body,

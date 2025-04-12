@@ -25,14 +25,14 @@
                 <div class="p-6">
                     <div class="flex flex-col md:px-40">
                         <div class="mb-5 flex flex-row justify-between">
-                            @if ($rqid == $aid || $ust == 'admin')
+                            @if ($rqid == $aid || $ust == 'admin' || $ust == 'supervisor')
                             <a href="/editrq/{{ $datarq->id }}" class="btn btn-neutral mt-3 bg-black rounded-[28px]"><i class="fa-solid fa-pen"></i> Edit Request</a> 
                             @endif
-                            <a href="{{ url()->previous() }}" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                            <a href="/" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-house"></i></a>
                         </div>
                         <div class="bg-white rounded-[28px] shadow-md card">
                             @if ($stid != 4)
-                            @if ($ait == $datarq->tag_id || $aid == $datarq->user_id)
+                            @if ($ait == $datarq->tag_id)
                             
                             <div class="dropdown dropdown-top absolute right-0 bottom-0 m-3 rounded-[16px]">
                                 <div tabindex="0" role="button" class="btn m-1">Change Status</div>
@@ -52,7 +52,14 @@
                             </div>
                             @endif
                             @endif
-                            <div class="absolute right-0 md:m-5 m-3 badge {{ $bg }} badge-lg rounded text-white">{{ $datarq->status->name }}</div>
+                            <div class="absolute right-0 md:m-5 m-3 badge {{ $bg }} badge-lg rounded text-white">{{ $datarq->status->name }} 
+                                @if ($datarq->status_id == 3 || $datarq->status_id == 4)
+                                    
+                                @if ($reqlog != null)
+                                by {{ $reqlog->user->name }}
+                                @endif
+                                @endif
+                            </div>
                             <div class="card-body">
                                 <h1 class="card-title text-2xl font-bold">{{ $datarq->judul }}</h1>
                                 <article>
@@ -101,7 +108,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if ($stid != 1 && $stid != 2)
+                        @if ($stid == 3)
                             
                         @if ($datarq->user_id != $aid && $ait == $datarq->tag_id)
                         <div>
@@ -123,7 +130,7 @@
                         </details> --}}
                         @if (count($dataus) >= 1)
                         <details class="collapse bg-white mt-5 shadow-lg">
-                            <summary class="collapse-title text-xl font-bold">Update System</summary>
+                            <summary class="collapse-title text-xl font-bold"><b>Update System</b> <i>(click to expand)</i></summary>
                             <div class="collapse-content">
                                 <div class="overflow-x-auto">
                                     <table class="table">

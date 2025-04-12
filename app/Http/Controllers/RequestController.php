@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RequestLog;
 use App\Models\Tag;
 use App\Models\Outlet;
 use App\Models\Status;
@@ -12,6 +13,7 @@ use App\Models\UpdateSystem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Notifications\RequestStatusChanged;
 
 class RequestController extends Controller
 {
@@ -23,7 +25,8 @@ class RequestController extends Controller
         $dataimg = DataImage::where('request_id', $id)->get();
         $komentar = Komentar::where('request_id', $id)->get();
         $dataus = UpdateSystem::where('request_id', $id)->get();
-        return view('tablerq.detailrequest', compact('datarq', 'dataimg','komentar','dataus'));
+        $reqlog = RequestLog::where('request_id', $id)->first();
+        return view('tablerq.detailrequest', compact('datarq', 'dataimg','komentar','dataus','reqlog'));
     }
 
     public function mrq(){
@@ -106,6 +109,17 @@ class RequestController extends Controller
             'images.*' => 'image|mimes:jpg,jpeg,png|max:200'
         ]);
 
+        $existingFile = DataImage::where('request_id', $id)->count();
+        $maxImages = 6;
+        $images = $request->file('images');
+        if ($images != null){
+
+            if ($existingFile + count($images) > $maxImages) {
+                Alert::error('Image Limit Exceeded!', 'You can only upload a maximum of 6 images.');
+                return redirect()->back();
+            }
+        }
+
         $rq->update([
             'judul' => $request->title,
             'deskripsi' => $request->body,
@@ -141,10 +155,18 @@ class RequestController extends Controller
     }
 
     public function updatestatus($id,$stid){
+        $reqlog = RequestLog::class;
         $data = \App\Models\Request::find($id);
         $data->update([
             'status_id' => $stid
         ]);
+        $reqlog::create([
+            'request_id' => $id,
+            'status_id' => $stid,
+            'user_id' => Auth::user()->id
+        ]);
+        $creator = $data->user;
+        $creator->notify(new RequestStatusChanged($data));
         Alert::success('Status Changed!');
         return redirect()->back();
     }

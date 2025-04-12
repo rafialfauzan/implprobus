@@ -9,7 +9,7 @@
                 <div class="p-6">
                     <div class="flex flex-col md:px-40">
                         <div class="text-end text-5xl mb-5">
-                            <a href="{{ url()->previous() }}" class="text-black hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                            <a href="/" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-house"></i></a>
                         </div>
                         <x-auth-validation-errors class="mb-4" :errors="$errors" />
                         <div class="bg-white rounded-[28px] shadow-md card">
@@ -84,7 +84,13 @@
                                         <input type="file" multiple class="file-input file-input-bordered w-full" name="images[]">
                                         <div class="label">
                                             <span class="label-text">MAX FILES: 6 IMAGES</span>
-                                            <span class="label-text">MAX SIZE: 200KB</span>
+                                            <span class="label-text">MAX SIZE: 200KB/IMAGE</span>
+                                        </div>
+                                        <div>
+                                            <span>For multiple file : </span>
+                                            <kbd class="kbd">ctrl</kbd>
+                                            +
+                                            <kbd class="kbd"><i class="fa-solid fa-arrow-pointer"></i> click</kbd>
                                         </div>
                                     </div>
                                     <div class="mt-3">

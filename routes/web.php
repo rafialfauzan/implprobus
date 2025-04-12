@@ -115,4 +115,10 @@ Route::get('/myrequs', [MyrequsController::class, 'index'])->middleware(['auth']
 Route::get('/myrequest', [MyrequsController::class, 'myrequest'])->middleware(['auth'])->name('myrequest');
 Route::get('/myupdatesystem', [MyrequsController::class, 'myupdatesystem'])->middleware(['auth'])->name('myupdatesystem');
 
+//Route Notification
+Route::get('/notifications/mark-as-read', function () {
+    Auth::user()->unreadNotifications->markAsRead();
+    return back();
+})->name('notifications.markAsRead');
+
 require __DIR__.'/auth.php';

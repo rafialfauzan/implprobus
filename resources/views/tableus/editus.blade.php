@@ -5,13 +5,15 @@
                 <div class="p-6">
                     <div class="flex flex-col md:px-40">
                         <div class="text-end text-5xl mb-5">
-                            <a href="{{ url()->previous() }}" class="text-black hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                            <a href="/detailus/{{ $data->id }}" class="text-black hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
                         </div>
+                        
                         <div class="bg-white rounded-[28px] shadow-md card">
                             <div class="card-body">
                                 <h1 class="card-title text-3xl font-extrabold">Edit Update System</h1>
                                 <form action="/editus/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                                     @csrf
+                                    <input type="hidden" class="input rounded-xl input-bordered w-full" name="req" value="{{ $data->request_id }}" required>
                                     <div class="mt-3">
                                         <p class="font-bold">Title</p>
                                         <input type="text" class="input rounded-xl input-bordered w-full" value="{{ $data->judul }}" name="title">
@@ -49,7 +51,13 @@
                                         <input type="file" multiple class="file-input file-input-bordered w-full" name="images[]">
                                         <div class="label">
                                             <span class="label-text">MAX FILES: 6 IMAGES</span>
-                                            <span class="label-text">MAX SIZE: 200KB</span>
+                                            <span class="label-text">MAX SIZE: 200KB/IMAGE</span>
+                                        </div>
+                                        <div>
+                                            <span>For multiple file : </span>
+                                            <kbd class="kbd">ctrl</kbd>
+                                            +
+                                            <kbd class="kbd"><i class="fa-solid fa-arrow-pointer"></i> click</kbd>
                                         </div>
                                         <div class="flex flex-row container">
                                             @foreach ($image as $img)

@@ -5,7 +5,7 @@
                 <div class="p-6">
                     <div class="flex flex-col md:px-40">
                         <div class="text-end text-5xl mb-5">
-                            <a href="{{ url()->previous() }}" class="text-black hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                            <a href="/detailrequest/{{ $req->id }}" class="text-black hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
                         </div>
                         <x-auth-validation-errors class="mb-4" :errors="$errors" />
                         <div class="bg-white rounded-[28px] shadow-md card">
@@ -78,11 +78,17 @@
                                         <input name="images[]" type="file" multiple class="file-input file-input-bordered w-full">
                                         <div class="label">
                                             <span class="label-text">MAX FILES: 6 IMAGES</span>
-                                            <span class="label-text">MAX SIZE: 200KB</span>
+                                            <span class="label-text">MAX SIZE: 200KB/IMAGE</span>
                                         </div>
-                                        <div class="flex flex-row container">
+                                        <div>
+                                            <span>For multiple file : </span>
+                                            <kbd class="kbd">ctrl</kbd>
+                                            +
+                                            <kbd class="kbd"><i class="fa-solid fa-arrow-pointer"></i> click</kbd>
+                                        </div>
+                                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 container">
                                             @foreach ($img as $image)
-                                            <div class="h-[200px] w-1/2 md:w-1/3 border shadow-sm overflow-hidden rounded-xl image">
+                                            <div class="h-[180px] w-auto border shadow-sm overflow-hidden rounded-xl image">
                                                 <a onclick="return confirm('Are you sure you want to delete this data?')" href="/deleteimg/{{ $image->id }}" class="btn btn-error btn-sm text-white rounded-xl absolute">✕</a>
                                                 <img src="/img/{{ $image->image }}" alt="" class="rounded-xl h-full w-full object-cover">   
                                             </div>
