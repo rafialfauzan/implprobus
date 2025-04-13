@@ -55,6 +55,12 @@ class KategoriController extends Controller
 
     public function delete($id){
         $this->authorize('aspv');
+        $request = \App\Models\Request::where('kategori_id', $id)->get();
+        $updatesystem = \App\Models\UpdateSystem::where('kategori_id', $id)->get();
+        if ($request->count() > 0 || $updatesystem->count() > 0) {
+            Alert::error('Failed to Delete Data!', 'This category is still in use.');
+            return redirect()->back();
+        }
         $data = Kategori::find($id);
         $data->delete();
         Alert::success('Successfully Delete Data!');

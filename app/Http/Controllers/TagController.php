@@ -55,6 +55,12 @@ class TagController extends Controller
 
     public function delete($id){
         $this->authorize('aspv');
+        $request = \App\Models\Request::where('tag_id', $id)->get();
+        $user = \App\Models\User::where('tag_id', $id)->get();
+        if ($request->count() > 0 || $user->count() > 0) {
+            Alert::error('Failed to Delete Data!', 'This tag is still in use.');
+            return redirect()->back();
+        }
         $data = Tag::find($id);
         $data->delete();
         Alert::success('Successfully Delete Data!');

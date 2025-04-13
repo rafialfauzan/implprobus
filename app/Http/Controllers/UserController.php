@@ -84,6 +84,12 @@ class UserController extends Controller
 
     public function delete($id){
         $this->authorize('admin');
+        $request = \App\Models\Request::where('user_id', $id)->get();
+        $updatesystem = \App\Models\UpdateSystem::where('user_id', $id)->get();
+        if ($request->count() > 0 || $updatesystem->count() > 0) {
+            Alert::error('Failed to Delete Data!', 'This user is still in use.');
+            return redirect()->back();
+        }
         $user = User::find($id);
         $user->delete();
         Alert::success('Account Successfully Deleted!');

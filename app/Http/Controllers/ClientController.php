@@ -44,6 +44,7 @@ class ClientController extends Controller
     }
 
     public function update(Request $request, $id){
+        $this->authorize('aspv');
         $client = Outlet::find($id);
         $request->validate([
             'name'=>'max:255',
@@ -58,6 +59,13 @@ class ClientController extends Controller
     }
 
     public function delete($id){
+        $this->authorize('aspv');
+        $request = \App\Models\Request::where('outlet_id', $id)->get();
+        $updatesystem = \App\Models\UpdateSystem::where('outlet_id', $id)->get();
+        if ($request->count() > 0 || $updatesystem->count() > 0) {
+            Alert::error('Failed to Delete Data!', 'This client is still in use.');
+            return redirect()->back();
+        }
         $client = Outlet::find($id);
         $client->delete();
         Alert::success('Successfully Delete Data!');
