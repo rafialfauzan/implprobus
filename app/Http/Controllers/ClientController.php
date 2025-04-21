@@ -10,7 +10,7 @@ class ClientController extends Controller
 {
     public function index(){
         $this->authorize('aspv');
-        $title = 'Delete Client!';
+        $title = 'Delete Outlet!';
         $text = 'Are you sure you want to delete this data?';
         confirmDelete($title, $text); 
         $client = Outlet::all();
@@ -63,7 +63,7 @@ class ClientController extends Controller
         $request = \App\Models\Request::where('outlet_id', $id)->get();
         $updatesystem = \App\Models\UpdateSystem::where('outlet_id', $id)->get();
         if ($request->count() > 0 || $updatesystem->count() > 0) {
-            Alert::error('Failed to Delete Data!', 'This client is still in use.');
+            Alert::error('Failed to Delete Data!', 'This outlet is still in use.');
             return redirect()->back();
         }
         $client = Outlet::find($id);

@@ -13,11 +13,11 @@
                         <p>Welcome to user page {{ Auth::user()->name }}</p>
                     </div> --}}
                     <div class="justify-between flex flex-row">
-                        <p class="text-center text-3xl font-bold">Client List</p>
+                        <p class="text-center text-3xl font-bold">Outlet List</p>
                         <a href="{{ url()->previous() }}" class="text-black hover:text-gray-700 text-3xl"><i class="fa-solid fa-circle-arrow-left"></i></a>
                     </div>
                     <div class="mt-5 mb-20">
-                        <a href="{{ route('createclient') }}" class="bg-black font-bold text-white px-2 py-2 rounded-md border-black border-solid border-2 hover:bg-white hover:text-black transition delay-50 duration-300"><i class="fa-solid fa-plus"></i> Create new client</a>
+                        <a href="{{ route('createclient') }}" class="bg-black font-bold text-white px-2 py-2 rounded-md border-black border-solid border-2 hover:bg-white hover:text-black transition delay-50 duration-300"><i class="fa-solid fa-plus"></i> Create new outlet</a>
                     </div>
                     <div class="mt-5">
                         <table class="table-fixed w-full">

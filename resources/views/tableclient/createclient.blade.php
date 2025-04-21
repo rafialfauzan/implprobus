@@ -9,7 +9,7 @@
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <div class="flex-col">
                         <div>
-                            <p class="text-center text-xl font-bold">Create new Client</p>
+                            <p class="text-center text-xl font-bold">Create new Outlet</p>
                         </div>
                         <form method="POST" action="/createclient">
                             @csrf

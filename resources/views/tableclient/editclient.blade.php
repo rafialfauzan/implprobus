@@ -9,7 +9,7 @@
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <div class="flex-col">
                         <div>
-                            <p class="text-center text-xl font-bold">Edit client</p>
+                            <p class="text-center text-xl font-bold">Edit outlet</p>
                         </div>
                         <form method="POST" action="/editclient/{{ $client->id }}">
                             @csrf
