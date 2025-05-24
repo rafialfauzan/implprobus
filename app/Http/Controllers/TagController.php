@@ -32,7 +32,7 @@ class TagController extends Controller
         $this->authorize('aspv');
         $tag = new Tag;
         $request->validate([
-            'name'=>'max:255'
+            'name'=>'required|max:255|unique:tag,name'
         ]);
         $tag->name = $request->input('name');
         $tag->save();
@@ -44,7 +44,7 @@ class TagController extends Controller
         $this->authorize('aspv');
         $data = Tag::find($id);
         $request->validate([
-            'name'=>'max:255'
+            'name'=>'required|max:255|unique:tag,name'
         ]);
         $data->update([
             'name'=>$request->input('name')

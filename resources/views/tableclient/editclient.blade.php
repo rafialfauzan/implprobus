@@ -21,7 +21,7 @@
                                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{ $client->nm_out }}" required autofocus />
                             </div>
                             <div class="mt-5">
-                                <x-label for="name" :value="__('Lokasi')" />
+                                <x-label for="name" :value="__('Location')" />
                 
                                 <x-input id="lokasi" class="block mt-1 w-full" type="text" name="lokasi" value="{{ $client->lokasi }}" required autofocus />
                             </div>

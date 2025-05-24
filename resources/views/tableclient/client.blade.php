@@ -24,7 +24,7 @@
                             <thead class="bg-gray-300 text-black">
                                 <tr>
                                     <th class="p-3 text-sm font-bold tracking-wide text-left rounded-tl-xl">Name</th>
-                                    <th class="p-3 text-sm font-bold tracking-wide text-left">Lokasi</th>
+                                    <th class="p-3 text-sm font-bold tracking-wide text-left">Location</th>
                                     <th class="p-3 text-sm font-bold tracking-wide text-left rounded-tr-xl">Action</th>
                                 </tr>
                             </thead>

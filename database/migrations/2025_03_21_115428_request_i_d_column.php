@@ -15,7 +15,7 @@ class RequestIDColumn extends Migration
     {
         Schema::table('updatesystem', function (Blueprint $table) {
             $table->unsignedBigInteger('request_id');
-            $table->foreign('request_id')->references('id')->on('request');
+            $table->foreign('request_id')->references('id')->on('request')->onDelete('cascade');
         });
     }
 

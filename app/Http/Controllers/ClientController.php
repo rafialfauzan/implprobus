@@ -32,8 +32,8 @@ class ClientController extends Controller
         $this->authorize('aspv');
         $client = new Outlet;
         $request->validate([
-            'name'=>'max:255',
-            'lokasi'=>'max:255'
+            'name'=>'required|max:255|unique:outlet,nm_out',
+            'lokasi'=>'required|max:255'
         ]);
         $client = Outlet::create([
             'nm_out'=>$request->input('name'),
@@ -47,8 +47,8 @@ class ClientController extends Controller
         $this->authorize('aspv');
         $client = Outlet::find($id);
         $request->validate([
-            'name'=>'max:255',
-            'lokasi'=>'max:255'
+            'name'=>'required|max:255|unique:outlet,nm_out',
+            'lokasi'=>'required|max:255'
         ]);
         $client->update([
             'nm_out'=>$request->input('name'),

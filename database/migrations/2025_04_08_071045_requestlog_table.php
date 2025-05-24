@@ -16,11 +16,11 @@ class RequestlogTable extends Migration
         Schema::create('requestlog', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('request_id');
-            $table->foreign('request_id')->references('id')->on('request');
+            $table->foreign('request_id')->references('id')->on('request')->onDelete('cascade');
             $table->unsignedBigInteger('status_id');
-            $table->foreign('status_id')->references('id')->on('status');
+            $table->foreign('status_id')->references('id')->on('status')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

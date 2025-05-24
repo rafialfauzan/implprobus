@@ -32,7 +32,7 @@ class KategoriController extends Controller
         $this->authorize('aspv');
         $kategori = new Kategori;
         $request->validate([
-            'name'=>'max:255'
+            'name'=>'required|max:255|unique:kategori,name'
         ]);
         $kategori->name = $request->input('name');
         $kategori->save();
@@ -44,7 +44,7 @@ class KategoriController extends Controller
         $this->authorize('aspv');
         $data = Kategori::find($id);
         $request->validate([
-            'name'=>'max:255'
+            'name'=>'required|max:255|unique:kategori,name'
         ]);
         $data->update([
             'name'=>$request->input('name')

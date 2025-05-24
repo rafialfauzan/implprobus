@@ -16,7 +16,7 @@ class CreateTableKomentar extends Migration
         Schema::create('komentar', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('request_id')->nullable();
-            $table->foreign('request_id')->references('id')->on('request');
+            $table->foreign('request_id')->references('id')->on('request')->onDelete('cascade');
             $table->text('body');
             $table->timestamps();
         });

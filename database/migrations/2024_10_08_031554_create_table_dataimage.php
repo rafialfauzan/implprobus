@@ -16,9 +16,9 @@ class CreateTableDataimage extends Migration
         Schema::create('dataimage', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('request_id')->nullable();
-            $table->foreign('request_id')->references('id')->on('request');
+            $table->foreign('request_id')->references('id')->on('request')->onDelete('cascade');
             $table->unsignedBigInteger('updatesystem_id')->nullable();
-            $table->foreign('updatesystem_id')->references('id')->on('updatesystem');
+            $table->foreign('updatesystem_id')->references('id')->on('updatesystem')->onDelete('cascade');
             $table->string('image',255);
             $table->timestamps();
         });

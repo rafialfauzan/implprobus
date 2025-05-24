@@ -15,7 +15,7 @@ class UserTableForeignKey extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('tag_id')->default(1);
-            $table->foreign('tag_id')->references('id')->on('tag');
+            $table->foreign('tag_id')->references('id')->on('tag')->onDelete('cascade');
         });
     }
 

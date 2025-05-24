@@ -36,7 +36,7 @@ class ProfileController extends Controller
         $profil = User::find($id);
         $request->validate([
             'name' => 'string|required|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email|max:255|unique:users,email',
             'tag' => 'required',
         ]);
 
