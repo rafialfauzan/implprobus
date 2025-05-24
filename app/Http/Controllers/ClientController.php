@@ -47,7 +47,7 @@ class ClientController extends Controller
         $this->authorize('aspv');
         $client = Outlet::find($id);
         $request->validate([
-            'name'=>'required|max:255|unique:outlet,nm_out',
+            'name'=>'required|max:255',
             'lokasi'=>'required|max:255'
         ]);
         $client->update([
