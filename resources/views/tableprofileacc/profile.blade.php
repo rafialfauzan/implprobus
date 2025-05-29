@@ -77,9 +77,6 @@
                                 <div class="justify-between flex flex-row">
                                     <p class="text-center text-3xl font-bold">Update System List</p>
                                 </div>
-                                {{-- <div class="mt-5 mb-10">
-                                    <a href="{{ route('createtag') }}" class="bg-black font-bold text-white px-2 py-2 rounded-md border-black border-solid border-2 hover:bg-white hover:text-black transition delay-50 duration-300"><i class="fa-solid fa-plus"></i> Create new update system</a>
-                                </div> --}}
                                 <div class="mt-5">
                                     <table class="table-fixed w-full">
                                         <thead class="bg-gray-300 text-black">

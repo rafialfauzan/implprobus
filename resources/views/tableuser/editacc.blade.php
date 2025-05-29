@@ -9,7 +9,7 @@
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <div class="flex-col">
                         <div>
-                            <p class="text-center text-xl font-bold">Edit account</p>
+                            <p class="text-center text-xl font-bold">Edit user</p>
                         </div>
                         <form method="POST" action="/editacc/{{ $user->id }}">
                             @csrf

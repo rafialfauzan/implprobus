@@ -21,7 +21,7 @@
                                         <p class="font-bold">Outlet</p>
                                         <select name="outlet" id="outlet" class="select select-bordered w-full">
                                             @foreach ($outlet as $out)
-                                            <option value="{{ $out->id }}">{{ $out->nm_out }}</option>
+                                            <option value="{{ $out->id }}" {{ old('outlet') == $out->id ? 'selected' : '' }}>{{ $out->nm_out }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -29,7 +29,7 @@
                                         <p class="font-bold">Tag</p>
                                         <select name="tag" id="tag" class="select select-bordered w-full">
                                             @foreach ($tag as $tagitem)
-                                            <option value="{{ $tagitem->id }}">{{ $tagitem->name }}</option>
+                                            <option value="{{ $tagitem->id }}" {{ old('tag') == $tagitem->id ? 'selected' : '' }}>{{ $tagitem->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -37,15 +37,15 @@
                                         <p class="font-bold">Category</p>
                                         <select name="category" id="category" class="select select-bordered w-full">
                                             @foreach ($kategori as $kategoriitem)
-                                            <option value="{{ $kategoriitem->id }}">{{ $kategoriitem->name }}</option>
+                                            <option value="{{ $kategoriitem->id }}" {{ old('category') == $kategoriitem->id ? 'selected' : '' }}>{{ $kategoriitem->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="mt-3">
                                         <p class="font-bold">Status</p>
                                         <select name="status" id="status" class="select select-bordered w-full">
-                                            <option value="1">Urgent</option>
-                                            <option value="2">Open</option>
+                                            <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>Urgent</option>
+                                            <option value="2" {{ old('status') == 2 ? 'selected' : '' }}>Open</option>
                                         </select>
                                     </div>
                                     <div class="mt-3">

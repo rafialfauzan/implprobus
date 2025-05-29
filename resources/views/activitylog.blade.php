@@ -12,7 +12,7 @@
                                 <th class="p-3 text-sm font-bold tracking-wide text-center rounded-tl-xl">Request Name</th>
                                 <th class="p-3 text-sm font-bold tracking-wide text-center">Status Changes</th>
                                 <th class="p-3 text-sm font-bold tracking-wide text-center">by User</th>
-                                <th class="p-3 text-sm font-bold tracking-wide text-center rounded-tr-xl">Date</th>
+                                <th class="p-3 text-sm font-bold tracking-wide text-center rounded-tr-xl">Time</th>
                             </tr>
                         </thead>
                         <tbody>

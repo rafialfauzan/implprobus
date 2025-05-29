@@ -9,7 +9,7 @@
                 <div class="p-6">
                     <div class="flex flex-col md:px-40">
                         <div class="mb-5 flex flex-row justify-between">
-                            @if ($data->user_id == $aid || $ust == 'admin')
+                            @if ($data->user_id == $aid || $ust == 'admin' || $ust == 'supervisor')
                             <a href="/editus/{{ $data->id }}" class="btn btn-neutral mt-3 bg-black rounded-[28px]"><i class="fa-solid fa-pen"></i> Edit Update System</a>
                             @endif
                             <a href="/" class="text-5xl text-black mt-2 hover:text-gray-700"><i class="fa-solid fa-house"></i></a>

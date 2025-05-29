@@ -27,7 +27,7 @@
                    <div class="flex flex-col">
                     <div class="flex flex-row justify-between">
                         <h1 class="font-bold text-xl text-black mt-2 ml-2">{{ $st }}</h1>
-                        <a href="/" class="text-black hover:text-gray-700 text-3xl"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                        <a href="/myreq" class="text-black hover:text-gray-700 text-3xl"><i class="fa-solid fa-circle-arrow-left"></i></a>
                     </div>
                     <div class="grid md:grid-cols-4 grid-rows-1">
                         @foreach ($data as $rq)

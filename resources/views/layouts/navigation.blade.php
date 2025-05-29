@@ -102,7 +102,7 @@
                             <div><i class="fa-solid fa-user"></i> {{ Auth::user()->name }} </div>
 
                             @if (count($rq1) >= 1)
-                            <span class="indicator-item badge badge-accent text-white ml-2">!</span>
+                            <span class="indicator-item badge badge-accent text-white ml-2">ʀ</span>
                             @endif
 
                             <div class="ml-1">
