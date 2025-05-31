@@ -14,3 +14,14 @@ Probus Implementator is a system that manages several features used by the Probu
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
 ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
+
+## Installation
+```bash
+composer install
+php artisan migrate:fresh --seed
+```
+
+## Usage
+```bash
+php artisan serve
+```
